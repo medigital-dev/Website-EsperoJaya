@@ -44,13 +44,17 @@ Coded by www.creative-tim.com
                 <div class="d-flex justify-content-between text-primary">
                     <div class="btn-group shadow" role="group">
                         <a href="https://facebook.com/smp2wonosari" target="_blank" class="btn btn-sm btn-primary"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/smp2wonosari" target="_blank" class="btn btn-sm btn-primary"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/smp2wonosari" target="_blank" class="btn btn-sm btn-primary"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@smpn2wonosari474" target="_blank" class="btn btn-sm btn-primary"><i class="fab fa-youtube"></i></a>
+
                     </div>
                     <div class="btn-group shadow" role="group">
-                        <a href="tel:+62274391037" class="btn btn-sm btn-success"><i class="fas fa-phone"></i></a>
-                        <a href="mailto:hi@smp2wonosari.sch.id" class="btn btn-sm btn-success"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="btn btn-sm btn-success"><i class="fas fa-map-marker-alt"></i></a>
-                        <a href="https://wa.me/+62081227774007" class="btn btn-sm btn-success"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://t.me/+62081227774007" class="btn btn-sm btn-success"><i class="fas fa-telegram"></i></a>
+                        <a href="tel:+62274391037" target="_blank" class="btn btn-sm btn-success"><i class="fas fa-phone"></i></a>
+                        <a href="mailto:hi@smp2wonosari.sch.id" target="_blank" class="btn btn-sm btn-success"><i class="fas fa-envelope"></i></a>
+                        <a href="https://goo.gl/maps/gxctd8e35bbUmptk9" target="_blank" class="btn btn-sm btn-success"><i class="fas fa-map-marker-alt"></i></a>
+                        <a href="https://wa.me/+62081227774007" target="_blank" class="btn btn-sm btn-success"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/+62081227774007" target="_blank" class="btn btn-sm btn-success"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
             </div>
@@ -261,21 +265,29 @@ Coded by www.creative-tim.com
             </div>
         </div>
     </div>
+    <div class="section bg-gradient-success">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto text-center">
+                    <span class="badge badge-primary badge-pill mb-3">#SmartSchool</span>
+                    <h3 class="display-3 text-primary font-weight-bold">Espero Smart School</h3>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="section">
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col-md-8 mx-auto text-center">
                     <span class="badge badge-primary badge-pill mb-3">#About</span>
                     <h3 class="display-3 text-primary font-weight-bold">Tentang kami</h3>
                 </div>
             </div>
-            <div class="row flex-row-reverse">
-                <div class="col-md-4">
-                    <p class="text-center align-middle">
-                        <img src="<?= base_url('assets/images/brand/logo.png'); ?>" class="img-fluid" width="400" alt="Logo">
-                    </p>
-                </div>
-                <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-10 mx-auto">
+                    <div class="text-center">
+                        <img src="<?= base_url('assets/images/brand/logo.png'); ?>" class="img-fluid" width="200" alt="Logo">
+                    </div>
                     <p class="lead">SMP Negeri 2 Wonosari atau yang biasa di panggil Espero merupakan Sekolah Menengah Pertama di pusat Kota Wonosari tepatnya di Jalan Veteran 8, Kepek, Wonosari, Gunungkidul, DI Yogyakarta. SMP Negeri 2 Wonosari yang didirikan sejak 1 April 1979 menjadi sekolah favorit di Kecamatan Wonosari bahkan di Kabupaten Gunungkidul.</p>
                     <p class="lead">Dari tahun ke tahun, SMP 2 Wonosari mengalami perkembangan yang sangat pesat, baik dari segi fasilitas maupun sumber daya manusianya (guru). Hal ini nampak dari unsur sarana gedung yang semula berdinding bambu dan kayu, sekarang semuanya permanen. Demikian pula fasilitas belajar, kini dilengkapi dengan perangkat laboraturium lengkap dengan komputer yang terhubung dengan internet.</p>
                     <p class="lead">Dari segi tenaga pendidik, hampir semua guru telah bersertifikat pendidik profesional. Jumlahnya pun berkembang seiring dengan peningkatan jumlah kelas, yang sampai saat ini terdiri atas 21 kelas paralel.</p>
@@ -329,12 +341,12 @@ Coded by www.creative-tim.com
         <div class="container">
             <div class="row">
                 <div class="col-md-8 mx-auto text-center">
-                    <span class="badge badge-primary badge-pill mb-3">#News</span>
-                    <h3 class="display-3">Berita terbaru</h3>
+                    <span class="badge badge-primary badge-pill mb-3">#Info</span>
+                    <h3 class="display-3">Informasi terbaru</h3>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row mb-4">
+                <div class="col">
                     <div class="featured-carousel owl-carousel">
                         <div class="item">
                             <div class="blog-entry">
@@ -476,6 +488,11 @@ Coded by www.creative-tim.com
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-8 mx-auto text-center">
+                    <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -547,6 +564,37 @@ Coded by www.creative-tim.com
             <div class="row">
                 <div class="col-md-8 mx-auto text-center">
                     <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section bg-gradient-warning">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto text-center">
+                    <span class="badge badge-primary badge-pill mb-3">#Event</span>
+                    <h3 class="display-3">Agenda Sekolah</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card card-margin">
+                        <div class="card-body">
+                            <div class="widget-49">
+                                <div class="widget-49-title-wrapper mb-2">
+                                    <div class="widget-49-date-primary">
+                                        <span class="widget-49-date-day">09</span>
+                                        <span class="widget-49-date-month">apr</span>
+                                    </div>
+                                    <div class="widget-49-meeting-info">
+                                        <span class="widget-49-pro-title">ANBK Kelas 9</span>
+                                        <span class="widget-49-meeting-time">12:00 - 13.30</span>
+                                    </div>
+                                </div>
+                                <p class="small">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias ullam iusto at, corrupti, obcaecati, consequuntur atque id modi tempora unde aspernatur soluta eligendi veritatis dolores accusantium molestiae nisi blanditiis culpa!</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -689,68 +737,30 @@ Coded by www.creative-tim.com
             </div>
         </div>
     </div>
-    <div class="section bg-gradient-warning">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <span class="badge badge-primary badge-pill mb-3">#Event</span>
-                    <h3 class="display-3">Agenda Sekolah</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <div class="card card-margin">
-                        <div class="card-body">
-                            <div class="widget-49">
-                                <div class="widget-49-title-wrapper">
-                                    <div class="widget-49-date-primary">
-                                        <span class="widget-49-date-day">09</span>
-                                        <span class="widget-49-date-month">apr</span>
-                                    </div>
-                                    <div class="widget-49-meeting-info">
-                                        <span class="widget-49-pro-title">ANBK Kelas 9</span>
-                                        <span class="widget-49-meeting-time">12:00 - 13.30</span>
-                                    </div>
-                                </div>
-                                <!-- <ol class="widget-49-meeting-points">
-                                    <li class="widget-49-meeting-item"><span>Expand module is removed</span></li>
-                                    <li class="widget-49-meeting-item"><span>Data migration is in scope</span></li>
-                                    <li class="widget-49-meeting-item"><span>Session timeout increase to 30 minutes</span></li>
-                                </ol>
-                                <div class="widget-49-meeting-action">
-                                    <a href="#" class="btn btn-sm btn-flash-border-primary">View All</a>
-                                </div>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- <br /><br /> -->
     <footer class="footer">
         <div class="container">
-            <!-- <div class="row row-grid align-items-center mb-5">
+            <div class="row row-grid align-items-center mb-5">
                 <div class="col-lg-6">
-                    <h3 class="text-primary font-weight-light mb-2">Thank you for supporting us!</h3>
-                    <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
+                    <h3 class="text-primary font-weight-light mb-2">Terimakasih sudah berkunjung.</h3>
+                    <h4 class="mb-0 font-weight-light">Banyak hal menarik di beberapa platform media sosial kami. Yuk follow kami.</h4>
                 </div>
                 <div class="col-lg-6 text-lg-center btn-wrapper">
-                    <button target="_blank" href="https://twitter.com/creativetim" rel="nofollow" class="btn btn-icon-only btn-twitter rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
-                        <span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
+                    <button target="_blank" href="https://twitter.com/smp2wonosari" rel="nofollow" class="btn btn-icon-only btn-twitter rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
+                        <span class="btn-inner--icon"><i class="fab fa-twitter"></i></span>
                     </button>
-                    <button target="_blank" href="https://www.facebook.com/CreativeTim/" rel="nofollow" class="btn-icon-only rounded-circle btn btn-facebook" data-toggle="tooltip" data-original-title="Like us">
+                    <button target="_blank" href="https://www.facebook.com/smp2wonosari/" rel="nofollow" class="btn-icon-only rounded-circle btn btn-facebook" data-toggle="tooltip" data-original-title="Like us">
                         <span class="btn-inner--icon"><i class="fab fa-facebook"></i></span>
                     </button>
-                    <button target="_blank" href="https://dribbble.com/creativetim" rel="nofollow" class="btn btn-icon-only btn-dribbble rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
-                        <span class="btn-inner--icon"><i class="fa fa-dribbble"></i></span>
+                    <button target="_blank" href="https://instagram.com/smp2wonosari" rel="nofollow" class="btn btn-icon-only btn-instagram rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
+                        <span class="btn-inner--icon"><i class="fab fa-instagram"></i></span>
                     </button>
-                    <button target="_blank" href="https://github.com/creativetimofficial" rel="nofollow" class="btn btn-icon-only btn-github rounded-circle" data-toggle="tooltip" data-original-title="Star on Github">
-                        <span class="btn-inner--icon"><i class="fa fa-github"></i></span>
+                    <button target="_blank" href="https://www.youtube.com/@smpn2wonosari474" rel="nofollow" class="btn btn-icon-only rounded-circle btn-youtube" data-toggle="tooltip" data-original-title="Subscribe our channel">
+                        <span class="btn-inner--icon"><i class="fab fa-youtube"></i></span>
                     </button>
                 </div>
-            </div> -->
-            <!-- <hr> -->
+            </div>
+            <hr>
             <div class="row align-items-center justify-content-md-between">
                 <div class="col-md-6">
                     <div class="copyright">
@@ -760,8 +770,6 @@ Coded by www.creative-tim.com
                 <div class="col-md-6">
                     <div class="copyright float-right">
                         <a class="text-muted" target="_blank" href="https://medigital.dev/" title="Created and Developed by meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a>
-                        <!-- | 
-                        <a class="text-muted" target="_blank" href="https://www.creative-tim.com/product/argon-design-system">Creative Tim</a>. -->
                     </div>
                 </div>
             </div>
