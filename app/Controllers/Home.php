@@ -6,6 +6,18 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view('landing_page');
+        $dataPage = [
+            'site' => [
+                'title' => '',
+                'titleMenubar' => '',
+                'tagline' => '',
+                'icon' => [
+                    'filename' => '',
+                    'url' => ''
+                ],
+            ],
+            'socialMedia' => []
+        ];
+        return view('landing_page', $dataPage);
     }
 }
