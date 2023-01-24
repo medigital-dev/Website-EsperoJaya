@@ -28,17 +28,12 @@ Coded by www.creative-tim.com
     <link rel="stylesheet" href="<?= base_url('plugins/carousel-07/css/owl.theme.default.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <style>
-        #btn-back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: none;
-        }
+
     </style>
 </head>
 
 <body class="landing-page">
-    <div class="container">
+    <div class="container" id="top-bar">
         <div class="row">
             <div class="col-12 py-2">
                 <div class="d-flex justify-content-between text-primary">
@@ -94,8 +89,8 @@ Coded by www.creative-tim.com
         </div>
     </nav>
 
-    <div class="wrapper">
-        <div class="section section-hero section-shaped">
+    <div class="wrapper" id="content">
+        <div class="section section-hero section-shaped" id="hero">
             <div class="shape shape-style-1 shape-primary">
                 <span class="span-150"></span>
                 <span class="span-50"></span>
@@ -152,7 +147,7 @@ Coded by www.creative-tim.com
                 </svg>
             </div>
         </div>
-        <div class="section">
+        <div class="section" id="feature">
             <div class="container-fluid px-5">
                 <div class="row mb-4">
                     <div class="col-md-8 mx-auto text-center">
@@ -219,525 +214,418 @@ Coded by www.creative-tim.com
                 </div>
             </div>
         </div>
-    </div>
-    <div class="section bg-gradient-success">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <span class="badge badge-primary badge-pill mb-3">#SmartSchool</span>
-                    <h3 class="display-3 text-primary font-weight-bold">Espero Smart School</h3>
+        <div class="section bg-gradient-success" id="SmartSchool">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <span class="badge badge-primary badge-pill mb-3">#SmartSchool</span>
+                        <h3 class="display-3 text-primary font-weight-bold">Espero Smart School</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h3 class="text-muted">Coming Soon</h3>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="text-muted">Coming Soon</h3>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <span class="badge badge-primary badge-pill mb-3">#About</span>
-                    <h3 class="display-3 text-primary font-weight-bold">Tentang kami</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-10 mx-auto">
-                    <div class="text-center">
-                        <img src="<?= base_url('assets/uploads/images/smp2wonosari-shadow_black.png'); ?>" class="img-fluid" width="200" alt="Logo">
+        <div class="section" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <span class="badge badge-primary badge-pill mb-3">#About</span>
+                        <h3 class="display-3 text-primary font-weight-bold">Tentang kami</h3>
                     </div>
-                    <p class="lead">SMP Negeri 2 Wonosari atau yang biasa di panggil Espero merupakan Sekolah Menengah Pertama di pusat Kota Wonosari tepatnya di Jalan Veteran 8, Kepek, Wonosari, Gunungkidul, DI Yogyakarta. SMP Negeri 2 Wonosari yang didirikan sejak 1 April 1979 menjadi sekolah favorit di Kecamatan Wonosari bahkan di Kabupaten Gunungkidul.</p>
-                    <p class="lead">Dari tahun ke tahun, SMP 2 Wonosari mengalami perkembangan yang sangat pesat, baik dari segi fasilitas maupun sumber daya manusianya (guru). Hal ini nampak dari unsur sarana gedung yang semula berdinding bambu dan kayu, sekarang semuanya permanen. Demikian pula fasilitas belajar, kini dilengkapi dengan perangkat laboraturium lengkap dengan komputer yang terhubung dengan internet.</p>
-                    <p class="lead">Dari segi tenaga pendidik, hampir semua guru telah bersertifikat pendidik profesional. Jumlahnya pun berkembang seiring dengan peningkatan jumlah kelas, yang sampai saat ini terdiri atas 21 kelas paralel.</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                        <div class="text-center">
+                            <img src="<?= base_url('assets/uploads/images/smp2wonosari-shadow_black.png'); ?>" class="img-fluid" width="200" alt="Logo">
+                        </div>
+                        <p class="lead">SMP Negeri 2 Wonosari atau yang biasa di panggil Espero merupakan Sekolah Menengah Pertama di pusat Kota Wonosari tepatnya di Jalan Veteran 8, Kepek, Wonosari, Gunungkidul, DI Yogyakarta. SMP Negeri 2 Wonosari yang didirikan sejak 1 April 1979 menjadi sekolah favorit di Kecamatan Wonosari bahkan di Kabupaten Gunungkidul.</p>
+                        <p class="lead">Dari tahun ke tahun, SMP 2 Wonosari mengalami perkembangan yang sangat pesat, baik dari segi fasilitas maupun sumber daya manusianya (guru). Hal ini nampak dari unsur sarana gedung yang semula berdinding bambu dan kayu, sekarang semuanya permanen. Demikian pula fasilitas belajar, kini dilengkapi dengan perangkat laboraturium lengkap dengan komputer yang terhubung dengan internet.</p>
+                        <p class="lead">Dari segi tenaga pendidik, hampir semua guru telah bersertifikat pendidik profesional. Jumlahnya pun berkembang seiring dengan peningkatan jumlah kelas, yang sampai saat ini terdiri atas 21 kelas paralel.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="section bg-dark text-white shadow">
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col-md-8 mx-auto text-center">
-                    <span class="badge badge-light badge-pill mb-3">#Data</span>
-                    <h3 class="display-3 text-white font-weight-bold">Data Statistik Sekolah</h3>
+        <div class="section bg-dark text-white shadow" id="data">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-md-8 mx-auto text-center">
+                        <span class="badge badge-light badge-pill mb-3">#Data</span>
+                        <h3 class="display-3 text-white font-weight-bold">Data Statistik Sekolah</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="row justify-content-center" id="counter">
-                <div class="col-md-3 col-sm-6 mb-4 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated" data-wow-duration="600ms" style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
-                    <i class="fa fa-chalkboard-teacher medium-icon"></i>
-                    <span class="timer counter alt-font appear text-white" data-to="43" data-speed="5000">43</span>
-                    <span class="counter-title">GTK</span>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-4 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated" data-wow-duration="300ms" style="visibility: visible; animation-duration: 300ms; animation-name: fadeInUp;">
-                    <i class="fa fa-users medium-icon"></i>
-                    <span id="anim-number-pizza" class="counter-number"></span>
-                    <span class="timer counter alt-font appear text-white" data-to="629" data-speed="5000">629</span>
-                    <p class="counter-title">Peserta Didik</p>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-4 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated" data-wow-duration="900ms" style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
-                    <i class="fa fa-user-graduate medium-icon"></i>
-                    <span class="timer counter alt-font appear text-white" data-to="100" data-speed="5000">100</span>
-                    <span class="counter-title">% Kelulusan</span>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-4 text-center counter-section wow fadeInUp animated" data-wow-duration="1200ms" style="visibility: visible; animation-duration: 1200ms; animation-name: fadeInUp;">
-                    <i class="fa fa-shapes medium-icon"></i>
-                    <span class="timer counter alt-font appear text-white" data-to="21" data-speed="5000">21</span>
-                    <span class="counter-title">Rombongan belajar</span>
+                <div class="row justify-content-center" id="counter">
+                    <div class="col-md-3 col-sm-6 mb-4 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated" data-wow-duration="600ms" style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
+                        <i class="fa fa-chalkboard-teacher medium-icon"></i>
+                        <span class="timer counter alt-font appear text-white" data-to="43" data-speed="5000">43</span>
+                        <span class="counter-title">GTK</span>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-4 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated" data-wow-duration="300ms" style="visibility: visible; animation-duration: 300ms; animation-name: fadeInUp;">
+                        <i class="fa fa-users medium-icon"></i>
+                        <span id="anim-number-pizza" class="counter-number"></span>
+                        <span class="timer counter alt-font appear text-white" data-to="629" data-speed="5000">629</span>
+                        <p class="counter-title">Peserta Didik</p>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-4 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated" data-wow-duration="900ms" style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
+                        <i class="fa fa-user-graduate medium-icon"></i>
+                        <span class="timer counter alt-font appear text-white" data-to="100" data-speed="5000">100</span>
+                        <span class="counter-title">% Kelulusan</span>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-4 text-center counter-section wow fadeInUp animated" data-wow-duration="1200ms" style="visibility: visible; animation-duration: 1200ms; animation-name: fadeInUp;">
+                        <i class="fa fa-shapes medium-icon"></i>
+                        <span class="timer counter alt-font appear text-white" data-to="21" data-speed="5000">21</span>
+                        <span class="counter-title">Rombongan belajar</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <span class="badge badge-primary badge-pill mb-3">#Info</span>
-                    <h3 class="display-3">Informasi terbaru</h3>
+        <section class="ftco-section" id="info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <span class="badge badge-primary badge-pill mb-3">#Info</span>
+                        <h3 class="display-3">Informasi terbaru</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-4">
-                <div class="col">
-                    <div class="featured-carousel owl-carousel">
-                        <div class="item">
-                            <div class="blog-entry">
-                                <a href="#" class="block-20 d-flex align-items-start" style="background-image: url(<?= base_url('plugins/carousel-07/images/image_1.jpg'); ?>);">
-                                    <div class="meta-date text-center p-2">
-                                        <span class="day">26</span>
-                                        <span class="mos">Nov.</span>
-                                        <span class="yr">2019</span>
-                                    </div>
-                                </a>
-                                <div class="text border border-top-0 p-4">
-                                    <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
-                                    <div class="d-flex align-items-center mt-4">
-                                        <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
-                                        <p class="ml-auto meta2 mb-0">
-                                            <a href="#" class="mr-2">Admin</a>
-                                            <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> 3</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="blog-entry">
-                                <a href="#" class="block-20 d-flex align-items-start" style="background-image: url(<?= base_url('plugins/carousel-07/images/image_2.jpg'); ?>);">
-                                    <div class="meta-date text-center p-2">
-                                        <span class="day">26</span>
-                                        <span class="mos">Nov.</span>
-                                        <span class="yr">2019</span>
-                                    </div>
-                                </a>
-                                <div class="text border border-top-0 p-4">
-                                    <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
-                                    <div class="d-flex align-items-center mt-4">
-                                        <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
-                                        <p class="ml-auto meta2 mb-0">
-                                            <a href="#" class="mr-2">Admin</a>
-                                            <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> 3</a>
-                                        </p>
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="featured-carousel owl-carousel">
+                            <?php foreach ($data['posts'] as $posts) : ?>
+                                <div class="item">
+                                    <div class="blog-entry">
+                                        <a href="#" class="block-20 d-flex align-items-start" style="background-image: url(<?= base_url('plugins/carousel-07/images/image_1.jpg'); ?>);">
+                                            <div class="meta-date text-center p-2">
+                                                <span class="day">26</span>
+                                                <span class="mos">Nov.</span>
+                                                <span class="yr">2019</span>
+                                            </div>
+                                        </a>
+                                        <div class="text border border-top-0 p-4">
+                                            <h3 class="heading"><a href="#"><?= $posts['title']; ?></a></h3>
+                                            <div class="d-flex align-items-center mt-4">
+                                                <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+                                                <p class="ml-auto meta2 mb-0">
+                                                    <a href="#" class="mr-2">Admin</a>
+                                                    <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> 3</a>
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="blog-entry">
-                                <a href="#" class="block-20 d-flex align-items-start" style="background-image: url(<?= base_url('plugins/carousel-07/images/image_3.jpg'); ?>);">
-                                    <div class="meta-date text-center p-2">
-                                        <span class="day">26</span>
-                                        <span class="mos">Nov.</span>
-                                        <span class="yr">2019</span>
-                                    </div>
-                                </a>
-                                <div class="text border border-top-0 p-4">
-                                    <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
-                                    <div class="d-flex align-items-center mt-4">
-                                        <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
-                                        <p class="ml-auto meta2 mb-0">
-                                            <a href="#" class="mr-2">Admin</a>
-                                            <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> 3</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="blog-entry">
-                                <a href="#" class="block-20 d-flex align-items-start" style="background-image: url(<?= base_url('plugins/carousel-07/images/image_4.jpg'); ?>);">
-                                    <div class="meta-date text-center p-2">
-                                        <span class="day">26</span>
-                                        <span class="mos">Nov.</span>
-                                        <span class="yr">2019</span>
-                                    </div>
-                                </a>
-                                <div class="text border border-top-0 p-4">
-                                    <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
-                                    <div class="d-flex align-items-center mt-4">
-                                        <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
-                                        <p class="ml-auto meta2 mb-0">
-                                            <a href="#" class="mr-2">Admin</a>
-                                            <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> 3</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="blog-entry">
-                                <a href="#" class="block-20 d-flex align-items-start" style="background-image: url(<?= base_url('plugins/carousel-07/images/image_5.jpg'); ?>);">
-                                    <div class="meta-date text-center p-2">
-                                        <span class="day">26</span>
-                                        <span class="mos">Nov.</span>
-                                        <span class="yr">2019</span>
-                                    </div>
-                                </a>
-                                <div class="text border border-top-0 p-4">
-                                    <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
-                                    <div class="d-flex align-items-center mt-4">
-                                        <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
-                                        <p class="ml-auto meta2 mb-0">
-                                            <a href="#" class="mr-2">Admin</a>
-                                            <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> 3</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="blog-entry">
-                                <a href="#" class="block-20 d-flex align-items-start" style="background-image: url(<?= base_url('plugins/carousel-07/images/image_6.jpg'); ?>);">
-                                    <div class="meta-date text-center p-2">
-                                        <span class="day">26</span>
-                                        <span class="mos">Nov.</span>
-                                        <span class="yr">2019</span>
-                                    </div>
-                                </a>
-                                <div class="text border border-top-0 p-4">
-                                    <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
-                                    <div class="d-flex align-items-center mt-4">
-                                        <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
-                                        <p class="ml-auto meta2 mb-0">
-                                            <a href="#" class="mr-2">Admin</a>
-                                            <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> 3</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
+                    </div>
+                </div>
             </div>
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
+        </section>
+
+        <div class="section features-1" id="ekstra">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <span class="badge badge-primary badge-pill mb-3">#Ekstra</span>
+                        <h3 class="display-3">Pengembangan Diri</h3>
+                        <p class="lead">Kegiatan meningkatkan prestasi non akademik untuk seluruh peserta didik.</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-lg icon-shape icon-shape-primary shadow rounded-circle">
+                                <i class="fas fa-campground"></i>
+                            </div>
+                            <h6 class="info-title text-uppercase text-primary">Kepramukaan</h6>
+                            <p class="description opacity-8">Menggali kompetensi peserta didik dalam membentuk dan mengembangkan wawasan kepemimpinan etika dan estetika serta iman dan taqwa sehingga mempunyai kecakapan hidup.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle">
+                                <i class="fas fa-male"></i>
+                            </div>
+                            <h6 class="info-title text-uppercase text-success">Pleton Inti</h6>
+                            <p class="description opacity-8">Melatih peserta didik beris berbaris dengan menekankan pada gerakan kaki, lengan, posisi badan, kedisiplinan, kekompakan, dan tanggung jawab.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <h6 class="info-title text-uppercase text-warning">Olahraga</h6>
+                            <p class="description opacity-8">Kegiatan yang bertujuan untuk memberi wadah bagi siswa dalam menyalurkan potensi, minat, dan bakatnya dalam bidang olahraga</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-lg icon-shape icon-shape-info shadow rounded-circle">
+                                <i class="fas fa-atom"></i>
+                            </div>
+                            <h6 class="info-title text-uppercase text-info">Sains Club</h6>
+                            <p class="description opacity-8">Menumbuhkembangkan budaya belajar yang memacu kemampuan berfikir dan bernalar, kreatifitas, motivasi meraih prestasi terbaik melalui kompetisi yang serta menjunjung nilai-nilai sportivitas.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-lg icon-shape icon-shape-danger shadow rounded-circle">
+                                <i class="fas fa-first-aid"></i>
+                            </div>
+                            <h6 class="info-title text-uppercase text-danger">PMR</h6>
+                            <p class="description opacity-8">Memberi bekal pengetahuan, ketrampilan dan sikap kepada peserta didik dalam pertolongan pertama pada kecelakaan</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-lg icon-shape icon-shape-dark shadow rounded-circle">
+                                <i class="fas fa-praying-hands"></i>
+                            </div>
+                            <h6 class="info-title text-uppercase text-dark">Keagamaan</h6>
+                            <p class="description opacity-8">Menumbuhkan serta mengembangkan pengetahuan penghayatan serta pengamalan peserta didik terhadap Agama yang dianut sehingga menjadi manusia yang beriman dan bertakwa kepada Tuhan secara sempurna.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <div class="section features-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <span class="badge badge-primary badge-pill mb-3">#Ekstra</span>
-                    <h3 class="display-3">Pengembangan Diri</h3>
-                    <p class="lead">Kegiatan meningkatkan prestasi non akademik untuk seluruh peserta didik.</p>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <div class="info">
-                        <div class="icon icon-lg icon-shape icon-shape-primary shadow rounded-circle">
-                            <i class="fas fa-campground"></i>
-                        </div>
-                        <h6 class="info-title text-uppercase text-primary">Kepramukaan</h6>
-                        <p class="description opacity-8">Menggali kompetensi peserta didik dalam membentuk dan mengembangkan wawasan kepemimpinan etika dan estetika serta iman dan taqwa sehingga mempunyai kecakapan hidup.</p>
+        <div class="section bg-gradient-warning" id="event">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <span class="badge badge-primary badge-pill mb-3">#Event</span>
+                        <h3 class="display-3">Agenda Sekolah</h3>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="info">
-                        <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle">
-                            <i class="fas fa-male"></i>
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card card-margin">
+                            <div class="card-body">
+                                <div class="widget-49">
+                                    <div class="widget-49-title-wrapper">
+                                        <div class="widget-49-date-primary">
+                                            <span class="widget-49-date-day">09</span>
+                                            <span class="widget-49-date-month">apr</span>
+                                        </div>
+                                        <div class="widget-49-meeting-info">
+                                            <span class="widget-49-pro-title">ANBK Kelas 9</span>
+                                            <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h6 class="info-title text-uppercase text-success">Pleton Inti</h6>
-                        <p class="description opacity-8">Melatih peserta didik beris berbaris dengan menekankan pada gerakan kaki, lengan, posisi badan, kedisiplinan, kekompakan, dan tanggung jawab.</p>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="card card-margin">
+                            <div class="card-body">
+                                <div class="widget-49">
+                                    <div class="widget-49-title-wrapper">
+                                        <div class="widget-49-date-primary">
+                                            <span class="widget-49-date-day">09</span>
+                                            <span class="widget-49-date-month">apr</span>
+                                        </div>
+                                        <div class="widget-49-meeting-info">
+                                            <span class="widget-49-pro-title">ANBK Kelas 9</span>
+                                            <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="card card-margin">
+                            <div class="card-body">
+                                <div class="widget-49">
+                                    <div class="widget-49-title-wrapper">
+                                        <div class="widget-49-date-primary">
+                                            <span class="widget-49-date-day">09</span>
+                                            <span class="widget-49-date-month">apr</span>
+                                        </div>
+                                        <div class="widget-49-meeting-info">
+                                            <span class="widget-49-pro-title">ANBK Kelas 9</span>
+                                            <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="card card-margin">
+                            <div class="card-body">
+                                <div class="widget-49">
+                                    <div class="widget-49-title-wrapper">
+                                        <div class="widget-49-date-primary">
+                                            <span class="widget-49-date-day">09</span>
+                                            <span class="widget-49-date-month">apr</span>
+                                        </div>
+                                        <div class="widget-49-meeting-info">
+                                            <span class="widget-49-pro-title">ANBK Kelas 9</span>
+                                            <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="info">
-                        <div class="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle">
-                            <i class="fas fa-running"></i>
-                        </div>
-                        <h6 class="info-title text-uppercase text-warning">Olahraga</h6>
-                        <p class="description opacity-8">Kegiatan yang bertujuan untuk memberi wadah bagi siswa dalam menyalurkan potensi, minat, dan bakatnya dalam bidang olahraga</p>
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="info">
-                        <div class="icon icon-lg icon-shape icon-shape-info shadow rounded-circle">
-                            <i class="fas fa-atom"></i>
-                        </div>
-                        <h6 class="info-title text-uppercase text-info">Sains Club</h6>
-                        <p class="description opacity-8">Menumbuhkembangkan budaya belajar yang memacu kemampuan berfikir dan bernalar, kreatifitas, motivasi meraih prestasi terbaik melalui kompetisi yang serta menjunjung nilai-nilai sportivitas.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="info">
-                        <div class="icon icon-lg icon-shape icon-shape-danger shadow rounded-circle">
-                            <i class="fas fa-first-aid"></i>
-                        </div>
-                        <h6 class="info-title text-uppercase text-danger">PMR</h6>
-                        <p class="description opacity-8">Memberi bekal pengetahuan, ketrampilan dan sikap kepada peserta didik dalam pertolongan pertama pada kecelakaan</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="info">
-                        <div class="icon icon-lg icon-shape icon-shape-dark shadow rounded-circle">
-                            <i class="fas fa-praying-hands"></i>
-                        </div>
-                        <h6 class="info-title text-uppercase text-dark">Keagamaan</h6>
-                        <p class="description opacity-8">Menumbuhkan serta mengembangkan pengetahuan penghayatan serta pengamalan peserta didik terhadap Agama yang dianut sehingga menjadi manusia yang beriman dan bertakwa kepada Tuhan secara sempurna.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="section bg-gradient-warning">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <span class="badge badge-primary badge-pill mb-3">#Event</span>
-                    <h3 class="display-3">Agenda Sekolah</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <div class="card card-margin">
-                        <div class="card-body">
-                            <div class="widget-49">
-                                <div class="widget-49-title-wrapper">
-                                    <div class="widget-49-date-primary">
-                                        <span class="widget-49-date-day">09</span>
-                                        <span class="widget-49-date-month">apr</span>
-                                    </div>
-                                    <div class="widget-49-meeting-info">
-                                        <span class="widget-49-pro-title">ANBK Kelas 9</span>
-                                        <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card card-margin">
-                        <div class="card-body">
-                            <div class="widget-49">
-                                <div class="widget-49-title-wrapper">
-                                    <div class="widget-49-date-primary">
-                                        <span class="widget-49-date-day">09</span>
-                                        <span class="widget-49-date-month">apr</span>
-                                    </div>
-                                    <div class="widget-49-meeting-info">
-                                        <span class="widget-49-pro-title">ANBK Kelas 9</span>
-                                        <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card card-margin">
-                        <div class="card-body">
-                            <div class="widget-49">
-                                <div class="widget-49-title-wrapper">
-                                    <div class="widget-49-date-primary">
-                                        <span class="widget-49-date-day">09</span>
-                                        <span class="widget-49-date-month">apr</span>
-                                    </div>
-                                    <div class="widget-49-meeting-info">
-                                        <span class="widget-49-pro-title">ANBK Kelas 9</span>
-                                        <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card card-margin">
-                        <div class="card-body">
-                            <div class="widget-49">
-                                <div class="widget-49-title-wrapper">
-                                    <div class="widget-49-date-primary">
-                                        <span class="widget-49-date-day">09</span>
-                                        <span class="widget-49-date-month">apr</span>
-                                    </div>
-                                    <div class="widget-49-meeting-info">
-                                        <span class="widget-49-pro-title">ANBK Kelas 9</span>
-                                        <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <span class="badge badge-primary badge-pill mb-3">#Feedback</span>
-                    <h3 class="display-3">Kata Mereka</h3>
+        <div class="section" id="feedback">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <span class="badge badge-primary badge-pill mb-3">#Feedback</span>
+                        <h3 class="display-3">Kata Mereka</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <div class="card-columns">
-                        <div class="card text-center p-3 border-primary">
-                            <blockquote class="blockquote mb-0">
-                                <p>A well-known quote, contained in a blockquote element.</p>
-                                <footer class="blockquote-footer">
-                                    <small>
-                                        Anonymous
-                                    </small>
-                                </footer>
-                            </blockquote>
-                        </div>
-                        <div class="card text-center p-3 border-primary">
-                            <blockquote class="blockquote mb-0">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsam reiciendis amet tempora ducimus, repellat non rerum quod velit a perspiciatis laboriosam earum similique dicta eum, asperiores assumenda sint vel?</p>
-                                <footer class="blockquote-footer">
-                                    <small>
-                                        Anonymous
-                                    </small>
-                                </footer>
-                            </blockquote>
-                        </div>
-                        <div class="card text-center p-3 border-primary">
-                            <blockquote class="blockquote mb-0">
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, molestiae!</p>
-                                <footer class="blockquote-footer">
-                                    <small>
-                                        Anonymous
-                                    </small>
-                                </footer>
-                            </blockquote>
-                        </div>
-                        <div class="card text-center p-3 border-primary">
-                            <blockquote class="blockquote mb-0">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati perspiciatis quasi voluptate ipsum suscipit quaerat.</p>
-                                <footer class="blockquote-footer">
-                                    <small>
-                                        Anonymous
-                                    </small>
-                                </footer>
-                            </blockquote>
-                        </div>
-                        <div class="card text-center p-3 border-primary">
-                            <blockquote class="blockquote mb-0">
-                                <p>Lorem ipsum dolor sit amet.</p>
-                                <footer class="blockquote-footer">
-                                    <small>
-                                        Anonymous
-                                    </small>
-                                </footer>
-                            </blockquote>
-                        </div>
-                        <div class="card text-center p-3 border-primary">
-                            <blockquote class="blockquote mb-0">
-                                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                <footer class="blockquote-footer">
-                                    <small>
-                                        Anonymous
-                                    </small>
-                                </footer>
-                            </blockquote>
-                        </div>
-                        <div class="card text-center p-3 border-primary">
-                            <blockquote class="blockquote mb-0">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <footer class="blockquote-footer">
-                                    <small>
-                                        Anonymous
-                                    </small>
-                                </footer>
-                            </blockquote>
-                        </div>
-                        <div class="card text-center p-3 border-primary">
-                            <blockquote class="blockquote mb-0">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, similique cupiditate?</p>
-                                <footer class="blockquote-footer">
-                                    <small>
-                                        Anonymous
-                                    </small>
-                                </footer>
-                            </blockquote>
-                        </div>
-                        <div class="card text-center p-3 border-primary">
-                            <blockquote class="blockquote mb-0">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quidem modi adipisci magni exercitationem placeat dicta nisi!</p>
-                                <footer class="blockquote-footer">
-                                    <small>
-                                        Anonymous
-                                    </small>
-                                </footer>
-                            </blockquote>
-                        </div>
-                        <div class="card text-center p-3 border-primary">
-                            <blockquote class="blockquote mb-0">
-                                <p>A well-known quote, contained in a blockquote element.</p>
-                                <footer class="blockquote-footer">
-                                    <small>
-                                        Anonymous
-                                    </small>
-                                </footer>
-                            </blockquote>
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="card-columns">
+                            <div class="card text-center p-3 border-primary">
+                                <blockquote class="blockquote mb-0">
+                                    <p>A well-known quote, contained in a blockquote element.</p>
+                                    <footer class="blockquote-footer">
+                                        <small>
+                                            Anonymous
+                                        </small>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                            <div class="card text-center p-3 border-primary">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsam reiciendis amet tempora ducimus, repellat non rerum quod velit a perspiciatis laboriosam earum similique dicta eum, asperiores assumenda sint vel?</p>
+                                    <footer class="blockquote-footer">
+                                        <small>
+                                            Anonymous
+                                        </small>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                            <div class="card text-center p-3 border-primary">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, molestiae!</p>
+                                    <footer class="blockquote-footer">
+                                        <small>
+                                            Anonymous
+                                        </small>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                            <div class="card text-center p-3 border-primary">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati perspiciatis quasi voluptate ipsum suscipit quaerat.</p>
+                                    <footer class="blockquote-footer">
+                                        <small>
+                                            Anonymous
+                                        </small>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                            <div class="card text-center p-3 border-primary">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <footer class="blockquote-footer">
+                                        <small>
+                                            Anonymous
+                                        </small>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                            <div class="card text-center p-3 border-primary">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                                    <footer class="blockquote-footer">
+                                        <small>
+                                            Anonymous
+                                        </small>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                            <div class="card text-center p-3 border-primary">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                    <footer class="blockquote-footer">
+                                        <small>
+                                            Anonymous
+                                        </small>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                            <div class="card text-center p-3 border-primary">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, similique cupiditate?</p>
+                                    <footer class="blockquote-footer">
+                                        <small>
+                                            Anonymous
+                                        </small>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                            <div class="card text-center p-3 border-primary">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quidem modi adipisci magni exercitationem placeat dicta nisi!</p>
+                                    <footer class="blockquote-footer">
+                                        <small>
+                                            Anonymous
+                                        </small>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                            <div class="card text-center p-3 border-primary">
+                                <blockquote class="blockquote mb-0">
+                                    <p>A well-known quote, contained in a blockquote element.</p>
+                                    <footer class="blockquote-footer">
+                                        <small>
+                                            Anonymous
+                                        </small>
+                                    </footer>
+                                </blockquote>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
-                </div>
-            </div>
-            <div class="row flex-row-reverse mt-5">
-                <div class="col-md-3 text-center">
-                    <img src="<?= base_url('assets/images/computer-docs.jpg'); ?>" class="img-fluid p-2">
-                </div>
-                <div class="col-md-9">
-                    <h5 class="text-center">Kirim ulasan anda</h5>
-                    <div class="form-group">
-                        <textarea name="isi" class="form-control" id="isi" rows="2" placeholder="Isi ulasan anda"></textarea>
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
                     </div>
-                    <div class="form-row">
-                        <div class="col-md mb-3">
-                            <input type="text" class="form-control" placeholder="Nama anda">
+                </div>
+                <div class="row flex-row-reverse mt-5">
+                    <div class="col-md-3 text-center">
+                        <img src="<?= base_url('assets/images/computer-docs.jpg'); ?>" class="img-fluid p-2">
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="text-center">Kirim ulasan anda</h5>
+                        <div class="form-group">
+                            <textarea name="isi" class="form-control" id="isi" rows="2" placeholder="Isi ulasan anda"></textarea>
                         </div>
-                        <div class="col-auto">
-                            <button class="btn btn-primary">Kirim</button>
+                        <div class="form-row">
+                            <div class="col-md mb-3">
+                                <input type="text" class="form-control" placeholder="Nama anda">
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-primary">Kirim</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -753,18 +641,18 @@ Coded by www.creative-tim.com
                     <h4 class="mb-0 font-weight-light">Banyak hal menarik di beberapa platform media sosial kami. Yuk follow kami.</h4>
                 </div>
                 <div class="col-lg-6 text-lg-center btn-wrapper">
-                    <button target="_blank" href="https://twitter.com/smp2wonosari" rel="nofollow" class="btn btn-icon-only btn-twitter rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
-                        <span class="btn-inner--icon"><i class="fab fa-twitter"></i></span>
-                    </button>
-                    <button target="_blank" href="https://www.facebook.com/smp2wonosari/" rel="nofollow" class="btn-icon-only rounded-circle btn btn-facebook" data-toggle="tooltip" data-original-title="Like us">
+                    <a target="_blank" href="https://www.facebook.com/smp2wonosari/" rel="nofollow" class="btn-icon-only rounded-circle btn btn-facebook" data-toggle="tooltip" data-original-title="Like us">
                         <span class="btn-inner--icon"><i class="fab fa-facebook"></i></span>
-                    </button>
-                    <button target="_blank" href="https://instagram.com/smp2wonosari" rel="nofollow" class="btn btn-icon-only btn-instagram rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/smp2wonosari" rel="nofollow" class="btn btn-icon-only btn-twitter rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
+                        <span class="btn-inner--icon"><i class="fab fa-twitter"></i></span>
+                    </a>
+                    <a target="_blank" href="https://instagram.com/smp2wonosari" rel="nofollow" class="btn btn-icon-only btn-instagram rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
                         <span class="btn-inner--icon"><i class="fab fa-instagram"></i></span>
-                    </button>
-                    <button target="_blank" href="https://www.youtube.com/@smpn2wonosari474" rel="nofollow" class="btn btn-icon-only rounded-circle btn-youtube" data-toggle="tooltip" data-original-title="Subscribe our channel">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/@smpn2wonosari474" rel="nofollow" class="btn btn-icon-only rounded-circle btn-youtube" data-toggle="tooltip" data-original-title="Subscribe our channel">
                         <span class="btn-inner--icon"><i class="fab fa-youtube"></i></span>
-                    </button>
+                    </a>
                 </div>
             </div>
             <hr>
@@ -783,9 +671,6 @@ Coded by www.creative-tim.com
         </div>
     </footer>
     </div>
-    <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
     <script src="<?= base_url('plugins/argon/js/core/jquery.min.js'); ?>" type="text/javascript"></script>
     <script src="<?= base_url('plugins/argon/js/core/popper.min.js'); ?>" type="text/javascript"></script>
     <script src="<?= base_url('plugins/argon/js/plugins/perfect-scrollbar.jquery.min.js'); ?>"></script>
