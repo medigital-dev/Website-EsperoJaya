@@ -28,7 +28,46 @@ Coded by www.creative-tim.com
     <link rel="stylesheet" href="<?= base_url('plugins/carousel-07/css/owl.theme.default.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <style>
+        .stars {
+            /* width: 270px; */
+            display: inline-block;
+        }
 
+        input.star {
+            display: none;
+        }
+
+        label.star {
+            float: right;
+            padding: 4px;
+            font-size: 24px;
+            color: #4A148C;
+            transition: all .2s;
+        }
+
+        input.star:checked~label.star:before {
+            content: '\f005';
+            color: #FD4;
+            transition: all .25s;
+        }
+
+        input.star-5:checked~label.star:before {
+            color: #FE7;
+            text-shadow: 0 0 20px #952;
+        }
+
+        input.star-1:checked~label.star:before {
+            color: #F62;
+        }
+
+        label.star:hover {
+            transform: rotate(-15deg) scale(1.3);
+        }
+
+        label.star:before {
+            content: '\f006';
+            font-family: FontAwesome;
+        }
     </style>
 </head>
 
@@ -294,20 +333,20 @@ Coded by www.creative-tim.com
                 <div class="row mb-4">
                     <div class="col">
                         <div class="featured-carousel owl-carousel">
-                            <?php foreach ($data['posts'] as $posts) : ?>
+                            <?php foreach ($data['posts'] as $row) : ?>
                                 <div class="item">
                                     <div class="blog-entry">
-                                        <a href="#" class="block-20 d-flex align-items-start" style="background-image: url(<?= base_url('plugins/carousel-07/images/image_1.jpg'); ?>);">
+                                        <a href="<?= $row['href']; ?>" class="block-20 d-flex align-items-start" style="background-image: url(<?= $row['image']; ?>);">
                                             <div class="meta-date text-center p-2">
-                                                <span class="day">26</span>
-                                                <span class="mos">Nov.</span>
-                                                <span class="yr">2019</span>
+                                                <span class="day"><?= $row['date']->format('d'); ?></span>
+                                                <span class="mos"><?= $row['date']->format('M'); ?></span>
+                                                <span class="yr"><?= $row['date']->format('Y'); ?></span>
                                             </div>
                                         </a>
                                         <div class="text border border-top-0 p-4">
-                                            <h3 class="heading"><a href="#"><?= $posts['title']; ?></a></h3>
+                                            <h3 class="heading"><a href="<?= $row['href']; ?>"><?= $row['title']; ?></a></h3>
                                             <div class="d-flex align-items-center mt-4">
-                                                <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+                                                <p class="mb-0"><a href="<?= $row['href']; ?>" class="btn btn-primary">Read More <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></p>
                                                 <p class="ml-auto meta2 mb-0">
                                                     <a href="#" class="mr-2">Admin</a>
                                                     <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> 3</a>
@@ -620,6 +659,20 @@ Coded by www.creative-tim.com
                             <textarea name="isi" class="form-control" id="isi" rows="2" placeholder="Isi ulasan anda"></textarea>
                         </div>
                         <div class="form-row">
+                            <div class="col-md text-center mb-3">
+                                <div class="stars">
+                                    <input class="star star-5" id="star-5" type="radio" name="star" />
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star" />
+                                    <label class="star star-4" for="star-4"></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star" />
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star" />
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star" />
+                                    <label class="star star-1" for="star-1"></label>
+                                </div>
+                            </div>
                             <div class="col-md mb-3">
                                 <input type="text" class="form-control" placeholder="Nama anda">
                             </div>
