@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 22, 2023 at 08:11 AM
+-- Generation Time: Jan 23, 2023 at 10:26 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.0.27
 
@@ -75,6 +75,43 @@ CREATE TABLE `images` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `menu`
+--
+
+CREATE TABLE `menu` (
+  `id` int NOT NULL,
+  `menu_id` varchar(128) NOT NULL,
+  `parent_id` int NOT NULL,
+  `url` varchar(128) NOT NULL,
+  `title` varchar(64) NOT NULL,
+  `type` varchar(64) NOT NULL,
+  `new_tab` tinyint(1) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `modified_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` int NOT NULL,
+  `page_id` varchar(128) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `slug` varchar(128) NOT NULL,
+  `description` varchar(64) NOT NULL,
+  `content` longtext NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `posts`
 --
 
@@ -115,6 +152,20 @@ ALTER TABLE `images`
   ADD UNIQUE KEY `file_id` (`file_id`);
 
 --
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `menu_id` (`menu_id`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `page_id` (`page_id`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
@@ -141,6 +192,18 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
