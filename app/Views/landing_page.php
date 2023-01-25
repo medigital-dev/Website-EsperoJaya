@@ -563,15 +563,15 @@ Coded by www.creative-tim.com
                 </div>
             </div>
             <hr>
-            <div class="row align-items-center justify-content-md-between">
-                <div class="col-md-6">
-                    <div class="copyright">
-                        &copy; 2023 <a href="<?= base_url(); ?>">SMP Negeri 2 Wonosari</a>.
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="copyright float-right">
-                        <a class="text-muted" target="_blank" href="https://medigital.dev/" title="Created and Developed by meDigital.dev"><img src="<?= base_url('assets/images/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a>
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="d-flex justify-content-between">
+                        <div class="copyright">
+                            &copy; 2023 <a href="<?= base_url(); ?>">SMP Negeri 2 Wonosari</a>.
+                        </div>
+                        <div class="copyright">
+                            <a class="text-muted" target="_blank" href="https://medigital.dev/" title="Created and Developed by meDigital.dev"><img src="<?= base_url('assets/images/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a>
+                        </div>
                     </div>
                 </div>
             </div>
