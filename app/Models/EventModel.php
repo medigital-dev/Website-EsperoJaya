@@ -12,6 +12,6 @@ class EventModel extends Model
     protected $useSoftDeletes   = true;
     protected $useTimestamps    = true;
     protected $allowedFields    = [
-        'event_id', 'title', 'subtitle', 'datetime'
+        'event_id', 'title', 'subtitle', 'date', 'time'
     ];
 }

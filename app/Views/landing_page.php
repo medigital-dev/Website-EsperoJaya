@@ -348,8 +348,7 @@ Coded by www.creative-tim.com
                                             <div class="d-flex align-items-center mt-4">
                                                 <p class="mb-0"><a href="<?= $row['href']; ?>" class="btn btn-primary">Read More <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></p>
                                                 <p class="ml-auto meta2 mb-0">
-                                                    <a href="#" class="mr-2">Admin</a>
-                                                    <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> 3</a>
+                                                    <span class="mr-2 text-muted">Admin</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -449,82 +448,39 @@ Coded by www.creative-tim.com
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 mb-4">
-                        <div class="card card-margin">
-                            <div class="card-body">
-                                <div class="widget-49">
-                                    <div class="widget-49-title-wrapper">
-                                        <div class="widget-49-date-primary">
-                                            <span class="widget-49-date-day">09</span>
-                                            <span class="widget-49-date-month">apr</span>
-                                        </div>
-                                        <div class="widget-49-meeting-info">
-                                            <span class="widget-49-pro-title">ANBK Kelas 9</span>
-                                            <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="card card-margin">
-                            <div class="card-body">
-                                <div class="widget-49">
-                                    <div class="widget-49-title-wrapper">
-                                        <div class="widget-49-date-primary">
-                                            <span class="widget-49-date-day">09</span>
-                                            <span class="widget-49-date-month">apr</span>
-                                        </div>
-                                        <div class="widget-49-meeting-info">
-                                            <span class="widget-49-pro-title">ANBK Kelas 9</span>
-                                            <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
+                    <?php if ($data['events']) : ?>
+                        <?php foreach ($data['events'] as $row) : ?>
+                            <div class="col-lg-4 mb-4">
+                                <div class="card card-margin">
+                                    <div class="card-body">
+                                        <div class="widget-49">
+                                            <div class="widget-49-title-wrapper">
+                                                <div class="widget-49-date-primary">
+                                                    <span class="widget-49-date-day"><?= $row['date']->format('d'); ?></span>
+                                                    <span class="widget-49-date-month"><?= $row['date']->format('M'); ?></span>
+                                                </div>
+                                                <div class="widget-49-meeting-info">
+                                                    <span class="widget-49-pro-title"><?= $row['title']; ?></span>
+                                                    <span class="widget-49-meeting-time"><?= $row['time']; ?></span>
+                                                </div>
+                                            </div>
+                                            <p class="small m-0 pt-3">
+                                                <?= $row['subtitle']; ?>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <div class="col-8 mx-auto">
+                            <h5 class="text-white text-center py-3">Tidak ada Event di hari ini.</h5>
                         </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="card card-margin">
-                            <div class="card-body">
-                                <div class="widget-49">
-                                    <div class="widget-49-title-wrapper">
-                                        <div class="widget-49-date-primary">
-                                            <span class="widget-49-date-day">09</span>
-                                            <span class="widget-49-date-month">apr</span>
-                                        </div>
-                                        <div class="widget-49-meeting-info">
-                                            <span class="widget-49-pro-title">ANBK Kelas 9</span>
-                                            <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="card card-margin">
-                            <div class="card-body">
-                                <div class="widget-49">
-                                    <div class="widget-49-title-wrapper">
-                                        <div class="widget-49-date-primary">
-                                            <span class="widget-49-date-day">09</span>
-                                            <span class="widget-49-date-month">apr</span>
-                                        </div>
-                                        <div class="widget-49-meeting-info">
-                                            <span class="widget-49-pro-title">ANBK Kelas 9</span>
-                                            <span class="widget-49-meeting-time">09/04/23 - 12/04/23</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
                 <div class="row">
                     <div class="col-md-8 mx-auto text-center">
-                        <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
+                        <a href="#" class="btn btn-sm btn-success">Lihat Event Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -541,106 +497,18 @@ Coded by www.creative-tim.com
                 <div class="row mb-3">
                     <div class="col">
                         <div class="card-columns">
-                            <div class="card text-center p-3 border-primary">
-                                <blockquote class="blockquote mb-0">
-                                    <p>A well-known quote, contained in a blockquote element.</p>
-                                    <footer class="blockquote-footer">
-                                        <small>
-                                            Anonymous
-                                        </small>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="card text-center p-3 border-primary">
-                                <blockquote class="blockquote mb-0">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsam reiciendis amet tempora ducimus, repellat non rerum quod velit a perspiciatis laboriosam earum similique dicta eum, asperiores assumenda sint vel?</p>
-                                    <footer class="blockquote-footer">
-                                        <small>
-                                            Anonymous
-                                        </small>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="card text-center p-3 border-primary">
-                                <blockquote class="blockquote mb-0">
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, molestiae!</p>
-                                    <footer class="blockquote-footer">
-                                        <small>
-                                            Anonymous
-                                        </small>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="card text-center p-3 border-primary">
-                                <blockquote class="blockquote mb-0">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati perspiciatis quasi voluptate ipsum suscipit quaerat.</p>
-                                    <footer class="blockquote-footer">
-                                        <small>
-                                            Anonymous
-                                        </small>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="card text-center p-3 border-primary">
-                                <blockquote class="blockquote mb-0">
-                                    <p>Lorem ipsum dolor sit amet.</p>
-                                    <footer class="blockquote-footer">
-                                        <small>
-                                            Anonymous
-                                        </small>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="card text-center p-3 border-primary">
-                                <blockquote class="blockquote mb-0">
-                                    <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                    <footer class="blockquote-footer">
-                                        <small>
-                                            Anonymous
-                                        </small>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="card text-center p-3 border-primary">
-                                <blockquote class="blockquote mb-0">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                    <footer class="blockquote-footer">
-                                        <small>
-                                            Anonymous
-                                        </small>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="card text-center p-3 border-primary">
-                                <blockquote class="blockquote mb-0">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, similique cupiditate?</p>
-                                    <footer class="blockquote-footer">
-                                        <small>
-                                            Anonymous
-                                        </small>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="card text-center p-3 border-primary">
-                                <blockquote class="blockquote mb-0">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quidem modi adipisci magni exercitationem placeat dicta nisi!</p>
-                                    <footer class="blockquote-footer">
-                                        <small>
-                                            Anonymous
-                                        </small>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="card text-center p-3 border-primary">
-                                <blockquote class="blockquote mb-0">
-                                    <p>A well-known quote, contained in a blockquote element.</p>
-                                    <footer class="blockquote-footer">
-                                        <small>
-                                            Anonymous
-                                        </small>
-                                    </footer>
-                                </blockquote>
-                            </div>
+                            <?php foreach ($data['feedbacks'] as $row) : ?>
+                                <div class="card text-center p-3">
+                                    <blockquote class="blockquote mb-0">
+                                        <p><?= $row['content']; ?></p>
+                                        <footer class="blockquote-footer">
+                                            <small>
+                                                <?= $row['name']; ?>
+                                            </small>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -656,28 +524,14 @@ Coded by www.creative-tim.com
                     <div class="col-md-9">
                         <h5 class="text-center">Kirim ulasan anda</h5>
                         <div class="form-group">
-                            <textarea name="isi" class="form-control" id="isi" rows="2" placeholder="Isi ulasan anda"></textarea>
+                            <textarea name="isi" class="form-control" id="isi" rows="2" placeholder="Isi ulasan anda" autocomplete="off"></textarea>
                         </div>
                         <div class="form-row">
-                            <div class="col-md text-center mb-3">
-                                <div class="stars">
-                                    <input class="star star-5" id="star-5" type="radio" name="star" />
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star" />
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star" />
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star" />
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="star" />
-                                    <label class="star star-1" for="star-1"></label>
-                                </div>
-                            </div>
                             <div class="col-md mb-3">
-                                <input type="text" class="form-control" placeholder="Nama anda">
+                                <input type="text" class="form-control" placeholder="Nama anda" id="name" name="name" autocomplete="off">
                             </div>
                             <div class="col-auto">
-                                <button class="btn btn-primary">Kirim</button>
+                                <button class="btn btn-primary" id="buttonSendFeedback">Kirim</button>
                             </div>
                         </div>
                     </div>
@@ -733,23 +587,44 @@ Coded by www.creative-tim.com
     <script src="<?= base_url('plugins/carousel-07/js/main.js'); ?>"></script>
     <script src="<?= base_url('plugins/argon/js/argon-design-system.js?v=1.2.2'); ?>" type="text/javascript"></script>
     <script>
-        var a = 0;
-        $(window).scroll(function() {
-            var oTop = $('#counter').offset().top - window.innerHeight;
-            if (a == 0 && $(window).scrollTop() > oTop) {
-                $('.counter').each(function() {
-                    $(this).prop('Counter', 0).animate({
-                        Counter: $(this).text()
-                    }, {
-                        duration: 4000,
-                        easing: 'swing',
-                        step: function(now) {
-                            $(this).text(Math.ceil(now));
-                        }
+        $(document).ready(function() {
+            $('#buttonSendFeedback').click(function() {
+                const content = $('#isi');
+                const name = $('#name');
+
+                if (content.val() == '') {
+                    content.toggleClass('is-invalid');
+                    return;
+                }
+
+                $.post('/setFeedback', {
+                    name: name.val(),
+                    content: content.val()
+                }, reponse => {
+                    alert('feedback berhasil disimpan');
+                    location.reload();
+                }, 'json').fail(err => console.log(err.responseText));
+            });
+
+            // Counter
+            var a = 0;
+            $(window).scroll(function() {
+                var oTop = $('#counter').offset().top - window.innerHeight;
+                if (a == 0 && $(window).scrollTop() > oTop) {
+                    $('.counter').each(function() {
+                        $(this).prop('Counter', 0).animate({
+                            Counter: $(this).text()
+                        }, {
+                            duration: 4000,
+                            easing: 'swing',
+                            step: function(now) {
+                                $(this).text(Math.ceil(now));
+                            }
+                        });
                     });
-                });
-                a = 1;
-            }
+                    a = 1;
+                }
+            });
         });
     </script>
 </body>
