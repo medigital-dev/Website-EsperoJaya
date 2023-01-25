@@ -130,4 +130,4 @@ nb-configuration.xml
 /.php-cs-fixer.php
 
 # Custom
-public/assets/uploads
+public/assets/uploads/*
