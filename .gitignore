@@ -131,3 +131,4 @@ nb-configuration.xml
 
 # Custom
 public/assets/uploads/*
+public\index.php
