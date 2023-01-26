@@ -28,46 +28,7 @@ Coded by www.creative-tim.com
     <link rel="stylesheet" href="<?= base_url('plugins/carousel-07/css/owl.theme.default.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <style>
-        .stars {
-            /* width: 270px; */
-            display: inline-block;
-        }
 
-        input.star {
-            display: none;
-        }
-
-        label.star {
-            float: right;
-            padding: 4px;
-            font-size: 24px;
-            color: #4A148C;
-            transition: all .2s;
-        }
-
-        input.star:checked~label.star:before {
-            content: '\f005';
-            color: #FD4;
-            transition: all .25s;
-        }
-
-        input.star-5:checked~label.star:before {
-            color: #FE7;
-            text-shadow: 0 0 20px #952;
-        }
-
-        input.star-1:checked~label.star:before {
-            color: #F62;
-        }
-
-        label.star:hover {
-            transform: rotate(-15deg) scale(1.3);
-        }
-
-        label.star:before {
-            content: '\f006';
-            font-family: FontAwesome;
-        }
     </style>
 </head>
 
@@ -105,12 +66,15 @@ Coded by www.creative-tim.com
             <div class="navbar-collapse collapse" id="navbar_global">
                 <div class="navbar-collapse-header">
                     <div class="row">
-                        <div class="col-6 collapse-brand">
+                        <div class="col-10 collapse-brand">
                             <a href="<?= base_url(); ?>">
-                                <img src="<?= base_url('assets/images/logo.png'); ?>">
+                                <img src="<?= base_url('assets/uploads/images/logo.png'); ?>">
+                                <span class="py-2 pl-2 text-primary font-weight-bold">
+                                    SMP Negeri 2 Wonosari
+                                </span>
                             </a>
                         </div>
-                        <div class="col-6 collapse-close">
+                        <div class="col-2 collapse-close">
                             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
                                 <span></span>
                                 <span></span>
@@ -578,11 +542,9 @@ Coded by www.creative-tim.com
         </div>
     </footer>
     </div>
-    <script src="<?= base_url('plugins/argon/js/core/jquery.min.js'); ?>" type="text/javascript"></script>
-    <script src="<?= base_url('plugins/argon/js/core/popper.min.js'); ?>" type="text/javascript"></script>
-    <script src="<?= base_url('plugins/argon/js/plugins/perfect-scrollbar.jquery.min.js'); ?>"></script>
-    <script src="<?= base_url('plugins/argon/js/plugins/bootstrap-datepicker.min.js'); ?>"></script>
-    <script src="<?= base_url('plugins/argon/js/core/bootstrap.min.js'); ?>" type="text/javascript"></script>
+    <script src="<?= base_url('plugins/jquery/jquery.min.js'); ?>" type="text/javascript"></script>
+    <script src="<?= base_url('plugins/bootstrap/js/popper.min.js'); ?>" type="text/javascript"></script>
+    <script src="<?= base_url('plugins/bootstrap/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
     <script src="<?= base_url('plugins/carousel-07/js/owl.carousel.min.js'); ?>"></script>
     <script src="<?= base_url('plugins/carousel-07/js/main.js'); ?>"></script>
     <script src="<?= base_url('plugins/argon/js/argon-design-system.js?v=1.2.2'); ?>" type="text/javascript"></script>
