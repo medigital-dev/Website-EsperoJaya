@@ -548,6 +548,14 @@ Coded by www.creative-tim.com
     <script src="<?= base_url('plugins/carousel-07/js/owl.carousel.min.js'); ?>"></script>
     <script src="<?= base_url('plugins/carousel-07/js/main.js'); ?>"></script>
     <script src="<?= base_url('plugins/argon/js/argon-design-system.js?v=1.2.2'); ?>" type="text/javascript"></script>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+        window.TrackJS &&
+            TrackJS.install({
+                token: "ee6fab19c5a04ac1a32a645abde4613a",
+                application: "Argon Design System - FREE DESIGN SYSTEM FOR BOOTSTRAP 4"
+            });
+    </script>
     <script>
         $(document).ready(function() {
             $('#buttonSendFeedback').click(function() {
