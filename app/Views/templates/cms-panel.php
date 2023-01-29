@@ -273,16 +273,16 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-6">
                         <div class="copyright text-center text-xl-left text-muted">
-                            &copy; 2023 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">meDigital.dev</a>
+                            &copy; 2023 <a href="https://medigital.dev" class="font-weight-bold ml-1" target="_blank">meDigital.dev</a>
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <ul class="nav nav-footer justify-content-center justify-content-xl-end">
                             <li class="nav-item">
-                                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+                                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">CMS-Panel v1.0.0</a>
                             </li>
                             <li class="nav-item">
-                                <a href="https://github.com/creativetimofficial/argon-dashboard/" class="nav-link" target="_blank">Argon Dashboard</a>
+                                <a href="https://github.com/creativetimofficial/argon-dashboard/" class="nav-link" target="_blank"> Argon</a>
                             </li>
                         </ul>
                     </div>

@@ -2,18 +2,15 @@
 <?= $this->section('content'); ?>
 <div class="row">
     <div class="col-12">
-        <div class="btn-toolbar mb-3 py-2" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-toolbar mb-1 py-2" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group shadow mr-2" role="group" aria-label="First group">
                 <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-form"><i class="fas fa-plus-circle"></i></button>
                 <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></button>
                 <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-trash-alt"></i></button>
             </div>
             <div class="btn-group shadow mr-2" role="group" aria-label="Second group">
-                <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-circle-check"></i></button>
-                <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-circle-dot"></i></button>
-            </div>
-            <div class="btn-group shadow" role="group" aria-label="Third group">
-                <button type="button" class="btn btn-secondary btn-sm">8</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Select/Invert Selected"><i class="fas fa-circle-check"></i></button>
+                <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Clear Selected"><i class="fas fa-circle-dot"></i></button>
             </div>
         </div>
     </div>
@@ -21,10 +18,11 @@
 <div class="row">
     <div class="col-12">
         <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Posts</h3>
+            </div>
             <div class="card-body">
-                <h5 class="card-title">Data Postingan</h5>
-                <p class="card-text h-100vh">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+
             </div>
         </div>
     </div>
