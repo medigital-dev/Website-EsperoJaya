@@ -307,22 +307,26 @@
                 });
         </script>
         <script>
-            $('tbody tr').click(function() {
-                $(this).toggleClass('table-success');
-            });
-
-            $('#btn-select').click(function() {
-                const data = $('tbody tr');
-                data.each(function() {
+            $(document).ready(function() {
+                $('tbody tr').click(function() {
                     $(this).toggleClass('table-success');
-                })
-            });
-
-            $('#btn-deselect').click(function() {
-                const data = $('tbody tr');
-                data.each(function() {
-                    $(this).removeClass('table-success');
                 });
+
+                $('#btn-select').click(function() {
+                    const data = $('tbody tr');
+                    data.each(function() {
+                        $(this).toggleClass('table-success');
+                    })
+                });
+
+                $('#btn-deselect').click(function() {
+                    const data = $('tbody tr');
+                    data.each(function() {
+                        $(this).removeClass('table-success');
+                    });
+                });
+
+
             });
         </script>
 </body>

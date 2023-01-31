@@ -47,7 +47,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-formLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modal-formLabel">Add Post</h5>
@@ -57,12 +57,35 @@
             </div>
             <div class="modal-body">
                 <form action="" id="formAddPost">
-
+                    <div class="form-group">
+                        <div class="my-dropzone"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Judul</label>
+                        <input type="text" class="form-control" name="title" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="slug">url</label>
+                        <input type="text" class="form-control form-control-sm" name="slug" id="slug">
+                    </div>
+                    <div class="form-froup">
+                        <label for="content">Isi Postingan</label>
+                        <textarea name="content" id="content" rows="10" class="form-control"></textarea>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <button type="button" class="btn btn-primary">Save</button>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Save Draft</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
