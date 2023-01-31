@@ -38,6 +38,13 @@
                 margin-bottom: 1rem;
             }
         }
+
+        .table tr th {
+            padding: 1.5rem;
+            text-align: center;
+            background-color: #5e72e4;
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -277,14 +284,9 @@
                         </div>
                     </div>
                     <div class="col-xl-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">CMS-Panel v1.0.0</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://github.com/creativetimofficial/argon-dashboard/" class="nav-link" target="_blank"> Argon</a>
-                            </li>
-                        </ul>
+                        <div class="copyright text-center text-xl-right text-muted">
+                            Theme: <a href="https://github.com/creativetimofficial/argon-dashboard/" class="text-muted" target="_blank">Argon</a>
+                        </div>
                     </div>
                 </div>
             </footer>
@@ -292,8 +294,7 @@
         </div>
 
         <script src="<?= base_url('plugins/jquery/jquery.min.js'); ?>"></script>
-        <script src="<?= base_url('plugins/bootstrap/js/bootstrap.min.js'); ?>"></script>
-        <script src="<?= base_url('plugins/bootstrap/js/popper.min.js'); ?>"></script>
+        <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.js'); ?>"></script>
         <script src="<?= base_url('plugins/chart/js/Chart.min.js'); ?>"></script>
         <script src="<?= base_url('plugins/chart/js/Chart.extension.js'); ?>"></script>
         <script src="<?= base_url('plugins/argon-dashboard/js/argon-dashboard.js?v=1.1.1'); ?>"></script>
@@ -304,6 +305,25 @@
                     token: "ee6fab19c5a04ac1a32a645abde4613a",
                     application: "argon-dashboard-free"
                 });
+        </script>
+        <script>
+            $('tbody tr').click(function() {
+                $(this).toggleClass('table-success');
+            });
+
+            $('#btn-select').click(function() {
+                const data = $('tbody tr');
+                data.each(function() {
+                    $(this).toggleClass('table-success');
+                })
+            });
+
+            $('#btn-deselect').click(function() {
+                const data = $('tbody tr');
+                data.each(function() {
+                    $(this).removeClass('table-success');
+                });
+            });
         </script>
 </body>
 
