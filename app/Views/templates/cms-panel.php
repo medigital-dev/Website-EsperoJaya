@@ -31,7 +31,7 @@
     <link href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="<?= base_url('plugins/argon-dashboard/css/argon-dashboard.css'); ?>" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <style>
         @media (max-width: 468px) {
             .btn-group {
@@ -298,6 +298,7 @@
         <script src="<?= base_url('plugins/chart/js/Chart.min.js'); ?>"></script>
         <script src="<?= base_url('plugins/chart/js/Chart.extension.js'); ?>"></script>
         <script src="<?= base_url('plugins/argon-dashboard/js/argon-dashboard.js?v=1.1.1'); ?>"></script>
+        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
         <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
         <script>
             window.TrackJS &&
@@ -308,6 +309,11 @@
         </script>
         <script>
             $(document).ready(function() {
+                Dropzone.options.myDropzone = {
+                    autoProcessQueue: false,
+                    paramName: 'file'
+                };
+
                 $('tbody tr').click(function() {
                     $(this).toggleClass('table-success');
                 });
@@ -325,8 +331,6 @@
                         $(this).removeClass('table-success');
                     });
                 });
-
-
             });
         </script>
 </body>

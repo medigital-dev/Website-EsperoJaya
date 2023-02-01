@@ -56,23 +56,22 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" id="formAddPost">
-                    <div class="form-group">
-                        <div class="my-dropzone"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Judul</label>
-                        <input type="text" class="form-control" name="title" id="title">
-                    </div>
-                    <div class="form-group">
-                        <label for="slug">url</label>
-                        <input type="text" class="form-control form-control-sm" name="slug" id="slug">
-                    </div>
-                    <div class="form-froup">
-                        <label for="content">Isi Postingan</label>
-                        <textarea name="content" id="content" rows="10" class="form-control"></textarea>
-                    </div>
-                </form>
+                <div class="form-group">
+                    <label for="myDropzone">Gambar</label>
+                    <form action="/target" class="dropzone" id="myDropzone"></form>
+                </div>
+                <div class="form-group">
+                    <label for="title">Judul</label>
+                    <input type="text" class="form-control" name="title" id="title">
+                </div>
+                <div class="form-group">
+                    <label for="slug">url</label>
+                    <input type="text" class="form-control form-control-sm" name="slug" id="slug">
+                </div>
+                <div class="form-froup">
+                    <label for="content">Isi Postingan</label>
+                    <textarea name="content" id="content" rows="10" class="form-control"></textarea>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
