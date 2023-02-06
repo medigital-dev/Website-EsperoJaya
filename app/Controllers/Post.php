@@ -15,15 +15,6 @@ class Post extends BaseController
 
     public function index()
     {
-        // helper('text');
-        // $this->mPost->save([
-        //     'post_id' => random_string('md5'),
-        //     'title' => random_string('alpha'),
-        //     'slug' => random_string('alnum', 6),
-        //     'content' => random_string('alpha', 30),
-        //     'author' => 'mesaidlg',
-        //     'status' => 'active'
-        // ]);
         $dataPage = [
             'title' => 'Posts',
             'data' => [

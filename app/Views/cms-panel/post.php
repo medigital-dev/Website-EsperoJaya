@@ -47,7 +47,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-formLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modal-formLabel">Add Post</h5>
@@ -56,34 +56,41 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <label for="myDropzone">Gambar</label>
-                    <form action="/target" class="dropzone" id="myDropzone"></form>
-                </div>
-                <div class="form-group">
-                    <label for="title">Judul</label>
-                    <input type="text" class="form-control" name="title" id="title">
-                </div>
-                <div class="form-group">
-                    <label for="slug">url</label>
-                    <input type="text" class="form-control form-control-sm" name="slug" id="slug">
-                </div>
-                <div class="form-froup">
-                    <label for="content">Isi Postingan</label>
-                    <textarea name="content" id="content" rows="10" class="form-control"></textarea>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="title">Judul</label>
+                            <textarea class="form-control" name="title" id="title" rows="2"></textarea>
+                            <div class="input-group input-group-sm mt-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">url</span>
+                                </div>
+                                <input type="text" class="form-control" name="slug" id="slug" readonly>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary" type="button" id="btn-editSlug">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="myDropzone">Gambar</label>
+                            <form action="/target" class="dropzone" id="myDropzone">
+                                <div class="dz-message" data-dz-message><span>Klik/taruh gambar disini</span></div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="form-froup">
+                            <label for="content">Isi Postingan</label>
+                            <textarea name="content" id="content" rows="13" class="form-control"></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close</button>
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <button type="button" class="btn btn-primary">Save</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Save Draft</a>
-                        </div>
-                    </div>
+                    <button type="button" class="btn btn-outline-success btn-sm">Draft</button>
+                    <button type="button" class="btn btn-success btn-sm">Simpan</button>
                 </div>
             </div>
         </div>

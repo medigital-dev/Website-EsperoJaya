@@ -31,6 +31,8 @@
     <link href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="<?= base_url('plugins/argon-dashboard/css/argon-dashboard.css'); ?>" rel="stylesheet" />
+    <!-- Summernote -->
+    <!-- <link rel="stylesheet" href="<?= base_url('plugins/summernote/css/summernote-bs4.css'); ?>"> -->
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <style>
         @media (max-width: 468px) {
@@ -44,6 +46,11 @@
             text-align: center;
             background-color: #5e72e4;
             color: #fff;
+        }
+
+        .dropzone .dz-preview .dz-image {
+            width: 100px;
+            height: 100px;
         }
     </style>
 </head>
@@ -298,23 +305,57 @@
         <script src="<?= base_url('plugins/chart/js/Chart.min.js'); ?>"></script>
         <script src="<?= base_url('plugins/chart/js/Chart.extension.js'); ?>"></script>
         <script src="<?= base_url('plugins/argon-dashboard/js/argon-dashboard.js?v=1.1.1'); ?>"></script>
+        <!-- <script src="<?= base_url('plugins/summernote/js/summernote-bs4.js'); ?>"></script> -->
+        <script src="https://cdn.tiny.cloud/1/kgsp9unrd3opxilx2phf4dbyldcf07vu3h3d4pjo5etwleck/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
         <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
         <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+        <script src="<?= base_url('assets/js/functions.js'); ?>"></script>
         <script>
             window.TrackJS &&
                 TrackJS.install({
                     token: "ee6fab19c5a04ac1a32a645abde4613a",
                     application: "argon-dashboard-free"
                 });
+            Dropzone.options.myDropzone = {
+                autoProcessQueue: false,
+                paramName: 'file',
+                addRemoveLinks: true,
+                parallelUploads: 1,
+                thumbnailWidth: 100,
+                thumbnailHeight: 100,
+            };
         </script>
         <script>
             $(document).ready(function() {
-                Dropzone.options.myDropzone = {
-                    autoProcessQueue: false,
-                    paramName: 'file'
-                };
+                tinymce.init({
+                    selector: '#content',
+                    // menubar: false,
+                    height: 300,
+                    plugins: 'lists emoticons media help table',
+                    toolbar: 'undo redo | styles |' +
+                        'forecolor backcolor |' +
+                        'alignleft aligncenter alignright alignjustify | ' +
+                        'inserttable emoticons media | help'
+                });
 
-                $('tbody tr').click(function() {
+                // POST_PAGE
+                $('#btn-editSlug').click(function() {
+                    const elmSlug = $('#slug');
+                    console.log(elmSlug);
+                    if (elmSlug.prop('readonly') == true) {
+                        elmSlug.prop('readonly', false);
+                    } else {
+                        elmSlug.prop('readonly', true);
+                    }
+                });
+
+                $('#title').keyup(function() {
+                    const key = $(this).val();
+                    console.log(key);
+                });
+
+                // ANY PAGE
+                $('tbody tr').click(async function() {
                     $(this).toggleClass('table-success');
                 });
 
