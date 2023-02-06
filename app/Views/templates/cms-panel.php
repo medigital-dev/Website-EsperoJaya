@@ -29,10 +29,9 @@
     <!-- Icons -->
     <link href="<?= base_url('plugins/nucleo/css/nucleo.css'); ?>" rel="stylesheet" />
     <link href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= base_url('plugins/sweetalert2/css/sweetalert2.css'); ?>">
     <!-- CSS Files -->
     <link href="<?= base_url('plugins/argon-dashboard/css/argon-dashboard.css'); ?>" rel="stylesheet" />
-    <!-- Summernote -->
-    <!-- <link rel="stylesheet" href="<?= base_url('plugins/summernote/css/summernote-bs4.css'); ?>"> -->
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <style>
         @media (max-width: 468px) {
@@ -51,6 +50,10 @@
         .dropzone .dz-preview .dz-image {
             width: 100px;
             height: 100px;
+        }
+
+        .swal2-container {
+            z-index: 10000;
         }
     </style>
 </head>
@@ -305,7 +308,7 @@
         <script src="<?= base_url('plugins/chart/js/Chart.min.js'); ?>"></script>
         <script src="<?= base_url('plugins/chart/js/Chart.extension.js'); ?>"></script>
         <script src="<?= base_url('plugins/argon-dashboard/js/argon-dashboard.js?v=1.1.1'); ?>"></script>
-        <!-- <script src="<?= base_url('plugins/summernote/js/summernote-bs4.js'); ?>"></script> -->
+        <script src="<?= base_url('plugins/sweetalert2/js/sweetalert2.js'); ?>"></script>
         <script src="https://cdn.tiny.cloud/1/kgsp9unrd3opxilx2phf4dbyldcf07vu3h3d4pjo5etwleck/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
         <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
         <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
@@ -339,19 +342,52 @@
                 });
 
                 // POST_PAGE
+                $('#modal-form').on('hidden.bs.modal', function() {
+                    $('#title,#slug').val('');
+                    tinyMCE.activeEditor.setContent('');
+                });
+
+                $('.btn-closeModal').click(function() {
+                    const title = $('#title').val();
+                    const slug = $('#slug').val();
+                    const content = tinyMCE.activeEditor.getContent();
+
+                    if (title == '' && slug == '' && content == '') {
+                        $('#modal-form').modal('hide');
+                    } else {
+                        Swal.fire({
+                            title: 'Do you want to save the changes?',
+                            // showDenyButton: true,
+                            showCancelButton: true,
+                            confirmButtonText: 'Tutup',
+                            // denyButtonText: 'Kembali',
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                Swal.fire('Saved!', '', 'success')
+                                $('#modal-form').modal('hide');
+                            } else if (result.isDenied) {
+                                Swal.fire('Changes are not saved', '', 'info')
+                            }
+                        })
+                    }
+                });
+
                 $('#btn-editSlug').click(function() {
                     const elmSlug = $('#slug');
-                    console.log(elmSlug);
                     if (elmSlug.prop('readonly') == true) {
                         elmSlug.prop('readonly', false);
+                        $(this).text('Save');
                     } else {
                         elmSlug.prop('readonly', true);
+                        $(this).text('Edit');
                     }
                 });
 
                 $('#title').keyup(function() {
                     const key = $(this).val();
-                    console.log(key);
+                    const string = key.toLowerCase().replace(/ /g, "-").replace(/\//g, "-");
+                    $('#slug').val(string);
                 });
 
                 // ANY PAGE
