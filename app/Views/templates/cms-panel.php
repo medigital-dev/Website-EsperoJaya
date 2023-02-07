@@ -40,6 +40,13 @@
             }
         }
 
+        @media (min-width: 992px) {
+            .dropzone {
+                height: auto;
+                min-height: 420px !important;
+            }
+        }
+
         .table tr th {
             padding: 1.5rem;
             text-align: center;
@@ -314,31 +321,29 @@
         <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
         <script src="<?= base_url('assets/js/functions.js'); ?>"></script>
         <script>
-            window.TrackJS &&
-                TrackJS.install({
-                    token: "ee6fab19c5a04ac1a32a645abde4613a",
-                    application: "argon-dashboard-free"
-                });
-            Dropzone.options.myDropzone = {
-                autoProcessQueue: false,
-                paramName: 'file',
-                addRemoveLinks: true,
-                parallelUploads: 1,
-                thumbnailWidth: 100,
-                thumbnailHeight: 100,
-            };
+            Dropzone.options.dropzone = false;
         </script>
         <script>
             $(document).ready(function() {
+                let myDropzone = new Dropzone('#dropzone', {
+                    url: '/image/send',
+                    autoProcessQueue: false,
+                    paramName: 'file',
+                    addRemoveLinks: true,
+                    parallelUploads: 1,
+                    thumbnailWidth: 100,
+                    thumbnailHeight: 100,
+                });
+
                 tinymce.init({
                     selector: '#content',
-                    // menubar: false,
-                    height: 300,
-                    plugins: 'lists emoticons media help table',
+                    menubar: false,
+                    height: 280,
+                    plugins: 'lists help table',
                     toolbar: 'undo redo | styles |' +
                         'forecolor backcolor |' +
                         'alignleft aligncenter alignright alignjustify | ' +
-                        'inserttable emoticons media | help'
+                        'inserttable | help'
                 });
 
                 // POST_PAGE
@@ -352,22 +357,22 @@
                     const slug = $('#slug').val();
                     const content = tinyMCE.activeEditor.getContent();
 
-                    if (title == '' && slug == '' && content == '') {
+                    if (title == '' && slug == '' && content == '' && myDropzone.files.length == 0) {
                         $('#modal-form').modal('hide');
                     } else {
                         Swal.fire({
-                            title: 'Do you want to save the changes?',
-                            // showDenyButton: true,
+                            title: 'Anda yakin?',
+                            text: 'Postingan yang sudah anda ketik tidak akan tersimpan.',
                             showCancelButton: true,
-                            confirmButtonText: 'Tutup',
-                            // denyButtonText: 'Kembali',
+                            confirmButtonText: 'Yakin',
+                            cancelButtonText: 'Batal',
+                            customClass: {
+                                confirmButton: 'bg-success text-white'
+                            }
                         }).then((result) => {
-                            /* Read more about isConfirmed, isDenied below */
                             if (result.isConfirmed) {
-                                Swal.fire('Saved!', '', 'success')
                                 $('#modal-form').modal('hide');
-                            } else if (result.isDenied) {
-                                Swal.fire('Changes are not saved', '', 'info')
+                                myDropzone.removeAllFiles(true);
                             }
                         })
                     }
@@ -376,7 +381,7 @@
                 $('#btn-editSlug').click(function() {
                     const elmSlug = $('#slug');
                     if (elmSlug.prop('readonly') == true) {
-                        elmSlug.prop('readonly', false);
+                        elmSlug.prop('readonly', false).focus();
                         $(this).text('Save');
                     } else {
                         elmSlug.prop('readonly', true);
@@ -388,6 +393,28 @@
                     const key = $(this).val();
                     const string = key.toLowerCase().replace(/ /g, "-").replace(/\//g, "-");
                     $('#slug').val(string);
+                    $.post('/post/cekSlug/', {
+                        slug: string
+                    }, response => {
+                        if (response.length > 0) {
+                            $('#slug').addClass('is-invalid text-danger');
+                        } else {
+                            $('#slug').removeClass('is-invalid text-danger');
+                        }
+                    });
+                });
+
+                $('#slug').keyup(function() {
+                    const slugVal = $(this).val();
+                    $.post('/post/cekSlug/', {
+                        slug: slugVal
+                    }, response => {
+                        if (response.length > 0) {
+                            $(this).addClass('is-invalid text-danger');
+                        } else {
+                            $(this).removeClass('is-invalid text-danger');
+                        }
+                    });
                 });
 
                 // ANY PAGE

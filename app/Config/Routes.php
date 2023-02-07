@@ -38,6 +38,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('dashboard', 'Dashboard::index');
 $routes->get('post', 'Post::index');
+$routes->post('post/(:any)', 'Post::$1');
 $routes->post('setFeedback', 'Home::setFeedback');
 
 /*

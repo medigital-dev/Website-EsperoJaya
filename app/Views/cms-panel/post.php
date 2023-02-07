@@ -59,9 +59,20 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
+                            <label for="myDropzone">Gambar</label>
+                            <!-- <form action="/target" class="dropzone" id="myDropzone">
+                                <div class="dz-message" data-dz-message><span>Klik/taruh gambar disini</span></div>
+                            </form> -->
+                            <div id="dropzone" class="dropzone">
+                                <div class="dz-message" data-dz-message><span>Klik/taruh gambar disini</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="form-group">
                             <label for="title">Judul</label>
-                            <textarea class="form-control" name="title" id="title" rows="2"></textarea>
-                            <div class="input-group input-group-sm mt-1">
+                            <input type="text" class="form-control" name="title" id="title">
+                            <div class="input-group input-group-sm mt-1 has-validation">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">url</span>
                                 </div>
@@ -69,17 +80,12 @@
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-primary" type="button" id="btn-editSlug">Edit</button>
                                 </div>
+                                <div class="invalid-feedback">
+                                    Slug sudah terpakai!
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="myDropzone">Gambar</label>
-                            <form action="/target" class="dropzone" id="myDropzone">
-                                <div class="dz-message" data-dz-message><span>Klik/taruh gambar disini</span></div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="form-froup">
                             <label for="content">Isi Postingan</label>
                             <textarea name="content" id="content" rows="13" class="form-control"></textarea>
                         </div>

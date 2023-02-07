@@ -3,10 +3,12 @@
 namespace App\Controllers;
 
 use App\Models\PostsModel;
+use CodeIgniter\API\ResponseTrait;
 
 class Post extends BaseController
 {
     protected $mPost;
+    use ResponseTrait;
 
     public function __construct()
     {
@@ -22,5 +24,11 @@ class Post extends BaseController
             ],
         ];
         return view('cms-panel/post', $dataPage);
+    }
+
+    public function cekSlug()
+    {
+        $slug = $this->request->getVar('slug');
+        return $this->respond($this->mPost->where('slug', $slug)->findAll());
     }
 }
