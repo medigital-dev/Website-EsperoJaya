@@ -45,6 +45,24 @@
                 height: auto;
                 min-height: 420px !important;
             }
+
+            .modal-fs {
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+                max-width: none;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .modal-fs {
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+                max-width: none;
+            }
         }
 
         .table tr th {
@@ -322,10 +340,16 @@
         <script src="<?= base_url('assets/js/functions.js'); ?>"></script>
         <script>
             Dropzone.options.dropzone = false;
+            // Prevent Bootstrap dialog from blocking focusin
+            $(document).on('focusin', function(e) {
+                if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root").length) {
+                    e.stopImmediatePropagation();
+                }
+            });
         </script>
         <script>
             $(document).ready(function() {
-                let myDropzone = new Dropzone('#dropzone', {
+                var myDropzone = new Dropzone('#dropzone', {
                     url: '/image/send',
                     autoProcessQueue: false,
                     paramName: 'file',
@@ -337,19 +361,26 @@
 
                 tinymce.init({
                     selector: '#content',
-                    menubar: false,
+                    // menubar: false,
+                    width: '100%',
                     height: 280,
-                    plugins: 'lists help table',
-                    toolbar: 'undo redo | styles |' +
-                        'forecolor backcolor |' +
-                        'alignleft aligncenter alignright alignjustify | ' +
-                        'inserttable | help'
+                    plugins: 'lists help table link code fullscreen image media',
+                    toolbar1: 'undo redo | blocks | fontfamily fontsize | link table image media | fullscreen code help',
+                    toolbar2: 'copy cut paste | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist',
+                    a11y_advanced_options: true,
+                    file_picker_callback: (callback, value, meta) => {
+                        console.log(meta.filetype);
+                    }
                 });
 
                 // POST_PAGE
                 $('#modal-form').on('hidden.bs.modal', function() {
                     $('#title,#slug').val('');
                     tinyMCE.activeEditor.setContent('');
+                    const invalidField = $('.is-invalid');
+                    invalidField.each((i, elem) => elem.className = 'form-control');
+                    $('#btn-savePost').text('Save').prop('disabled', false);
+                    $('#btn-draftPost').text('Draft').prop('disabled', false);
                 });
 
                 $('.btn-closeModal').click(function() {
@@ -398,8 +429,10 @@
                     }, response => {
                         if (response.length > 0) {
                             $('#slug').addClass('is-invalid text-danger');
+                            $('.btn-go').prop('disabled', true);
                         } else {
                             $('#slug').removeClass('is-invalid text-danger');
+                            $('.btn-go').prop('disabled', false);
                         }
                     });
                 });
@@ -415,6 +448,25 @@
                             $(this).removeClass('is-invalid text-danger');
                         }
                     });
+                });
+
+                $('#btn-savePost').click(function() {
+                    $('#btn-draftPost').prop('disabled', true);
+                    $(this).html('<i class="fas fa-fan fa-spin"></i>').prop('disabled', true);
+                    const judul = $('#title');
+                    const slug = $('#slug');
+                    const isi = tinyMCE.activeEditor.getContent();
+
+                    if (judul.val() == '' && slug.val() == '') {
+                        Swal.fire('Info', 'Judul/slug harus diisi!', 'info');
+                        $('#btn-savePost').text('Save').prop('disabled', false);
+                        $('#btn-draftPost').text('Draft').prop('disabled', false);
+                        return;
+                    }
+
+                    // var dropzoneUpload = myDropzone.processQueue();
+
+                    // console.log(dropzoneUpload);
                 });
 
                 // ANY PAGE
