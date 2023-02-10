@@ -47,7 +47,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="modal-formLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fs modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-fs modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modal-formLabel">Add Post</h5>
@@ -59,9 +59,9 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label for="myDropzone">Gambar</label>
+                            <label for="myDropzone">Lampiran Berkas</label>
                             <div id="dropzone" class="dropzone">
-                                <div class="dz-message" data-dz-message><span>Klik/taruh gambar disini</span></div>
+                                <div class="dz-message" data-dz-message><span>Klik/taruh file disini<br>(Sekali upload maks 10 File / @ 2Mb)</span></div>
                             </div>
                         </div>
                     </div>

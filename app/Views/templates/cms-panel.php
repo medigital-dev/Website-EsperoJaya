@@ -42,8 +42,8 @@
 
         @media (min-width: 992px) {
             .dropzone {
-                height: auto;
-                min-height: 420px !important;
+                height: 420px !important;
+                overflow-y: auto;
             }
 
             .modal-fs {
@@ -340,7 +340,6 @@
         <script src="<?= base_url('assets/js/functions.js'); ?>"></script>
         <script>
             Dropzone.options.dropzone = false;
-            // Prevent Bootstrap dialog from blocking focusin
             $(document).on('focusin', function(e) {
                 if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root").length) {
                     e.stopImmediatePropagation();
@@ -349,29 +348,39 @@
         </script>
         <script>
             $(document).ready(function() {
+                // ##### Dropzone Config
                 var myDropzone = new Dropzone('#dropzone', {
                     url: '/files/upload/',
                     autoProcessQueue: false,
+                    maxFiles: 10,
+                    parallelUploads: 10,
+                    maxFilesize: 2,
                     addRemoveLinks: true,
                     thumbnailWidth: 100,
                     thumbnailHeight: 100,
                     renameFile: file => {
-                        return (Math.random() + 1).toString(36).substring(7) + '_' + file.name
+                        return (Math.random() + 1).toString(36).substring(7) + '_' + file.name.replace(/ /g, "_");
                     }
                 });
 
+                myDropzone.on('canceled', () => {
+                    $('#btn-savePost').text('Save').prop('disabled', false);
+                    $('#btn-draftPost').text('Draft').prop('disabled', false);
+                });
                 // myDropzone.on('success', file => console.log(file.xhr.responseText));
-                myDropzone.on('removedfile', err => console.log(err));
+                // myDropzone.on('removedfile', err => console.log(err));
+                // ##### End Dropzone Config
 
                 tinymce.init({
                     selector: '#content',
                     // menubar: false,
                     width: '100%',
                     height: 280,
-                    plugins: 'lists help table link code fullscreen image media',
-                    toolbar1: 'undo redo | blocks | fontfamily fontsize | link table image media | fullscreen code help',
-                    toolbar2: 'copy cut paste | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist',
-                    a11y_advanced_options: true,
+                    resize: false,
+                    // plugins: 'lists help table link code fullscreen image media',
+                    // toolbar1: 'undo redo | blocks | fontfamily fontsize | link table image media | fullscreen code help',
+                    // toolbar2: 'copy cut paste | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist',
+                    // a11y_advanced_options: true,
                     file_picker_callback: (callback, value, meta) => {
                         console.log(meta.filetype);
                         if (meta.filetype == 'file' || meta.filetype == 'media' || meta.filetype == 'image') {
@@ -471,11 +480,29 @@
                         return;
                     }
 
-                    myDropzone.processQueue();
+                    const data = {
+                        title: judul.val(),
+                        slug: slug.val(),
+                        content: isi,
+                        author: 'admin',
+                        status: 'active',
+                    }
+
+                    $.post('/post/setPost', data, response => {
+                        if (response.status == 200) {
+                            myDropzone.processQueue();
+                            var postId = response.result.post_id;
+                        }
+                    }, 'json').fail(err => console.log(err.responseText));
+
+                    var fileUpload = [];
+                    myDropzone.on('complete', file => fileUpload.push(file.upload.filename));
+                    console.log(post_id);
                 });
 
+
                 // ANY PAGE
-                $('tbody tr').click(async function() {
+                $('tbody tr').click(function() {
                     $(this).toggleClass('table-success');
                 });
 

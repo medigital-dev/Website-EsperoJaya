@@ -31,4 +31,22 @@ class Post extends BaseController
         $slug = $this->request->getVar('slug');
         return $this->respond($this->mPost->where('slug', $slug)->findAll());
     }
+
+    public function setPost()
+    {
+        helper('text');
+        $postId = random_string('md5');
+        $data = $this->request->getPost();
+        $data['post_id'] = $postId;
+        if (!$this->mPost->save($data)) {
+            return $this->fail('Postingan gagal ditambahkan! ' . $this->mPost->errors());
+        }
+        $response = [
+            'status' => 200,
+            'code' => '',
+            'messages' => 'Postingan berhasil ditambahkan.',
+            'result' => $data
+        ];
+        return $this->respond($response);
+    }
 }
