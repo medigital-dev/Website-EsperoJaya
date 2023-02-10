@@ -350,14 +350,18 @@
         <script>
             $(document).ready(function() {
                 var myDropzone = new Dropzone('#dropzone', {
-                    url: '/image/send',
+                    url: '/files/upload/',
                     autoProcessQueue: false,
-                    paramName: 'file',
                     addRemoveLinks: true,
-                    parallelUploads: 1,
                     thumbnailWidth: 100,
                     thumbnailHeight: 100,
+                    renameFile: file => {
+                        return (Math.random() + 1).toString(36).substring(7) + '_' + file.name
+                    }
                 });
+
+                // myDropzone.on('success', file => console.log(file.xhr.responseText));
+                myDropzone.on('removedfile', err => console.log(err));
 
                 tinymce.init({
                     selector: '#content',
@@ -370,6 +374,9 @@
                     a11y_advanced_options: true,
                     file_picker_callback: (callback, value, meta) => {
                         console.log(meta.filetype);
+                        if (meta.filetype == 'file' || meta.filetype == 'media' || meta.filetype == 'image') {
+
+                        }
                     }
                 });
 
@@ -464,9 +471,7 @@
                         return;
                     }
 
-                    // var dropzoneUpload = myDropzone.processQueue();
-
-                    // console.log(dropzoneUpload);
+                    myDropzone.processQueue();
                 });
 
                 // ANY PAGE
