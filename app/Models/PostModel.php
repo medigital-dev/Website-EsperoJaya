@@ -4,14 +4,14 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PagesModel extends Model
+class PostModel extends Model
 {
-    protected $table            = 'pages';
+    protected $table            = 'post';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $useSoftDeletes   = true;
     protected $useTimestamps    = true;
     protected $allowedFields    = [
-        'page_id', 'title', 'slug', 'description', 'content'
+        'post_id', 'title', 'slug', 'content', 'author', 'is_active'
     ];
 }
