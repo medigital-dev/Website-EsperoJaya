@@ -43,6 +43,9 @@ $routes->get('files', 'Files::index');
 $routes->post('files/(:any)', 'Files::$1');
 $routes->post('setFeedback', 'Home::setFeedback');
 
+// API
+$routes->resource('ApiService');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
