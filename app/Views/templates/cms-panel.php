@@ -23,7 +23,7 @@
         CMS Panel - Website-Esperojaya
     </title>
     <!-- Favicon -->
-    <link href="<?= base_url('assets/uploads/images/logo.png'); ?>" rel="icon" type="image/png">
+    <link href="<?= base_url('assets/images/client/logo.png'); ?>" rel="icon" type="image/png">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <!-- Icons -->
@@ -92,7 +92,6 @@
             </button>
             <!-- Brand -->
             <a class="navbar-brand pt-0 font-weight-bold" href="<?= base_url('dashboard'); ?>">
-                <!-- <img src="<?= base_url('assets/uploads/images/logo.png'); ?>" class="navbar-brand-img" alt="..."> -->
                 CMS-Panel
             </a>
             <!-- User -->
@@ -359,7 +358,7 @@
                     thumbnailWidth: 100,
                     thumbnailHeight: 100,
                     renameFile: file => {
-                        return randomString() + '_' + file.name.replace(/ /g, "_");
+                        return file.name.replace(/ /g, "_");
                     }
                 });
 
@@ -395,6 +394,7 @@
                     tinyMCE.activeEditor.setContent('');
                     const invalidField = $('.is-invalid');
                     invalidField.each((i, elem) => elem.className = 'form-control');
+                    myDropzone.removeAllFiles(true);
                     $('#btn-savePost').text('Save').prop('disabled', false);
                     $('#btn-draftPost').text('Draft').prop('disabled', false);
                 });
@@ -419,9 +419,8 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 $('#modal-form').modal('hide');
-                                myDropzone.removeAllFiles(true);
                             }
-                        })
+                        });
                     }
                 });
 
@@ -488,36 +487,30 @@
                         author: 'admin',
                         status: 'active',
                     }
-                    var fileUpload = [];
-                    const insertPost = await fetch('/ApiService?table=posts', {
+                    const insertPost = await fetch('/ApiService?table=post', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify(set)
                     }).then(response => response.json()).catch(err => err);
+
                     myDropzone.processQueue();
-                    myDropzone.on('complete', file => fileUpload.push(file.upload.filename));
-                    console.log(fileUpload);
-                    fileUpload.forEach(async (value, index) => {
-                        let responseInsert = await fetch('ApiService?table=postImage', {
+                    myDropzone.on('complete', file => {
+                        fetch('ApiService?table=postImage', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
-                                image_id: value,
+                                filename: file.upload.filename,
                                 post_id: insertPost.post_id
                             })
-                        }).then(response => response.json()).catch(err => err);
-                        console.log(responseInsert);
-                    })
-
-                    console.log(insertPost);
-                    $('#btn-savePost').text('Save').prop('disabled', false);
-                    $('#btn-draftPost').text('Draft').prop('disabled', false);
+                        });
+                    });
+                    toast('success', 'Berhasil disimpan!');
+                    $('#modal-form').modal('hide');
                 });
-
 
                 // ANY PAGE
                 $('tbody tr').click(function() {

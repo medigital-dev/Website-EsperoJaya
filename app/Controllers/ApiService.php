@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
-use Config\Database;
 
 class ApiService extends BaseController
 {
@@ -33,20 +32,20 @@ class ApiService extends BaseController
                 break;
 
             case 'page':
-                return new \App\Models\PostImageModel();
+                return new \App\Models\PageModel();
                 break;
 
             case 'event':
-                return new \App\Models\PostImageModel();
+                return new \App\Models\EventModel();
                 break;
 
             case 'feedback':
-                return new \App\Models\PostImageModel();
+                return new \App\Models\FeedbackModel();
                 break;
 
-            case 'menu':
-                return new \App\Models\PostImageModel();
-                break;
+                // case 'menu':
+                //     return new \App\Models\PostImageModel();
+                //     break;
 
             default:
                 return false;

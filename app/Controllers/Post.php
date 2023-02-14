@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\PostsModel;
+use App\Models\PostModel;
 use CodeIgniter\API\ResponseTrait;
 
 class Post extends BaseController
@@ -12,7 +12,7 @@ class Post extends BaseController
 
     public function __construct()
     {
-        $this->mPost = new PostsModel();
+        $this->mPost = new PostModel();
     }
 
     public function index()

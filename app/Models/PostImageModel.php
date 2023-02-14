@@ -12,6 +12,6 @@ class PostImageModel extends Model
     protected $useSoftDeletes   = true;
     protected $useTimestamps    = true;
     protected $allowedFields    = [
-        'post_id', 'image_id'
+        'post_id', 'filename'
     ];
 }
