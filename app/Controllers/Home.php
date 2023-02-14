@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\EventModel;
 use App\Models\FeedbackModel;
 use App\Models\PostImageModel;
-use App\Models\PostsModel;
+use App\Models\PostModel;
 use CodeIgniter\API\ResponseTrait;
 
 class Home extends BaseController
@@ -21,7 +21,7 @@ class Home extends BaseController
 
     public function index()
     {
-        $mPost = new PostsModel();
+        $mPost = new PostModel();
         $mPostImage = new PostImageModel();
         $mEvent = new EventModel();
 
@@ -35,9 +35,9 @@ class Home extends BaseController
             $href = base_url($row['slug']);
             $images = $mPostImage->where('post_id', $row['post_id'])->findAll(1);
             if ($images) {
-                $bgImage = base_url('assets/uploads/images/') . $images[0]['filename'];
+                $bgImage = base_url('assets/images/client/') . $images[0]['filename'];
             } else {
-                $bgImage = base_url('assets/images/posts.png');
+                $bgImage = base_url('assets/images/brand/posts.png');
             }
             $createdDate = date_create_from_format('Y-m-d H:i:s', $row['created_at']);
             $title = $row['title'];

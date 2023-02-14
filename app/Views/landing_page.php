@@ -20,7 +20,7 @@ Coded by www.creative-tim.com
     <title>
         SMP Negeri 2 Wonosari - #EsperoJaya
     </title>
-    <link rel="shortcut icon" href="<?= base_url('assets/uploads/images/logo.png'); ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= base_url('assets/images/client/logo.png'); ?>" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <link rel="stylesheet" href="<?= base_url('plugins/argon/css/argon-design-system.css?v=1.2.2'); ?>">
     <link rel="stylesheet" href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>">
@@ -68,7 +68,7 @@ Coded by www.creative-tim.com
                     <div class="row">
                         <div class="col-10 collapse-brand">
                             <a href="<?= base_url(); ?>">
-                                <img src="<?= base_url('assets/uploads/images/logo.png'); ?>">
+                                <img src="<?= base_url('assets/images/client/logo.png'); ?>">
                                 <span class="py-2 pl-2 text-primary font-weight-bold">
                                     SMP Negeri 2 Wonosari
                                 </span>
@@ -114,13 +114,13 @@ Coded by www.creative-tim.com
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img class="d-block w-100" src="<?= base_url('assets/uploads/images/banner01.png'); ?>" alt="Areditasi Sekolah">
+                                            <img class="d-block w-100" src="<?= base_url('assets/images/client/banner01.png'); ?>" alt="Areditasi Sekolah">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="d-block w-100" src="<?= base_url('assets/uploads/images/banner02.png'); ?>" alt="NPSN">
+                                            <img class="d-block w-100" src="<?= base_url('assets/images/client/banner02.png'); ?>" alt="NPSN">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="d-block w-100" src="<?= base_url('assets/uploads/images/banner03.png'); ?>" alt="Akreditasi Perpustakaan">
+                                            <img class="d-block w-100" src="<?= base_url('assets/images/client/banner03.png'); ?>" alt="Akreditasi Perpustakaan">
                                         </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -243,7 +243,7 @@ Coded by www.creative-tim.com
                 <div class="row">
                     <div class="col-md-10 mx-auto">
                         <div class="text-center">
-                            <img src="<?= base_url('assets/uploads/images/smp2wonosari-shadow_black.png'); ?>" class="img-fluid" width="200" alt="Logo">
+                            <img src="<?= base_url('assets/images/client/smp2wonosari-shadow_black.png'); ?>" class="img-fluid" width="200" alt="Logo">
                         </div>
                         <p class="lead">SMP Negeri 2 Wonosari atau yang biasa di panggil Espero merupakan Sekolah Menengah Pertama di pusat Kota Wonosari tepatnya di Jalan Veteran 8, Kepek, Wonosari, Gunungkidul, DI Yogyakarta. SMP Negeri 2 Wonosari yang didirikan sejak 1 April 1979 menjadi sekolah favorit di Kecamatan Wonosari bahkan di Kabupaten Gunungkidul.</p>
                         <p class="lead">Dari tahun ke tahun, SMP 2 Wonosari mengalami perkembangan yang sangat pesat, baik dari segi fasilitas maupun sumber daya manusianya (guru). Hal ini nampak dari unsur sarana gedung yang semula berdinding bambu dan kayu, sekarang semuanya permanen. Demikian pula fasilitas belajar, kini dilengkapi dengan perangkat laboraturium lengkap dengan komputer yang terhubung dengan internet.</p>
@@ -483,7 +483,7 @@ Coded by www.creative-tim.com
                 </div>
                 <div class="row flex-row-reverse mt-5">
                     <div class="col-md-3 text-center">
-                        <img src="<?= base_url('assets/images/computer-docs.jpg'); ?>" class="img-fluid p-2">
+                        <img src="<?= base_url('assets/images/brand/computer-docs.jpg'); ?>" class="img-fluid p-2">
                     </div>
                     <div class="col-md-9">
                         <h5 class="text-center">Kirim ulasan anda</h5>
@@ -534,7 +534,7 @@ Coded by www.creative-tim.com
                             &copy; 2023 <a href="<?= base_url(); ?>">SMP Negeri 2 Wonosari</a>.
                         </div>
                         <div class="copyright">
-                            <a class="text-muted" target="_blank" href="https://medigital.dev/" title="Created and Developed by meDigital.dev"><img src="<?= base_url('assets/images/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a>
+                            <a class="text-muted" target="_blank" href="https://medigital.dev/" title="Created and Developed by meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a>
                         </div>
                     </div>
                 </div>
