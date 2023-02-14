@@ -359,7 +359,7 @@
                     thumbnailWidth: 100,
                     thumbnailHeight: 100,
                     renameFile: file => {
-                        return (Math.random() + 1).toString(36).substring(7) + '_' + file.name.replace(/ /g, "_");
+                        return randomString() + '_' + file.name.replace(/ /g, "_");
                     }
                 });
 
@@ -466,7 +466,7 @@
                     });
                 });
 
-                $('#btn-savePost').click(function() {
+                $('#btn-savePost').click(async function() {
                     $('#btn-draftPost').prop('disabled', true);
                     $(this).html('<i class="fas fa-fan fa-spin"></i>').prop('disabled', true);
                     const judul = $('#title');
@@ -480,24 +480,42 @@
                         return;
                     }
 
-                    const data = {
+                    const set = {
+                        post_id: randomString(),
                         title: judul.val(),
                         slug: slug.val(),
                         content: isi,
                         author: 'admin',
                         status: 'active',
                     }
-
-                    $.post('/post/setPost', data, response => {
-                        if (response.status == 200) {
-                            myDropzone.processQueue();
-                            var postId = response.result.post_id;
-                        }
-                    }, 'json').fail(err => console.log(err.responseText));
-
                     var fileUpload = [];
+                    const insertPost = await fetch('/ApiService?table=posts', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(set)
+                    }).then(response => response.json()).catch(err => err);
+                    myDropzone.processQueue();
                     myDropzone.on('complete', file => fileUpload.push(file.upload.filename));
-                    console.log(post_id);
+                    console.log(fileUpload);
+                    fileUpload.forEach(async (value, index) => {
+                        let responseInsert = await fetch('ApiService?table=postImage', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                image_id: value,
+                                post_id: insertPost.post_id
+                            })
+                        }).then(response => response.json()).catch(err => err);
+                        console.log(responseInsert);
+                    })
+
+                    console.log(insertPost);
+                    $('#btn-savePost').text('Save').prop('disabled', false);
+                    $('#btn-draftPost').text('Draft').prop('disabled', false);
                 });
 
 
