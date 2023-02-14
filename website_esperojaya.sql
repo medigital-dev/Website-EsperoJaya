@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 02, 2023 at 01:57 AM
+-- Generation Time: Feb 14, 2023 at 04:39 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.0.27
 
@@ -90,11 +90,11 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `images`
+-- Table structure for table `image`
 --
 
-DROP TABLE IF EXISTS `images`;
-CREATE TABLE IF NOT EXISTS `images` (
+DROP TABLE IF EXISTS `image`;
+CREATE TABLE IF NOT EXISTS `image` (
   `id` int NOT NULL AUTO_INCREMENT,
   `image_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `filename` varchar(128) COLLATE utf8mb4_bin NOT NULL,
@@ -132,11 +132,11 @@ CREATE TABLE IF NOT EXISTS `menu` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pages`
+-- Table structure for table `page`
 --
 
-DROP TABLE IF EXISTS `pages`;
-CREATE TABLE IF NOT EXISTS `pages` (
+DROP TABLE IF EXISTS `page`;
+CREATE TABLE IF NOT EXISTS `page` (
   `id` int NOT NULL AUTO_INCREMENT,
   `page_id` varchar(128) COLLATE utf8mb4_bin NOT NULL,
   `title` varchar(128) COLLATE utf8mb4_bin NOT NULL,
@@ -153,11 +153,11 @@ CREATE TABLE IF NOT EXISTS `pages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Table structure for table `post`
 --
 
-DROP TABLE IF EXISTS `posts`;
-CREATE TABLE IF NOT EXISTS `posts` (
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE IF NOT EXISTS `post` (
   `id` int NOT NULL AUTO_INCREMENT,
   `post_id` varchar(128) COLLATE utf8mb4_bin NOT NULL,
   `title` varchar(256) COLLATE utf8mb4_bin NOT NULL,
