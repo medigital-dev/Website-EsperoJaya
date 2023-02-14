@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 14, 2023 at 04:39 AM
+-- Generation Time: Feb 14, 2023 at 06:56 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.0.27
 
@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `post` (
 DROP TABLE IF EXISTS `post_image`;
 CREATE TABLE IF NOT EXISTS `post_image` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `image_id` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  `filename` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `post_id` varchar(128) COLLATE utf8mb4_bin NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
