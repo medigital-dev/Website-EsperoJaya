@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\PostImageModel;
 use App\Models\PostModel;
 use CodeIgniter\API\ResponseTrait;
 
@@ -32,10 +33,19 @@ class Post extends BaseController
         return $this->respond($this->mPost->where('slug', $slug)->findAll());
     }
 
-    public function setPost()
+    public function setPostImage()
+    {
+        $data = $this->request->getPost();
+        $model = new PostImageModel();
+        if (!$model->save($data)) {
+            return $this->fail('Postingan gagal ditambahkan! ' . $model->errors());
+        }
+    }
+
+    public function set()
     {
         helper('text');
-        $postId = random_string('md5');
+        $postId = random_string('alnum');
         $data = $this->request->getPost();
         $data['post_id'] = $postId;
         if (!$this->mPost->save($data)) {

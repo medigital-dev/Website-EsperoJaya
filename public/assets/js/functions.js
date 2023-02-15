@@ -1,5 +1,12 @@
-function randomString(){
-    return (Math.random() + 1).toString(36).substring(4);
+function randomString(i = 4){
+    return (Math.random() + 1).toString(36).substring(i);
+}
+
+function renameFile(filename) {
+    const str = filename.split('.');
+    const lastIndex = str.length - 1;
+    const ext = '.' + str[lastIndex];
+    return randomString(2) + ext;
 }
 
 async function toast(icon, message) {

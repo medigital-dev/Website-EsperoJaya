@@ -358,7 +358,7 @@
                     thumbnailWidth: 100,
                     thumbnailHeight: 100,
                     renameFile: file => {
-                        return file.name.replace(/ /g, "_");
+                        return renameFile(file.name).replace(/ /g, "-");
                     }
                 });
 
@@ -499,18 +499,13 @@
 
                     myDropzone.processQueue();
                     myDropzone.on('complete', file => {
-                        fetch('ApiService?table=postImage', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                filename: file.upload.filename,
-                                post_id: insertPost.post_id
-                            })
-                        });
+                        $.post('/post/setPostImage', {
+                            filename: file.upload.filename,
+                            post_id: insertPost.post_id
+                        }, () => {
+                            toast('success', 'Berhasil disimpan!');
+                        }).fail(err => console.log(err));
                     });
-                    toast('success', 'Berhasil disimpan!');
                     $('#modal-form').modal('hide');
                 });
 
