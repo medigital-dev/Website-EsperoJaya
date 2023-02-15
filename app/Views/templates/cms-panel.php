@@ -459,8 +459,10 @@
                     }, response => {
                         if (response.length > 0) {
                             $(this).addClass('is-invalid text-danger');
+                            $('.btn-go').prop('disabled', true);
                         } else {
                             $(this).removeClass('is-invalid text-danger');
+                            $('.btn-go').prop('disabled', false);
                         }
                     });
                 });

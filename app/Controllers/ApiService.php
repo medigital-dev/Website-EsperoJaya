@@ -15,7 +15,7 @@ class ApiService extends BaseController
         if (!$model = $this->cekModel($table)) {
             return $this->failNotFound('Table Not Found, please check documentations', 400);;
         }
-        $limit = $this->request->getGet('limit');
+        ($limit = $this->request->getGet('limit')) == null ? 0 : $limit;
 
         return $this->respond($model->orderBy('created_at', 'DESC')->findAll($limit), 200);
     }
