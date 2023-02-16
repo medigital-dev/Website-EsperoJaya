@@ -489,7 +489,7 @@
                         author: 'admin',
                         status: 'active',
                     }
-                    const insertPost = await fetch('/ApiService?table=post', {
+                    const insertPost = await fetch("<?= base_url('ApiService?table=post'); ?>", {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -499,7 +499,7 @@
 
                     myDropzone.processQueue();
                     myDropzone.on('complete', file => {
-                        $.post('/post/setPostImage', {
+                        $.post("<?= base_url('post/setPostImage'); ?>", {
                             filename: file.upload.filename,
                             post_id: insertPost.post_id
                         }, () => {
