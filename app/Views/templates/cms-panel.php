@@ -439,7 +439,7 @@
                     const key = $(this).val();
                     const string = key.toLowerCase().replace(/ /g, "-").replace(/\//g, "-");
                     $('#slug').val(string);
-                    $.post('/post/cekSlug/', {
+                    $.post(<?= base_url('post/cekSlug'); ?>, {
                         slug: string
                     }, response => {
                         if (response.length > 0) {
@@ -454,7 +454,7 @@
 
                 $('#slug').keyup(function() {
                     const slugVal = $(this).val();
-                    $.post('/post/cekSlug/', {
+                    $.post(<?= base_url('post/cekSlug'); ?>, {
                         slug: slugVal
                     }, response => {
                         if (response.length > 0) {
