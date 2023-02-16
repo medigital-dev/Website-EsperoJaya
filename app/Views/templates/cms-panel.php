@@ -349,7 +349,7 @@
             $(document).ready(function() {
                 // ##### Dropzone Config
                 var myDropzone = new Dropzone('#dropzone', {
-                    url: '/files/upload/',
+                    url: "<?= base_url('files/upload/'); ?>",
                     autoProcessQueue: false,
                     maxFiles: 10,
                     parallelUploads: 10,
