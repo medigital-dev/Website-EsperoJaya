@@ -367,7 +367,7 @@
                     $('#btn-draftPost').text('Draft').prop('disabled', false);
                 });
                 // myDropzone.on('success', file => console.log(file.xhr.responseText));
-                // myDropzone.on('removedfile', err => console.log(err));
+                myDropzone.on('error', err => console.log(err));
                 // ##### End Dropzone Config
 
                 tinymce.init({
