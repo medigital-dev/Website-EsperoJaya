@@ -376,7 +376,8 @@
                     width: '100%',
                     height: 280,
                     resize: false,
-                    // plugins: 'lists help table link code fullscreen image media',
+                    plugins: 'lists help table link code fullscreen image media',
+                    toolbar: 'undo redo | fontfamily fontsize | bold italic underline | alignleft aligncenter alignright alignjustify | fullscreen code help',
                     // toolbar1: 'undo redo | blocks | fontfamily fontsize | link table image media | fullscreen code help',
                     // toolbar2: 'copy cut paste | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist',
                     // a11y_advanced_options: true,
@@ -482,7 +483,7 @@
                     }
 
                     const set = {
-                        post_id: randomString(),
+                        post_id: 'post_' + randomString(),
                         title: judul.val(),
                         slug: slug.val(),
                         content: isi,
