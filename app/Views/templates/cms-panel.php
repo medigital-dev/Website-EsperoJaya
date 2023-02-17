@@ -495,7 +495,10 @@
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify(set)
-                    }).then(response => response.json()).catch(err => err);
+                    }).then(response => response.json()).catch(err => {
+                        console.log(err);
+                        return;
+                    });
 
                     myDropzone.processQueue();
                     myDropzone.on('complete', file => {
@@ -504,7 +507,10 @@
                             post_id: insertPost.post_id
                         }, () => {
                             toast('success', 'Berhasil disimpan!');
-                        }).fail(err => console.log(err));
+                        }).fail(err => {
+                            console.log(err);
+                            return
+                        });
                     });
                     $('#modal-form').modal('hide');
                 });
