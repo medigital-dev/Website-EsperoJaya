@@ -60,9 +60,12 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="myDropzone">Lampiran Berkas</label>
-                            <div id="dropzone" class="dropzone">
+                            <form class="dropzone" id="dropzone">
                                 <div class="dz-message" data-dz-message><span>Klik/taruh file disini<br>(Sekali upload maks 10 File / @ 2Mb)</span></div>
-                            </div>
+                            </form>
+                            <!-- <div id="dropzone" class="dropzone">
+                                <div class="dz-message" data-dz-message><span>Klik/taruh file disini<br>(Sekali upload maks 10 File / @ 2Mb)</span></div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-lg-8">

@@ -367,7 +367,7 @@
                     $('#btn-draftPost').text('Draft').prop('disabled', false);
                 });
                 // myDropzone.on('success', file => console.log(file.xhr.responseText));
-                myDropzone.on('error', err => console.log(err));
+                // myDropzone.on('error', (err, message) => console.log(err, message));
                 // ##### End Dropzone Config
 
                 tinymce.init({
@@ -381,12 +381,47 @@
                     // toolbar1: 'undo redo | blocks | fontfamily fontsize | link table image media | fullscreen code help',
                     // toolbar2: 'copy cut paste | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist',
                     // a11y_advanced_options: true,
+                    file_picker_types: 'file image media',
                     file_picker_callback: (callback, value, meta) => {
-                        console.log(meta.filetype);
-                        if (meta.filetype == 'file' || meta.filetype == 'media' || meta.filetype == 'image') {
+                        const input = document.createElement('input');
+                        input.setAttribute('type', 'file');
+                        input.addEventListener('change', e => {
+                            const file = e.target.files[0];
 
-                        }
-                    }
+                            const reader = new FileReader();
+                            reader.addEventListener('load', () => {
+                                /*
+                                  Note: Now we need to register the blob in TinyMCEs image blob
+                                  registry. In the next release this part hopefully won't be
+                                  necessary, as we are looking to handle it internally.
+                                */
+                                const id = 'blobid' + (new Date()).getTime();
+                                const blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                                const base64 = reader.result.split(',')[1];
+                                const blobInfo = blobCache.create(id, file, base64);
+                                blobCache.add(blobInfo);
+
+                                /* call the callback and populate the Title field with the file name */
+                                callback(blobInfo.blobUri(), {
+                                    title: file.name
+                                });
+                            });
+                            reader.readAsDataURL(file);
+                        });
+
+                        input.click();
+
+                        // console.log(meta.filetype);
+                        // if (meta.filetype == 'file' || meta.filetype == 'media' || meta.filetype == 'image') {
+
+                        // }
+                    },
+                    // setup: function(editor) {
+                    //     editor.on('FullscreenStateChanged', function() {
+                    //         console.log('FullscreenStateChanged event fired.');
+                    //         $('.modal-dialog').toggleClass('m-0');
+                    //     });
+                    // }
                 });
 
                 // POST_PAGE
@@ -395,7 +430,7 @@
                     tinyMCE.activeEditor.setContent('');
                     const invalidField = $('.is-invalid');
                     invalidField.each((i, elem) => elem.className = 'form-control');
-                    myDropzone.removeAllFiles(true);
+                    myDropzone.removeAllFiles();
                     $('#btn-savePost').text('Save').prop('disabled', false);
                     $('#btn-draftPost').text('Draft').prop('disabled', false);
                 });
@@ -483,7 +518,6 @@
                     }
 
                     const set = {
-                        post_id: 'post_' + randomString(),
                         title: judul.val(),
                         slug: slug.val(),
                         content: isi,
@@ -501,10 +535,11 @@
                         return;
                     });
 
-                    myDropzone.processQueue();
-                    myDropzone.on('complete', file => {
+                    await myDropzone.processQueue();
+                    await myDropzone.on('success', file => {
+                        const response = jQuery.parseJSON(file.xhr.response);
                         $.post("<?= base_url('post/setPostImage'); ?>", {
-                            filename: file.upload.filename,
+                            file_id: response.file_id,
                             post_id: insertPost.post_id
                         }, () => {
                             toast('success', 'Berhasil disimpan!');

@@ -55,15 +55,21 @@ class ApiService extends BaseController
 
     public function create()
     {
+        helper('text');
         $table = $this->request->getGet('table');
+        $name_id = $table . '_id';
         $model = $this->cekModel($table);
         if (!$model) {
             return $this->failNotFound('Tabel tidak ditemukan, silahkan cek dokumentasi!', 400);
         }
 
         $data = $this->request->getJSON();
+        do {
+            $data->$name_id = random_string('alnum');
+        } while ($model->where($name_id, $data->$name_id)->findAll());
+
         if (!$model->save($data)) {
-            return $this->fail('Error' . $data);
+            return $this->fail('Error' . $model->errors());
         }
         return $this->respondCreated($data, 'Data berhasil ditambahkan');
     }
