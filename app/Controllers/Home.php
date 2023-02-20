@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\EventModel;
 use App\Models\FeedbackModel;
+use App\Models\FileModel;
 use App\Models\PostImageModel;
 use App\Models\PostModel;
 use CodeIgniter\API\ResponseTrait;
@@ -24,6 +25,7 @@ class Home extends BaseController
         $mPost = new PostModel();
         $mPostImage = new PostImageModel();
         $mEvent = new EventModel();
+        $mFile = new FileModel();
 
         $dataPosts = $dataEvents = [];
 
@@ -34,8 +36,9 @@ class Home extends BaseController
         foreach ($dataPost as $row) {
             $href = base_url($row['slug']);
             $images = $mPostImage->where('post_id', $row['post_id'])->findAll(1);
+            $file = $mFile->where('file_id', $images[0]['file_id'])->findAll();
             if ($images) {
-                $bgImage = base_url('assets/images/client/') . $images[0]['filename'];
+                $bgImage = base_url($file[0]['url']);
             } else {
                 $bgImage = base_url('assets/images/brand/posts.png');
             }
