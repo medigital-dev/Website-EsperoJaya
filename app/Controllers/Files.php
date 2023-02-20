@@ -29,7 +29,7 @@ class Files extends BaseController
                 'file_id' => $file_id,
                 'filename' => $fileUpload->getName(),
                 'title' => $fileUpload->getName(),
-                'url' => base_url('assets/uploads/') . '/' . $fileUpload->getName()
+                'url' => 'assets/uploads/' . $fileUpload->getName()
             ];
             if (!$model->save($data)) {
                 return $this->fail('Database Error: ' . $model->errors());
