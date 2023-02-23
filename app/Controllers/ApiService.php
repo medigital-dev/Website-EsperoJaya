@@ -10,14 +10,37 @@ class ApiService extends BaseController
 
     public function index()
     {
-
         $table = $this->request->getGet('table');
         if (!$model = $this->cekModel($table)) {
-            return $this->failNotFound('Table Not Found, please check documentations', 400);;
+            return $this->failNotFound('Table Not Found, please check documentations');;
         }
         $limit = $this->request->getGet('limit');
 
         return $this->respond($model->orderBy('created_at', 'DESC')->findAll($limit == null ? 0 : $limit), 200);
+    }
+
+    public function show($slug = null)
+    {
+        $mPost = new \App\Models\PostModel();
+        $mPage = new \App\Models\PageModel();
+
+        $dataPost = $mPost->where('slug', $slug)->first();
+        $dataPage = $mPage->where('slug', $slug)->first();
+
+        if ($dataPage) {
+            return $this->respond($dataPage);
+        } else if ($dataPost) {
+            return $this->respond($dataPost);
+        }
+
+        $response = [
+            'status' => 404,
+            'code' => 404,
+            'messages' => [
+                'error' => 'Data tidak ditemukan'
+            ]
+        ];
+        return $this->respond($response);
     }
 
     public function cekModel($table)
