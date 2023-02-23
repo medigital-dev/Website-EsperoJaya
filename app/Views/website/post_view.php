@@ -20,7 +20,7 @@
                         foreach ($files as $row) : ?>
                             <?php if ($row['type'] == 'image') : ?>
                                 <div class="carousel-item text-center <?= ($i == 0) ? 'active' : ''; ?>">
-                                    <img class="d-block w-100 img-fluid" src="<?= base_url($row['url']); ?>" alt="<?= $row['alt']; ?>">
+                                    <img class="d-block w-100" src="<?= base_url($row['url']); ?>" alt="<?= $row['alt']; ?>">
                                 </div>
                                 <?php $i++; ?>
                             <?php endif; ?>
@@ -57,7 +57,9 @@
                     <ul class="list-group">
                         <?php if ($row['type'] !== 'image') : ?>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <?= $row['title']; ?>
+                                <a href="<?= base_url($row['url']); ?>" class="text-break">
+                                    <?= $row['title']; ?>
+                                </a>
                                 <a href="<?= base_url($row['url']); ?>" class="badge badge-primary"><i class="fas fa-download"></i></a>
                             </li>
                         <?php endif; ?>

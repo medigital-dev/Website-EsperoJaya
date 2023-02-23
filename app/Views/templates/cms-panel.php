@@ -357,9 +357,9 @@
                     addRemoveLinks: true,
                     thumbnailWidth: 100,
                     thumbnailHeight: 100,
-                    renameFile: file => {
-                        return renameFile(file.name).replace(/ /g, "-");
-                    }
+                    // renameFile: file => {
+                    //     return renameFile(file.name).replace(/ /g, "-");
+                    // }
                 });
 
                 myDropzone.on('error', () => {

@@ -9,18 +9,14 @@ class Files extends BaseController
 {
     use ResponseTrait;
 
-    public function index()
-    {
-        return view('welcome_message');
-    }
-
     public function upload()
     {
         helper('text');
         $model = new FileModel();
         $fileUpload = $this->request->getFile('file');
         if (!$fileUpload->hasMoved()) {
-            $fileUpload->move('assets/uploads');
+            $newFileName = $fileUpload->getRandomName();
+            $fileUpload->move('assets/uploads', $newFileName);
             $mimeType = $fileUpload->getClientMimeType();
             $mimeType = explode('/', $mimeType);
             do {
@@ -29,8 +25,8 @@ class Files extends BaseController
 
             $data = [
                 'file_id' => $file_id,
-                'filename' => $fileUpload->getName(),
-                'title' => $fileUpload->getName(),
+                'filename' => $newFileName,
+                'title' => $fileUpload->getClientName(),
                 'type' => $mimeType[0],
                 'url' => 'assets/uploads/' . $fileUpload->getName()
             ];
