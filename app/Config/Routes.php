@@ -46,6 +46,9 @@ $routes->post('setFeedback', 'Home::setFeedback');
 // API
 $routes->resource('ApiService');
 
+// Blog
+$routes->get('/(:any)', 'Website::route/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

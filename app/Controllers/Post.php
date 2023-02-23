@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\PostImageModel;
+use App\Models\PostFileModel;
 use App\Models\PostModel;
 use CodeIgniter\API\ResponseTrait;
 
@@ -36,7 +36,7 @@ class Post extends BaseController
     public function setPostImage()
     {
         $data = $this->request->getPost();
-        $model = new PostImageModel();
+        $model = new PostFileModel();
         if (!$model->save($data)) {
             return $this->fail('Postingan gagal ditambahkan! ' . $model->errors());
         }

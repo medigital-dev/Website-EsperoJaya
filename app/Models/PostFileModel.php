@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PostImageModel extends Model
+class PostFileModel extends Model
 {
-    protected $table            = 'post_image';
+    protected $table            = 'post_file';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $useSoftDeletes   = true;

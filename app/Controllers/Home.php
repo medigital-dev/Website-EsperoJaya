@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\EventModel;
 use App\Models\FeedbackModel;
 use App\Models\FileModel;
-use App\Models\PostImageModel;
+use App\Models\PostFileModel;
 use App\Models\PostModel;
 use CodeIgniter\API\ResponseTrait;
 
@@ -23,7 +23,7 @@ class Home extends BaseController
     public function index()
     {
         $mPost = new PostModel();
-        $mPostImage = new PostImageModel();
+        $mPostFile = new PostFileModel();
         $mEvent = new EventModel();
         $mFile = new FileModel();
 
@@ -35,10 +35,11 @@ class Home extends BaseController
 
         foreach ($dataPost as $row) {
             $href = base_url($row['slug']);
-            $images = $mPostImage->where('post_id', $row['post_id'])->findAll(1);
-            $file = $mFile->where('file_id', $images[0]['file_id'])->findAll();
-            if ($images) {
-                $bgImage = base_url($file[0]['url']);
+            $mPostFile->join('file', 'post_file.file_id = file.file_id');
+            $mPostFile->where('type', 'image');
+            $sampul = $mPostFile->where('post_id', $row['post_id'])->first();
+            if ($sampul) {
+                $bgImage = base_url($sampul['url']);
             } else {
                 $bgImage = base_url('assets/images/brand/posts.png');
             }
@@ -82,7 +83,7 @@ class Home extends BaseController
                 'feedbacks' => $dataFeedback,
             ]
         ];
-        return view('landing_page', $dataPage);
+        return view('website/homepage', $dataPage);
     }
 
     public function setFeedback()

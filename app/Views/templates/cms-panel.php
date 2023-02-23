@@ -362,7 +362,7 @@
                     }
                 });
 
-                myDropzone.on('canceled', () => {
+                myDropzone.on('error', () => {
                     $('#btn-savePost').text('Save').prop('disabled', false);
                     $('#btn-draftPost').text('Draft').prop('disabled', false);
                 });
@@ -471,36 +471,40 @@
                     }
                 });
 
-                $('#title').keyup(function() {
+                $('#title').keyup(async function() {
                     const key = $(this).val();
                     const string = key.toLowerCase().replace(/ /g, "-").replace(/\//g, "-");
                     $('#slug').val(string);
-                    $.post("<?= base_url('post/cekSlug'); ?>", {
-                        slug: string
-                    }, response => {
-                        if (response.length > 0) {
+                    if (string != '') {
+                        const cekSlug = await fetch("/ApiService/" + string).then(response => response.json());
+                        if (cekSlug.code !== 404) {
                             $('#slug').addClass('is-invalid text-danger');
                             $('.btn-go').prop('disabled', true);
                         } else {
                             $('#slug').removeClass('is-invalid text-danger');
                             $('.btn-go').prop('disabled', false);
                         }
-                    });
+                    } else {
+                        $('#slug').removeClass('is-invalid text-danger');
+                        $('.btn-go').prop('disabled', false);
+                    }
                 });
 
-                $('#slug').keyup(function() {
-                    const slugVal = $(this).val();
-                    $.post("<?= base_url('post/cekSlug'); ?>", {
-                        slug: slugVal
-                    }, response => {
-                        if (response.length > 0) {
-                            $(this).addClass('is-invalid text-danger');
+                $('#slug').keyup(async function() {
+                    const string = $(this).val();
+                    if (string != '') {
+                        const cekSlug = await fetch("/ApiService/" + string).then(response => response.json());
+                        if (cekSlug.code !== 404) {
+                            $('#slug').addClass('is-invalid text-danger');
                             $('.btn-go').prop('disabled', true);
                         } else {
-                            $(this).removeClass('is-invalid text-danger');
+                            $('#slug').removeClass('is-invalid text-danger');
                             $('.btn-go').prop('disabled', false);
                         }
-                    });
+                    } else {
+                        $('#slug').removeClass('is-invalid text-danger');
+                        $('.btn-go').prop('disabled', false);
+                    }
                 });
 
                 $('#btn-savePost').click(async function() {
@@ -542,7 +546,7 @@
                             file_id: response.file_id,
                             post_id: insertPost.post_id
                         }, () => {
-                            toast('success', 'Berhasil disimpan!');
+                            toast('success', 'File berhasil disimpan!');
                         }).fail(err => {
                             console.log(err);
                             return

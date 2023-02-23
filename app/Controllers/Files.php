@@ -21,6 +21,8 @@ class Files extends BaseController
         $fileUpload = $this->request->getFile('file');
         if (!$fileUpload->hasMoved()) {
             $fileUpload->move('assets/uploads');
+            $mimeType = $fileUpload->getClientMimeType();
+            $mimeType = explode('/', $mimeType);
             do {
                 $file_id = random_string('alnum');
             } while ($model->where('file_id', $file_id)->findAll());
@@ -29,6 +31,7 @@ class Files extends BaseController
                 'file_id' => $file_id,
                 'filename' => $fileUpload->getName(),
                 'title' => $fileUpload->getName(),
+                'type' => $mimeType[0],
                 'url' => 'assets/uploads/' . $fileUpload->getName()
             ];
             if (!$model->save($data)) {
