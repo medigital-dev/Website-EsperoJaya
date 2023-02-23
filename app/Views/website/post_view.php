@@ -16,11 +16,13 @@
             <div class="col">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <?php foreach ($files as $row) : ?>
+                        <?php $i = 0;
+                        foreach ($files as $row) : ?>
                             <?php if ($row['type'] == 'image') : ?>
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="<?= base_url($row['url']); ?>" alt="<?= $row['alt']; ?>">
+                                <div class="carousel-item text-center <?= ($i == 0) ? 'active' : ''; ?>">
+                                    <img class="d-block w-100 img-fluid" src="<?= base_url($row['url']); ?>" alt="<?= $row['alt']; ?>">
                                 </div>
+                                <?php $i++; ?>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
