@@ -49,7 +49,7 @@
     </div>
 </section>
 <section>
-    <div class="container py-2">
+    <div class="container mb-4">
         <div class="row">
             <div class="col">
                 <h5>Lampiran:</h5>

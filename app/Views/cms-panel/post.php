@@ -19,27 +19,29 @@
                         <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Clear Selected" id="btn-deselect"><i class="fas fa-eraser"></i></button>
                     </div>
                 </div>
-                <table class="table table-bordered table-hover w-100">
-                    <thead>
-                        <tr class="">
-                            <th class="" style="width: 20px;">No</th>
-                            <th class="">Judul</th>
-                            <th class="">Author</th>
-                            <th class="">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 0;
-                        foreach ($data['posts'] as $row) : ?>
-                            <tr>
-                                <td class="text-center"><?= ++$i; ?></td>
-                                <td><?= $row['title']; ?></td>
-                                <td class="text-center"><?= $row['author']; ?></td>
-                                <td class="text-center"><span class="badge badge-<?= ($row['status'] == 'active') ? 'success' : ''; ?>"><?= $row['status']; ?></span></td>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover w-100">
+                        <thead>
+                            <tr class="">
+                                <th class="" style="width: 20px;">No</th>
+                                <th class="">Judul</th>
+                                <th class="">Author</th>
+                                <th class="">Status</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $i = 0;
+                            foreach ($data['posts'] as $row) : ?>
+                                <tr>
+                                    <td class="text-center"><?= ++$i; ?></td>
+                                    <td><?= $row['title']; ?></td>
+                                    <td class="text-center"><?= $row['author']; ?></td>
+                                    <td class="text-center"><span class="badge badge-<?= ($row['status'] == 'active') ? 'success' : ''; ?>"><?= $row['status']; ?></span></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -47,7 +49,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="modal-formLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fs modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modal-formLabel">Add Post</h5>
