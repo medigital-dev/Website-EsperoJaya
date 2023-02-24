@@ -193,50 +193,6 @@
     </div>
 </div>
 
-<section class="ftco-section" id="info">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 mx-auto text-center">
-                <span class="badge badge-primary badge-pill mb-3">#Info</span>
-                <h3 class="display-3">Informasi terbaru</h3>
-            </div>
-        </div>
-        <div class="row mb-4">
-            <div class="col">
-                <div class="featured-carousel owl-carousel">
-                    <?php foreach ($data['posts'] as $row) : ?>
-                        <div class="item">
-                            <div class="blog-entry">
-                                <a href="<?= $row['href']; ?>" class="block-20 d-flex align-items-start" style="background-image: url(<?= $row['image']; ?>);">
-                                    <div class="meta-date text-center p-2">
-                                        <span class="day"><?= $row['date']->format('d'); ?></span>
-                                        <span class="mos"><?= $row['date']->format('M'); ?></span>
-                                        <span class="yr"><?= $row['date']->format('Y'); ?></span>
-                                    </div>
-                                </a>
-                                <div class="text border border-top-0 p-4">
-                                    <h3 class="heading"><a href="<?= $row['href']; ?>"><?= $row['title']; ?></a></h3>
-                                    <div class="d-flex align-items-center mt-4">
-                                        <p class="mb-0"><a href="<?= $row['href']; ?>" class="btn btn-primary">Read More <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></p>
-                                        <p class="ml-auto meta2 mb-0">
-                                            <span class="mr-2 text-muted">Admin</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8 mx-auto text-center">
-                <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
-            </div>
-        </div>
-    </div>
-</section>
-
 <div class="section features-1" id="ekstra">
     <div class="container">
         <div class="row">
@@ -309,6 +265,50 @@
         </div>
     </div>
 </div>
+
+<section class="ftco-section" id="info">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center">
+                <span class="badge badge-primary badge-pill mb-3">#Info</span>
+                <h3 class="display-3">Informasi terbaru</h3>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="featured-carousel owl-carousel">
+                    <?php foreach ($data['posts'] as $row) : ?>
+                        <div class="item">
+                            <div class="blog-entry">
+                                <a href="<?= $row['href']; ?>" class="block-20 d-flex align-items-start" style="background-image: url(<?= $row['image']; ?>);">
+                                    <div class="meta-date text-center p-2">
+                                        <span class="day"><?= $row['date']->format('d'); ?></span>
+                                        <span class="mos"><?= $row['date']->format('M'); ?></span>
+                                        <span class="yr"><?= $row['date']->format('Y'); ?></span>
+                                    </div>
+                                </a>
+                                <div class="text border border-top-0 p-4">
+                                    <h3 class="heading"><a href="<?= $row['href']; ?>"><?= $row['title']; ?></a></h3>
+                                    <div class="d-flex align-items-center mt-4">
+                                        <p class="mb-0"><a href="<?= $row['href']; ?>" class="btn btn-primary">Read More <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></p>
+                                        <p class="ml-auto meta2 mb-0">
+                                            <span class="mr-2 text-muted">Admin</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center">
+                <a href="#" class="btn btn-sm btn-success">Lihat Selengkapnya</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="section bg-gradient-warning" id="event">
     <div class="container">

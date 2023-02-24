@@ -123,10 +123,13 @@ Coded by www.creative-tim.com
                 <div class="col">
                     <div class="d-flex justify-content-between">
                         <div class="copyright">
-                            &copy; 2023 <a href="<?= base_url(); ?>">SMP Negeri 2 Wonosari</a>.
+                            <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a> &copy; 2023
+                        </div>
+                        <div class="copyright text-center">
+                            Dibuat dan dikembangkan oleh <a href="https://muhsaidlg.my.id" target="_blank">Muhammad Said Latif Ghofari</a>.
                         </div>
                         <div class="copyright">
-                            <a class="text-muted" target="_blank" href="https://medigital.dev/" title="Created and Developed by meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a>
+                            Theme: <a class="text-muted" target="_blank" href="https://www.creative-tim.com/product/argon-design-system">Argon</a>
                         </div>
                     </div>
                 </div>
