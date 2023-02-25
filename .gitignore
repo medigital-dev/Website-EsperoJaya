@@ -134,3 +134,4 @@ nb-configuration.xml
 # Custom
 public/assets/uploads/*
 public/index.php
+db_scema/patch/update.sql
