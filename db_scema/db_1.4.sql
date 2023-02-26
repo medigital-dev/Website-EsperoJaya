@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `website_esperojaya`
 --
-CREATE DATABASE IF NOT EXISTS `website_esperojaya` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `website_esperojaya` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 USE `website_esperojaya`;
 
 -- --------------------------------------------------------
@@ -55,7 +55,7 @@ CREATE TABLE `db_version` (
   `id` int NOT NULL,
   `version` varchar(64) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Truncate table before insert `db_version`
