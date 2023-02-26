@@ -17,22 +17,20 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
         CMS Panel - Website-Esperojaya
     </title>
-    <!-- Favicon -->
     <link href="<?= base_url('assets/images/client/logo.png'); ?>" rel="icon" type="image/png">
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <!-- Icons -->
-    <link href="<?= base_url('plugins/nucleo/css/nucleo.css'); ?>" rel="stylesheet" />
-    <link href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>" rel="stylesheet" />
+    <link href="<?= base_url('plugins/nucleo/css/nucleo.css'); ?>" rel="stylesheet">
+    <link href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('plugins/sweetalert2/css/sweetalert2.css'); ?>">
-    <!-- CSS Files -->
-    <link href="<?= base_url('plugins/argon-dashboard/css/argon-dashboard.css'); ?>" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <link href="<?= base_url('plugins/argon-dashboard/css/argon-dashboard.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css">
+    <link rel="stylesheet" href="<?= base_url('plugins/datatables/css/dataTables.bootstrap4.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('plugins/datatables/css/responsive.bootstrap4.min.css'); ?>">
     <style>
         @media (max-width: 468px) {
             .btn-group {
@@ -343,6 +341,10 @@
         <script src="<?= base_url('plugins/sweetalert2/js/sweetalert2.js'); ?>"></script>
         <script src="https://cdn.tiny.cloud/1/kgsp9unrd3opxilx2phf4dbyldcf07vu3h3d4pjo5etwleck/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
         <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+        <script src="<?= base_url('plugins/datatables/js/jquery.dataTables.min.js'); ?>"></script>
+        <script src="<?= base_url('plugins/datatables/js/dataTables.bootstrap4.min.js'); ?>"></script>
+        <script src="<?= base_url('plugins/datatables/js/dataTables.responsive.min.js'); ?>"></script>
+        <script src="<?= base_url('plugins/datatables/js/responsive.bootstrap4.min.js'); ?>"></script>
         <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
         <script src="<?= base_url('assets/js/functions.js'); ?>"></script>
         <script>
@@ -520,6 +522,15 @@
                 });
 
                 // ANY PAGE
+                $('table').DataTable({
+                    responsive: true,
+                    language: {
+                        paginate: {
+                            previous: '<i class="fas fa-angle-left"></i>',
+                            next: '<i class="fas fa-angle-right"></i>'
+                        }
+                    }
+                })
                 $('tbody tr').click(function() {
                     $(this).toggleClass('table-success');
                 });
