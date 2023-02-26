@@ -119,18 +119,19 @@ Coded by www.creative-tim.com
                 </div>
             </div>
             <hr>
-            <div class="row align-items-center">
-                <div class="col">
-                    <div class="d-flex justify-content-between">
-                        <div class="copyright">
-                            <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a> &copy; 2023
-                        </div>
-                        <div class="copyright text-center">
-                            Dibuat dan dikembangkan oleh <a href="https://muhsaidlg.my.id" target="_blank">Muhammad Said Latif Ghofari</a>.
-                        </div>
-                        <div class="copyright">
-                            Theme: <a class="text-muted" target="_blank" href="https://www.creative-tim.com/product/argon-design-system">Argon</a>
-                        </div>
+            <div class="row align-items-center justify-content-xl-between">
+                <div class="col-xl-2">
+                    <div class="copyright text-center text-muted">
+                        <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a> CMS-Web v1.0.7
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <div class="copyright text-center"> &copy; 2023 - Dibuat dan dikembangkan oleh <a href="https://muhsaidlg.my.id" target="_blank">Muhammad Said Latif Ghofari</a>.
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="copyright text-center">
+                        Theme: <a class="text-muted" target="_blank" href="https://www.creative-tim.com/product/argon-design-system">Argon</a>
                     </div>
                 </div>
             </div>
