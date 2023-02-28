@@ -318,14 +318,18 @@
             <!-- Footer -->
             <footer class="footer">
                 <div class="row align-items-center justify-content-xl-between">
-                    <div class="col-xl-6">
-                        <div class="copyright text-center text-xl-left text-muted">
-                            &copy; 2023 <a href="https://medigital.dev" class="font-weight-bold ml-1" target="_blank">meDigital.dev</a>
+                    <div class="col-xl-2">
+                        <div class="copyright text-center text-muted">
+                            <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a> CMS-Panel v1.0.7
                         </div>
                     </div>
-                    <div class="col-xl-6">
-                        <div class="copyright text-center text-xl-right text-muted">
-                            CMS-Panel v1.3.0
+                    <div class="col-xl-8">
+                        <div class="copyright text-center"> &copy; 2023 - Dibuat dan dikembangkan oleh <a href="https://muhsaidlg.my.id" target="_blank">Muhammad Said Latif Ghofari</a>.
+                        </div>
+                    </div>
+                    <div class="col-xl-2">
+                        <div class="copyright text-center">
+                            Theme: <a class="text-muted" target="_blank" href="https://www.creative-tim.com/product/argon-dashboard-bs4">Argon</a>
                         </div>
                     </div>
                 </div>
@@ -399,6 +403,11 @@
                     myDropzone.removeAllFiles();
                     $('#btn-savePost').text('Save').prop('disabled', false);
                     $('#btn-draftPost').text('Draft').prop('disabled', false);
+                });
+
+                $('.btn-switch').click(function() {
+                    const id = $(this).val();
+                    $.post("<?= base_url('post/toggleActive'); ?>" + '/' + id, response => toast('info', response.messages), 'json').fail(err => console.log(err));
                 });
 
                 $('.btn-closeModal').click(function() {
@@ -511,9 +520,7 @@
                         $.post("<?= base_url('post/setPostImage'); ?>", {
                             file_id: response.file_id,
                             post_id: insertPost.post_id
-                        }, () => {
-                            toast('success', 'File berhasil disimpan!');
-                        }).fail(err => {
+                        }, () => toast('success', 'File berhasil disimpan!')).fail(err => {
                             console.log(err);
                             return
                         });

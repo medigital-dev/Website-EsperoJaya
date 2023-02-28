@@ -12,6 +12,6 @@ class PostModel extends Model
     protected $useSoftDeletes   = true;
     protected $useTimestamps    = true;
     protected $allowedFields    = [
-        'post_id', 'title', 'slug', 'content', 'author', 'is_active'
+        'post_id', 'title', 'slug', 'content', 'author', 'is_active', 'status'
     ];
 }

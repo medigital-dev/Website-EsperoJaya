@@ -10,13 +10,13 @@
                 <div class="btn-toolbar mb-1 py-2" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group shadow mr-2" role="group" aria-label="First group">
                         <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-form"><i class="fas fa-plus-circle"></i></button>
-                        <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-info-circle"></i></button>
-                        <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></button>
-                        <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-trash-alt"></i></button>
                     </div>
                     <div class="btn-group shadow mr-2" role="group" aria-label="Second group">
-                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Select All/Invert Selected" id="btn-select"><i class="fas fa-hand-pointer"></i></button>
-                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Clear Selected" id="btn-deselect"><i class="fas fa-eraser"></i></button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Pilih Semua/Balikkan pilihan" id="btn-select"><i class="fas fa-hand-pointer"></i></button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus pilihan" id="btn-deselect"><i class="fas fa-eraser"></i></button>
+                    </div>
+                    <div class="btn-group shadow mr-2" role="group" aria-label="3-group">
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus terpilih"><i class="fas fa-trash-alt"></i></button>
                     </div>
                 </div>
                 <table class="table table-bordered table-hover w-100">
@@ -26,6 +26,7 @@
                             <th class="">Judul</th>
                             <th class="">Author</th>
                             <th class="">Status</th>
+                            <th class="">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,9 +34,32 @@
                         foreach ($data['posts'] as $row) : ?>
                             <tr>
                                 <td class="text-center"><?= ++$i; ?></td>
-                                <td><?= $row['title']; ?></td>
+                                <td>
+                                    <div class="d-flex flex-column">
+                                        <h5>
+                                            <?= $row['title']; ?>
+                                        </h5>
+                                        <span class="text-muted small">
+                                            <i class="fas fa-history mr-1"></i>
+                                            <?= $row['updated_at']; ?>
+                                        </span>
+                                    </div>
+
+                                </td>
                                 <td class="text-center"><?= $row['author']; ?></td>
-                                <td class="text-center"><span class="badge badge-<?= ($row['status'] == 'active') ? 'success' : ''; ?>"><?= $row['status']; ?></span></td>
+                                <td class="text-center">
+                                    <label class="custom-toggle">
+                                        <input type="checkbox" <?= ($row['status'] == 1) ? 'checked' : ''; ?> class="btn-switch" value="<?= $row['post_id']; ?>">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group shadow" role="group" aria-label="First group">
+                                        <a href="<?= base_url($row['slug']); ?>" class="btn btn-secondary btn-sm" target="_blank"><i class="fas fa-eye"></i></a>
+                                        <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></button>
+                                        <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
