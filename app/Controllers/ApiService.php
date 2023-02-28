@@ -51,7 +51,7 @@ class ApiService extends BaseController
                 break;
 
             case 'postImage':
-                return new \App\Models\PostImageModel();
+                return new \App\Models\PostFileModel();
                 break;
 
             case 'page':
@@ -65,10 +65,6 @@ class ApiService extends BaseController
             case 'feedback':
                 return new \App\Models\FeedbackModel();
                 break;
-
-                // case 'menu':
-                //     return new \App\Models\PostImageModel();
-                //     break;
 
             default:
                 return false;
