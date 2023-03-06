@@ -120,19 +120,24 @@ Coded by www.creative-tim.com
             </div>
             <hr>
             <div class="row align-items-center justify-content-xl-between">
-                <div class="col-xl-2">
+                <div class="col-xl-3">
                     <div class="copyright text-center text-muted">
-                        <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a> CMS-Web v1.0.12
+                        &copy; 2023 CMS-Web v1.0.13
                     </div>
                 </div>
-                <div class="col-xl-8">
-                    <div class="copyright text-center"> &copy; 2023 - Dibuat dan dikembangkan oleh <a href="https://muhsaidlg.my.id" target="_blank">Muhammad Said Latif Ghofari</a>.
+                <div class="col-xl-6">
+                    <div class="copyright text-center">Dibuat dan dikembangkan oleh <a href="https://muhsaidlg.my.id" target="_blank">Muhammad Said Latif Ghofari</a>.
                     </div>
                 </div>
-                <div class="col-xl-2">
+                <div class="col-xl-3">
                     <div class="copyright text-center">
                         Theme: <a class="text-muted" target="_blank" href="https://www.creative-tim.com/product/argon-design-system">Argon</a>
                     </div>
+                </div>
+            </div>
+            <div class="row pt-2 text-center">
+                <div class="col">
+                    <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a>
                 </div>
             </div>
         </div>
