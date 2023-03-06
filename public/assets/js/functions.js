@@ -22,3 +22,9 @@ async function toast(icon, message) {
         title: message
     })
 }
+
+function postStatusSwitch(postid) {
+    $.post('/post/toggleActive/' + postid, response => {
+        toast('success', response.messages);
+    }, 'json').fail(err => Swal.fire('Ajax Error!', '<code>' + err.responseJSON.message + '</code>', 'error'));
+}

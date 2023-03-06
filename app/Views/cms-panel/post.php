@@ -16,13 +16,14 @@
                         <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus pilihan" id="btn-deselect"><i class="fas fa-eraser"></i></button>
                     </div>
                     <div class="btn-group shadow mr-2" role="group" aria-label="3-group">
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus terpilih"><i class="fas fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm" id="btn-trash" data-toggle="tooltip" data-placement="top" title="Hapus terpilih"><i class="fas fa-trash-alt"></i></button>
                     </div>
                 </div>
                 <table class="table table-bordered table-hover w-100">
                     <thead>
                         <tr class="">
                             <th class="" style="width: 20px;">No</th>
+                            <th class="" style="width: 20px;">ID</th>
                             <th class="">Judul</th>
                             <th class="">Author</th>
                             <th class="">Status</th>
@@ -30,38 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 0;
-                        foreach ($data['posts'] as $row) : ?>
-                            <tr>
-                                <td class="text-center"><?= ++$i; ?></td>
-                                <td>
-                                    <div class="d-flex flex-column">
-                                        <h5>
-                                            <?= $row['title']; ?>
-                                        </h5>
-                                        <span class="text-muted small">
-                                            <i class="fas fa-history mr-1"></i>
-                                            <?= $row['updated_at']; ?>
-                                        </span>
-                                    </div>
 
-                                </td>
-                                <td class="text-center"><?= $row['author']; ?></td>
-                                <td class="text-center">
-                                    <label class="custom-toggle">
-                                        <input type="checkbox" <?= ($row['status'] == 1) ? 'checked' : ''; ?> class="btn-switch" value="<?= $row['post_id']; ?>">
-                                        <span class="custom-toggle-slider rounded-circle"></span>
-                                    </label>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group shadow" role="group" aria-label="First group">
-                                        <a href="<?= base_url($row['slug']); ?>" class="btn btn-secondary btn-sm" target="_blank"><i class="fas fa-eye"></i></a>
-                                        <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></button>
-                                        <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-trash-alt"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

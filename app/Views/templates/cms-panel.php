@@ -320,7 +320,7 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-2">
                         <div class="copyright text-center text-muted">
-                            <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a> CMS-Panel v1.0.7
+                            <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a> CMS-Panel v1.3
                         </div>
                     </div>
                     <div class="col-xl-8">
@@ -386,7 +386,7 @@
                     height: 280,
                     resize: false,
                     plugins: 'lists help table link code fullscreen',
-                    toolbar: 'undo redo | fontfamily fontsize | bold italic underline | alignleft aligncenter alignright alignjustify | fullscreen code help',
+                    toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | fullscreen',
                     setup: function(editor) {
                         editor.on('FullscreenStateChanged', function() {
                             $('.modal-dialog').toggleClass('m-0');
@@ -405,9 +405,26 @@
                     $('#btn-draftPost').text('Draft').prop('disabled', false);
                 });
 
-                $('.btn-switch').click(function() {
-                    const id = $(this).val();
-                    $.post("<?= base_url('post/toggleActive'); ?>" + '/' + id, response => toast('info', response.messages), 'json').fail(err => console.log(err));
+                $('#btn-trash').click(function() {
+                    const data = $('.table-success');
+                    Swal.fire({
+                        title: 'Hapus Postingan?',
+                        text: data.length + ' postingan akan dihapus dan dipindahkan ke tempat sampah!',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yakin',
+                        cancelButtonText: 'Batal',
+                        customClass: {
+                            confirmButton: 'bg-success text-white'
+                        },
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            data.each((i, elm) => {
+                                const postid = elm.querySelector('code').innerText;
+                                $.post('/post/deletePost/' + postid, response => toast('success', response.messages), 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
+                            });
+                            tablePost.ajax.reload();
+                        }
+                    });
                 });
 
                 $('.btn-closeModal').click(function() {
@@ -500,8 +517,8 @@
                         title: judul.val(),
                         slug: slug.val(),
                         content: isi,
-                        author: 'admin',
-                        status: 'active',
+                        author: '@mesaidlg',
+                        status: 1,
                     }
                     const insertPost = await fetch("<?= base_url('ApiService?table=post'); ?>", {
                         method: 'POST',
@@ -526,25 +543,52 @@
                         });
                     });
                     $('#modal-form').modal('hide');
+                    tablePost.ajax.reload();
                 });
 
-                // ANY PAGE
-                $('table').DataTable({
+                var tablePost = $('.table').DataTable({
                     responsive: true,
+                    ajax: {
+                        method: 'POST',
+                        url: '/post/getActive',
+                        dataSrc: ''
+                    },
                     language: {
                         paginate: {
                             previous: '<i class="fas fa-angle-left"></i>',
                             next: '<i class="fas fa-angle-right"></i>'
-                        }
-                    }
-                })
-                $('tbody tr').click(function() {
+                        },
+                        // url: "//cdn.datatables.net/plug-ins/1.13.3/i18n/id-ALT.json",
+                    },
+                    columns: [{
+                            data: "no"
+                        },
+                        {
+                            data: "id"
+                        },
+                        {
+                            data: "judul"
+                        },
+                        {
+                            data: "author"
+                        },
+                        {
+                            data: "status"
+                        },
+                        {
+                            data: "action"
+                        },
+                    ]
+                });
+
+                // ANY PAGE
+                $('table tbody').on('click', 'tr', function() {
                     $(this).toggleClass('table-success');
                 });
 
                 $('#btn-select').click(function() {
-                    const data = $('tbody tr');
-                    data.each(function() {
+                    const data = $('table tbody tr.odd,.even');
+                    data.each(function(i, elm) {
                         $(this).toggleClass('table-success');
                     })
                 });
