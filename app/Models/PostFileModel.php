@@ -12,6 +12,6 @@ class PostFileModel extends Model
     protected $useSoftDeletes   = true;
     protected $useTimestamps    = true;
     protected $allowedFields    = [
-        'post_id', 'file_id'
+        'post_id', 'file_id', 'deleted_at'
     ];
 }

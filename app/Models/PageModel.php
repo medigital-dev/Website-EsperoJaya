@@ -12,6 +12,6 @@ class PageModel extends Model
     protected $useSoftDeletes   = true;
     protected $useTimestamps    = true;
     protected $allowedFields    = [
-        'page_id', 'title', 'slug', 'description', 'content'
+        'page_id', 'title', 'slug', 'description', 'content', 'deleted_at'
     ];
 }

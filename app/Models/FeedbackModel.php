@@ -12,6 +12,6 @@ class FeedbackModel extends Model
     protected $useSoftDeletes   = true;
     protected $useTimestamps    = true;
     protected $allowedFields    = [
-        'feedback_id', 'name', 'content', 'is_active'
+        'feedback_id', 'name', 'content', 'is_active', 'deleted_at'
     ];
 }

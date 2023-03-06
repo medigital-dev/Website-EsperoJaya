@@ -12,6 +12,6 @@ class FileModel extends Model
     protected $useSoftDeletes   = true;
     protected $useTimestamps    = true;
     protected $allowedFields    = [
-        'file_id', 'filename', 'alt', 'title', 'url', 'type'
+        'file_id', 'filename', 'alt', 'title', 'url', 'type', 'deleted_at'
     ];
 }

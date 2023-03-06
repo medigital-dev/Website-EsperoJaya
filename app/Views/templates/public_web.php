@@ -122,7 +122,7 @@ Coded by www.creative-tim.com
             <div class="row align-items-center justify-content-xl-between">
                 <div class="col-xl-2">
                     <div class="copyright text-center text-muted">
-                        <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a> CMS-Web v1.0.7
+                        <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a> CMS-Web v1.0.12
                     </div>
                 </div>
                 <div class="col-xl-8">
