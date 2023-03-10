@@ -23,12 +23,12 @@
         CMS Panel - Website-Esperojaya
     </title>
     <link href="<?= base_url('assets/images/client/logo.png'); ?>" rel="icon" type="image/png">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <link href="<?= base_url('plugins/nucleo/css/nucleo.css'); ?>" rel="stylesheet">
-    <link href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <link rel="stylesheet" href="<?= base_url('plugins/nucleo/css/nucleo.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('plugins/sweetalert2/css/sweetalert2.css'); ?>">
-    <link href="<?= base_url('plugins/argon-dashboard/css/argon-dashboard.css'); ?>" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css">
+    <link rel="stylesheet" href="<?= base_url('plugins/argon-dashboard/css/argon-dashboard.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('plugins/dropzone/css/dropzone.min.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?= base_url('plugins/datatables/css/dataTables.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('plugins/datatables/css/responsive.bootstrap4.min.css'); ?>">
     <style>
@@ -320,21 +320,25 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-2">
                         <div class="copyright text-center text-muted">
-                            <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a> CMS-Panel v1.3
+                            CMS-Panel v1.3.0
                         </div>
                     </div>
                     <div class="col-xl-8">
-                        <div class="copyright text-center"> &copy; 2023 - Dibuat dan dikembangkan oleh <a href="https://muhsaidlg.my.id" target="_blank">Muhammad Said Latif Ghofari</a>.
+                        <div class="copyright text-center">&copy; 2023 - Dibuat dan dikembangkan oleh <a href="https://muhsaidlg.my.id" target="_blank">Muhammad Said Latif Ghofari</a>.
                         </div>
                     </div>
                     <div class="col-xl-2">
                         <div class="copyright text-center">
-                            Theme: <a class="text-muted" target="_blank" href="https://www.creative-tim.com/product/argon-dashboard-bs4">Argon</a>
+                            Theme: <a class="text-muted" target="_blank" href="https://www.creative-tim.com/product/argon-design-system">Argon</a>
                         </div>
                     </div>
                 </div>
+                <div class="row pt-2 text-center">
+                    <div class="col">
+                        <a class="text-muted" target="_blank" href="https://medigital.dev/" title="meDigital.dev"><img src="<?= base_url('assets/images/brand/md-dev_shadow.png'); ?>" alt="meDigital.dev" width="30"></a>
+                    </div>
+                </div>
             </footer>
-            </v>
         </div>
 
         <script src="<?= base_url('plugins/jquery/jquery.min.js'); ?>"></script>
@@ -344,7 +348,7 @@
         <script src="<?= base_url('plugins/argon-dashboard/js/argon-dashboard.js?v=1.1.1'); ?>"></script>
         <script src="<?= base_url('plugins/sweetalert2/js/sweetalert2.js'); ?>"></script>
         <script src="https://cdn.tiny.cloud/1/kgsp9unrd3opxilx2phf4dbyldcf07vu3h3d4pjo5etwleck/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+        <script src="<?= base_url('plugins/dropzone/js/dropzone.min.js'); ?>"></script>
         <script src="<?= base_url('plugins/datatables/js/jquery.dataTables.min.js'); ?>"></script>
         <script src="<?= base_url('plugins/datatables/js/dataTables.bootstrap4.min.js'); ?>"></script>
         <script src="<?= base_url('plugins/datatables/js/dataTables.responsive.min.js'); ?>"></script>
@@ -386,7 +390,7 @@
                     height: 280,
                     resize: false,
                     plugins: 'lists help table link code fullscreen',
-                    toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | fullscreen',
+                    toolbar: 'blocks | bold italic underline | alignleft aligncenter alignright alignjustify | fullscreen',
                     setup: function(editor) {
                         editor.on('FullscreenStateChanged', function() {
                             $('.modal-dialog').toggleClass('m-0');
@@ -396,20 +400,26 @@
 
                 // POST_PAGE
                 $('#modal-form').on('hidden.bs.modal', function() {
+                    myDropzone.removeAllFiles();
                     $('#title,#slug').val('');
+                    $('#berkasLampiran').html('');
                     tinyMCE.activeEditor.setContent('');
                     const invalidField = $('.is-invalid');
                     invalidField.each((i, elem) => elem.className = 'form-control');
-                    myDropzone.removeAllFiles();
                     $('#btn-savePost').text('Save').prop('disabled', false);
                     $('#btn-draftPost').text('Draft').prop('disabled', false);
+                    tablePost.ajax.reload();
                 });
 
                 $('#btn-trash').click(function() {
                     const data = $('.table-success');
+                    if (data.length == 0) {
+                        toast('error', 'Pilih postingan yang akan dihapus terlebih dahulu!');
+                        return;
+                    }
                     Swal.fire({
                         title: 'Hapus Postingan?',
-                        text: data.length + ' postingan akan dihapus dan dipindahkan ke tempat sampah!',
+                        text: data.length + ' postingan akan dihapus!',
                         showCancelButton: true,
                         confirmButtonText: 'Yakin',
                         cancelButtonText: 'Batal',
@@ -437,7 +447,7 @@
                     } else {
                         Swal.fire({
                             title: 'Anda yakin?',
-                            text: 'Postingan yang sudah anda ketik tidak akan tersimpan.',
+                            text: 'Postingan tidak akan tersimpan.',
                             showCancelButton: true,
                             confirmButtonText: 'Yakin',
                             cancelButtonText: 'Batal',
@@ -504,6 +514,7 @@
                     $(this).html('<i class="fas fa-fan fa-spin"></i>').prop('disabled', true);
                     const judul = $('#title');
                     const slug = $('#slug');
+                    const idPost = $('#idPost');
                     const isi = tinyMCE.activeEditor.getContent();
 
                     if (judul.val() == '' && slug.val() == '') {
@@ -513,41 +524,45 @@
                         return;
                     }
 
-                    const set = {
+                    let set = {
                         title: judul.val(),
                         slug: slug.val(),
                         content: isi,
                         author: '@mesaidlg',
                         status: 1,
                     }
-                    const insertPost = await fetch("<?= base_url('ApiService?table=post'); ?>", {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(set)
-                    }).then(response => response.json()).catch(err => {
-                        console.log(err);
-                        return;
-                    });
 
-                    await myDropzone.processQueue();
-                    await myDropzone.on('success', file => {
-                        const response = jQuery.parseJSON(file.xhr.response);
-                        $.post("<?= base_url('post/setPostImage'); ?>", {
-                            file_id: response.file_id,
-                            post_id: insertPost.post_id
-                        }, () => toast('success', 'File berhasil disimpan!')).fail(err => {
-                            console.log(err);
-                            return
+                    if (idPost.val() != '') {
+                        set.id = idPost.val();
+                    }
+
+                    $.post('/post/set', set, response => {
+                        myDropzone.processQueue();
+                        myDropzone.on('success', file => {
+                            const responseFile = jQuery.parseJSON(file.xhr.response);
+                            $.post("<?= base_url('post/setPostImage'); ?>", {
+                                file_id: responseFile.file_id,
+                                post_id: response.result.post_id
+                            }, () => toast('success', 'File berhasil disimpan!')).fail(err => {
+                                console.log(err);
+                                return
+                            });
                         });
+                        $('#modal-form').modal('hide');
+                    }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
+                    myDropzone.on('complete', () => {
+                        myDropzone.removeAllFiles();
+                        tablePost.ajax.reload()
                     });
-                    $('#modal-form').modal('hide');
-                    tablePost.ajax.reload();
                 });
 
                 var tablePost = $('.table').DataTable({
                     responsive: true,
+                    lengthMenu: [
+                        [5, 10, 25, 50, -1],
+                        [5, 10, 25, 50, 'All']
+                    ],
+                    pagingType: 'full_numbers',
                     ajax: {
                         method: 'POST',
                         url: '/post/getActive',
@@ -555,30 +570,35 @@
                     },
                     language: {
                         paginate: {
+                            first: '<i class="fas fa-angle-double-left"></i>',
+                            last: '<i class="fas fa-angle-double-right"></i>',
                             previous: '<i class="fas fa-angle-left"></i>',
                             next: '<i class="fas fa-angle-right"></i>'
                         },
-                        // url: "//cdn.datatables.net/plug-ins/1.13.3/i18n/id-ALT.json",
                     },
+                    columnDefs: [{
+                        className: "text-center",
+                        targets: [0, 1, 3, 4, 5]
+                    }, {
+                        orderable: false,
+                        targets: [1, 4, 5]
+                    }, {
+                        searchable: false,
+                        targets: [0, 1, 4, 5]
+                    }],
                     columns: [{
-                            data: "no"
-                        },
-                        {
-                            data: "id"
-                        },
-                        {
-                            data: "judul"
-                        },
-                        {
-                            data: "author"
-                        },
-                        {
-                            data: "status"
-                        },
-                        {
-                            data: "action"
-                        },
-                    ]
+                        data: "no"
+                    }, {
+                        data: "id"
+                    }, {
+                        data: "judul"
+                    }, {
+                        data: "author"
+                    }, {
+                        data: "status"
+                    }, {
+                        data: "action"
+                    }, ]
                 });
 
                 // ANY PAGE

@@ -83,9 +83,11 @@ class ApiService extends BaseController
         }
 
         $data = $this->request->getJSON();
-        do {
-            $data->$name_id = random_string('alnum');
-        } while ($model->where($name_id, $data->$name_id)->findAll());
+        if (!$data->id) {
+            do {
+                $data->$name_id = random_string('alnum');
+            } while ($model->where($name_id, $data->$name_id)->findAll());
+        }
 
         if (!$model->save($data)) {
             return $this->fail('Error' . $model->errors());

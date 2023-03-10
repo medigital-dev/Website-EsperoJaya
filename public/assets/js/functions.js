@@ -14,7 +14,7 @@ async function toast(icon, message) {
         toast: true,
         position: 'top-right',
         showConfirmButton: false,
-        timer: 1500,
+        timer: 3000,
         timerProgressBar: true
     })
     await Toast.fire({
@@ -27,4 +27,46 @@ function postStatusSwitch(postid) {
     $.post('/post/toggleActive/' + postid, response => {
         toast('success', response.messages);
     }, 'json').fail(err => Swal.fire('Ajax Error!', '<code>' + err.responseJSON.message + '</code>', 'error'));
+}
+
+function hapusBerkasLampiran(id) {
+    Swal.fire({
+        title: 'Hapus File ini?',
+        text: 'File akan dihapus permanen.',
+        showCancelButton: true,
+        confirmButtonText: 'Yakin',
+        cancelButtonText: 'Batal',
+        customClass: {
+            confirmButton: 'bg-success text-white'
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const elm = $('#' + id);
+            elm.remove();
+            $.post('/post/removePostFile/' + id, response => {
+                toast('success', response.messages);
+                const postId = response.result.data.post_id;
+                $.post('/post/get/' + postId, response => $('#jumlahBerkasLampiran').text('(' + response.result.files.length + ')')).fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
+            }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
+        }
+    });
+}
+
+function editPost(id) {
+    const elmBerkas = '<div class="accordion" id="accordionExample"><div class="card"><div class="card-header" id="headingThree"><h2 class="mb-0"><button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">File lampiran <span id="jumlahBerkasLampiran"></span></button></h2></div><div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample"><div class="card-body"><ul class="list-group" id="fileList"></ul></div></div></div></div>';
+    $('#modal-form').modal('show');
+    $.post('/post/get/' + id, response => {
+        const listFiles = response.result.files;
+        const post = response.result.dataPost;
+        $('#berkasLampiran').html(elmBerkas);
+        $('#title').val(post.title);
+        $('#slug').val(post.slug);
+        $('#idPost').val(post.id);
+        tinyMCE.activeEditor.setContent(post.content);
+        $('#jumlahBerkasLampiran').text('(' + listFiles.length + ')');
+        listFiles.forEach((val, i) => {
+            const elmListFiles = '<li id="' + val.file_id + '" class="list-group-item d-flex justify-content-between align-items-center fade show"><div><h5 class="m-0 p-0 w-100" id="judulBerkasLampiran">' + val.title + '</h5><span class="small text-muted" id="keteranganBerkas">' + val.type + ' | ' + val.size + '</span></div><div class="btn-group" role="group" aria-label="Basic example"><a target="_blank" href="/' + val.url + '" id="downloadBerkasLampiran" class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i></a><button type="button" class="btn btn-sm btn-outline-danger" onclick="hapusBerkasLampiran(`' + val.file_id + '`);"><i class="fas fa-trash"></i></button></div></li>';
+            $('#fileList').after(elmListFiles);
+        });
+    }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
 }

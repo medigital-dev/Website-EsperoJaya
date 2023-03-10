@@ -9,11 +9,13 @@ use CodeIgniter\API\ResponseTrait;
 class Post extends BaseController
 {
     protected $mPost;
+    protected $mPostFile;
     use ResponseTrait;
 
     public function __construct()
     {
         $this->mPost = new PostModel();
+        $this->mPostFile = new PostFileModel();
     }
 
     public function index()
@@ -36,18 +38,21 @@ class Post extends BaseController
     public function setPostImage()
     {
         $data = $this->request->getPost();
-        $model = new PostFileModel();
-        if (!$model->save($data)) {
-            return $this->fail('Postingan gagal ditambahkan! ' . $model->errors());
+        if (!$this->mPostFile->save($data)) {
+            return $this->fail('Postingan gagal ditambahkan! ' . $this->mPostFile->errors());
         }
     }
 
     public function set()
     {
-        helper('text');
-        $postId = random_string('alnum');
         $data = $this->request->getPost();
-        $data['post_id'] = $postId;
+        if (!isset($data['id'])) {
+            helper('text');
+            do {
+                $data['post_id'] = random_string('alnum');
+            } while ($this->mPost->where('post_id', $data['post_id'])->findAll());
+        }
+
         if (!$this->mPost->save($data)) {
             return $this->fail('Postingan gagal ditambahkan! ' . $this->mPost->errors());
         }
@@ -102,26 +107,69 @@ class Post extends BaseController
 
     public function getActive()
     {
-        $dataPost = $this->mPost->findAll();
+        $dataPost = $this->mPost->orderBy('created_at', 'DESC')->findAll();
         $send = [];
         $i = 1;
         foreach ($dataPost as $row) {
+            $files = $this->mPostFile->where('post_id', $row['post_id'])->findAll();
             $data = [
                 'no' => $i,
                 'id' => '<code>' . $row['post_id'] . '</code>',
-                'judul' => '<h5>' . $row['title'] . '</h5><span class="text-muted small"><i class="fas fa-history mr-1"></i>' . date_create_from_format('Y-m-d H:i:s', $row['updated_at'])->format('d-m-Y') . '</span>',
+                'judul' => '<h5>' . $row['title'] . '</h5>
+                <span class="badge badge-primary" title="Terakhir diperbaharui"><i class="fas fa-history mr-1"></i>' . date_create_from_format('Y-m-d H:i:s', $row['updated_at'])->format('d-m-Y') . '</span>
+                <span class="badge badge-success" title="' . count($files) . ' Lampiran"><i class="fas fa-file mr-1"></i>' . count($files) . '</span>
+                ',
                 'author' => $row['author'],
                 'status' => '<label class="custom-toggle"><input type="checkbox" ' . ($row['status'] == 1 ? 'checked' : '') . ' class="btn-switch" value="' . $row['post_id'] . '" onchange="postStatusSwitch(`' . $row['post_id'] . '`)"><span class="custom-toggle-slider rounded-circle btn-switch"></span></label>',
                 'action' => '
                 <div class="btn-group shadow" role="group" aria-label="First group">
                     <a href="' . $row['slug'] . '" class="btn btn-secondary btn-sm" title="Lihat postingan" target="_blank"><i class="fas fa-eye"></i></a>
-                    <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></button>
-                </div>
-                '
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="editPost(`' . $row['post_id'] . '`)"><i class="fas fa-edit"></i></button>
+                </div>'
             ];
             array_push($send, $data);
             $i++;
         }
         return $this->respond($send);
+    }
+
+    public function get($postid)
+    {
+        $dataPost = $this->mPost->where('post_id', $postid)->first();
+        if (!$dataPost) {
+            return $this->failNotFound('Postingan tidak ditemukan!');
+        }
+        $this->mPostFile->join('file', 'post_file.file_id = file.file_id');
+        $files = $this->mPostFile->where('post_id', $postid)->findAll();
+
+        $response = [
+            'status' => 200,
+            'code' => '',
+            'messages' => 'Data ditemukan!',
+            'result' => [
+                'dataPost' => $dataPost,
+                'files' => $files
+            ]
+        ];
+        return $this->respond($response);
+    }
+
+    public function removePostFile($id)
+    {
+        if (!$dataFile = $this->mPostFile->where('file_id', $id)->first()) {
+            return $this->failNotFound('File tidak ditemukan!');
+        }
+        if (!$this->mPostFile->where('file_id', $id)->delete()) {
+            return $this->fail('Error: ' . $this->mPostFile->errors());
+        }
+        $response = [
+            'status' => 200,
+            'code' => '',
+            'messages' => 'File berhasil dihapus.',
+            'result' => [
+                'data' => $dataFile
+            ]
+        ];
+        return $this->respond($response);
     }
 }

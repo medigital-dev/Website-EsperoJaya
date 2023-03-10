@@ -30,9 +30,7 @@
                             <th class="">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
-
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>
@@ -57,12 +55,10 @@
                             <form class="dropzone" id="dropzone">
                                 <div class="dz-message" data-dz-message><span>Klik/taruh file disini<br>(Sekali upload maks 10 File / @ 2Mb)</span></div>
                             </form>
-                            <!-- <div id="dropzone" class="dropzone">
-                                <div class="dz-message" data-dz-message><span>Klik/taruh file disini<br>(Sekali upload maks 10 File / @ 2Mb)</span></div>
-                            </div> -->
                         </div>
                     </div>
                     <div class="col-lg-8">
+                        <input type="hidden" name="id" id="idPost">
                         <div class="form-group">
                             <label for="title">Judul</label>
                             <input type="text" class="form-control" name="title" id="title">
@@ -85,13 +81,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12" id="berkasLampiran">
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger btn-sm btn-closeModal">Close</button>
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <button type="button" class="btn btn-outline-success btn-sm btn-go" id="btn-draftPost">Draft</button>
-                    <button type="button" class="btn btn-success btn-sm btn-go" id="btn-savePost">Simpan</button>
-                </div>
+                <button type="button" class="btn btn-outline-danger btn-sm btn-closeModal">Tutup</button>
+                <button type="button" class="btn btn-success btn-sm btn-go" id="btn-savePost">Simpan</button>
             </div>
         </div>
     </div>
