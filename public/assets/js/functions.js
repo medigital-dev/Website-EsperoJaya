@@ -65,7 +65,7 @@ function editPost(id) {
         tinyMCE.activeEditor.setContent(post.content);
         $('#jumlahBerkasLampiran').text('(' + listFiles.length + ')');
         listFiles.forEach((val, i) => {
-            const elmListFiles = '<li id="' + val.file_id + '" class="list-group-item d-flex justify-content-between align-items-center fade show"><div><h5 class="m-0 p-0 w-100" id="judulBerkasLampiran">' + val.title + '</h5><span class="small text-muted" id="keteranganBerkas">' + val.type + ' | ' + val.size + '</span></div><div class="btn-group" role="group" aria-label="Basic example"><a target="_blank" href="/' + val.url + '" id="downloadBerkasLampiran" class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i></a><button type="button" class="btn btn-sm btn-outline-danger" onclick="hapusBerkasLampiran(`' + val.file_id + '`);"><i class="fas fa-trash"></i></button></div></li>';
+            const elmListFiles = '<li id="' + val.file_id + '" class="list-group-item d-flex justify-content-between align-items-center fade show"><div><h5 class="m-0 p-0 w-100" id="judulBerkasLampiran">' + val.title + '</h5><span class="small text-muted" id="keteranganBerkas">' + val.size + ' | ' + val.type + '</span></div><div class="btn-group" role="group" aria-label="Basic example"><a target="_blank" href="/' + val.url + '" id="downloadBerkasLampiran" class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i></a><button type="button" class="btn btn-sm btn-outline-danger" onclick="hapusBerkasLampiran(`' + val.file_id + '`);"><i class="fas fa-trash"></i></button></div></li>';
             $('#fileList').after(elmListFiles);
         });
     }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));

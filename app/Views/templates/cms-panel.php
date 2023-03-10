@@ -320,7 +320,7 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-2">
                         <div class="copyright text-center text-muted">
-                            CMS-Panel v1.3.0
+                            CMS-Panel v1.3.1
                         </div>
                     </div>
                     <div class="col-xl-8">
@@ -401,7 +401,7 @@
                 // POST_PAGE
                 $('#modal-form').on('hidden.bs.modal', function() {
                     myDropzone.removeAllFiles();
-                    $('#title,#slug').val('');
+                    $('#title,#slug,#idPost').val('');
                     $('#berkasLampiran').html('');
                     tinyMCE.activeEditor.setContent('');
                     const invalidField = $('.is-invalid');
