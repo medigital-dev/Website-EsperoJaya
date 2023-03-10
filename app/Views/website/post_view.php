@@ -57,9 +57,12 @@
                     <ul class="list-group">
                         <?php if ($row['type'] !== 'image') : ?>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <a href="<?= base_url($row['url']); ?>" class="text-break">
-                                    <?= $row['title']; ?>
-                                </a>
+                                <div class="d-flex flex-column">
+                                    <a href="<?= base_url($row['url']); ?>" class="text-break">
+                                        <?= $row['title']; ?>
+                                    </a>
+                                    <span class="small text-muted"><?= $row['size'] . ' | ' . $row['type']; ?></span>
+                                </div>
                                 <a href="<?= base_url($row['url']); ?>" class="badge badge-primary"><i class="fas fa-download"></i></a>
                             </li>
                         <?php endif; ?>

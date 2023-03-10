@@ -122,7 +122,7 @@ Coded by www.creative-tim.com
             <div class="row align-items-center justify-content-xl-between">
                 <div class="col-xl-3">
                     <div class="copyright text-center text-muted">
-                        &copy; 2023 CMS-Web v1.0.13
+                        &copy; 2023 CMS-Web v1.0.14
                     </div>
                 </div>
                 <div class="col-xl-6">
