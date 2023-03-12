@@ -70,3 +70,23 @@ function editPost(id) {
         });
     }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
 }
+
+function deletePost(id) {
+    Swal.fire({
+        title: 'Hapus Postingan ini?',
+        text: 'Postingan akan dihapus permanen.',
+        showCancelButton: true,
+        confirmButtonText: 'Yakin',
+        cancelButtonText: 'Batal',
+        customClass: {
+            confirmButton: 'bg-success text-white'
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.post('/post/deletePost/' + id, response => {
+                toast('success', response.messages);
+                $('.table').DataTable().ajax.reload();
+            }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
+        }
+    });
+}

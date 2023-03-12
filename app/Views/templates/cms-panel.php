@@ -320,7 +320,7 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-2">
                         <div class="copyright text-center text-muted">
-                            CMS-Panel v1.3.1
+                            CMS-Panel v1.3.2
                         </div>
                     </div>
                     <div class="col-xl-8">
@@ -390,7 +390,7 @@
                     height: 280,
                     resize: false,
                     plugins: 'lists help table link code fullscreen',
-                    toolbar: 'blocks | bold italic underline | alignleft aligncenter alignright alignjustify | fullscreen',
+                    toolbar: 'fullscreen | blocks | bold italic underline align | indent bullist numlist',
                     setup: function(editor) {
                         editor.on('FullscreenStateChanged', function() {
                             $('.modal-dialog').toggleClass('m-0');
@@ -478,14 +478,15 @@
                     const string = key.toLowerCase().replace(/ /g, "-").replace(/\//g, "-");
                     $('#slug').val(string);
                     if (string != '') {
-                        const cekSlug = await fetch("/ApiService/" + string).then(response => response.json());
-                        if (cekSlug.code !== 404) {
-                            $('#slug').addClass('is-invalid text-danger');
-                            $('.btn-go').prop('disabled', true);
-                        } else {
-                            $('#slug').removeClass('is-invalid text-danger');
-                            $('.btn-go').prop('disabled', false);
-                        }
+                        $.post('/post/cekSlug/' + string, response => {
+                            if (response.code !== 404) {
+                                $('#slug').addClass('is-invalid text-danger');
+                                $('.btn-go').prop('disabled', true);
+                            } else {
+                                $('#slug').removeClass('is-invalid text-danger');
+                                $('.btn-go').prop('disabled', false);
+                            }
+                        }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
                     } else {
                         $('#slug').removeClass('is-invalid text-danger');
                         $('.btn-go').prop('disabled', false);
@@ -495,14 +496,15 @@
                 $('#slug').keyup(async function() {
                     const string = $(this).val();
                     if (string != '') {
-                        const cekSlug = await fetch("/ApiService/" + string).then(response => response.json());
-                        if (cekSlug.code !== 404) {
-                            $('#slug').addClass('is-invalid text-danger');
-                            $('.btn-go').prop('disabled', true);
-                        } else {
-                            $('#slug').removeClass('is-invalid text-danger');
-                            $('.btn-go').prop('disabled', false);
-                        }
+                        $.post('/post/cekSlug/' + string, response => {
+                            if (response.code !== 404) {
+                                $('#slug').addClass('is-invalid text-danger');
+                                $('.btn-go').prop('disabled', true);
+                            } else {
+                                $('#slug').removeClass('is-invalid text-danger');
+                                $('.btn-go').prop('disabled', false);
+                            }
+                        }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
                     } else {
                         $('#slug').removeClass('is-invalid text-danger');
                         $('.btn-go').prop('disabled', false);

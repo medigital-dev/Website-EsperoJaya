@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\PageModel;
 use App\Models\PostFileModel;
 use App\Models\PostModel;
 use CodeIgniter\API\ResponseTrait;
@@ -29,10 +30,33 @@ class Post extends BaseController
         return view('cms-panel/post', $dataPage);
     }
 
-    public function cekSlug()
+    public function cekSlug($slug)
     {
-        $slug = $this->request->getVar('slug');
-        return $this->respond($this->mPost->where('slug', $slug)->findAll());
+        $mPage = new PageModel();
+        $dataPost = $this->mPost->where('slug', $slug)->first();
+        $dataPage = $mPage->where('slug', $slug)->first();
+        $response = [
+            'status' => 200,
+            'code' => 200,
+            'message' => 'Data ditemukan.',
+        ];
+
+        if ($dataPage) {
+            $response['result'] = $dataPage;
+            return $this->respond($response);
+        } else if ($dataPost) {
+            $response['result'] = $dataPost;
+            return $this->respond($response);
+        }
+
+        $response = [
+            'status' => 404,
+            'code' => 404,
+            'messages' => [
+                'error' => 'Data tidak ditemukan'
+            ]
+        ];
+        return $this->respond($response);
     }
 
     public function setPostImage()
@@ -116,7 +140,7 @@ class Post extends BaseController
                 'no' => $i,
                 'id' => '<code>' . $row['post_id'] . '</code>',
                 'judul' => '<h5>' . $row['title'] . '</h5>
-                <span class="badge badge-primary" title="Terakhir diperbaharui"><i class="fas fa-history mr-1"></i>' . date_create_from_format('Y-m-d H:i:s', $row['updated_at'])->format('d-m-Y') . '</span>
+                <span class="badge badge-primary" title="Terakhir diperbaharui"><i class="fas fa-history mr-1"></i>' . date_create_from_format('Y-m-d H:i:s', $row['updated_at'])->format('d-m-Y H:i:s') . '</span>
                 <span class="badge badge-success" title="' . count($files) . ' Lampiran"><i class="fas fa-file mr-1"></i>' . count($files) . '</span>
                 ',
                 'author' => $row['author'],
@@ -125,6 +149,7 @@ class Post extends BaseController
                 <div class="btn-group shadow" role="group" aria-label="First group">
                     <a href="' . $row['slug'] . '" class="btn btn-secondary btn-sm" title="Lihat postingan" target="_blank"><i class="fas fa-eye"></i></a>
                     <button type="button" class="btn btn-secondary btn-sm" onclick="editPost(`' . $row['post_id'] . '`)"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deletePost(`' . $row['post_id'] . '`)"><i class="far fa-trash-alt"></i></button>
                 </div>'
             ];
             array_push($send, $data);
