@@ -9,7 +9,7 @@
             <div class="card-body">
                 <div class="btn-toolbar mb-1 py-2" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group shadow mr-2" role="group" aria-label="First group">
-                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-form"><i class="fas fa-plus-circle"></i></button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-form" title="Tambah postingan baru"><i class="fas fa-plus-circle"></i></button>
                     </div>
                     <div class="btn-group shadow mr-2" role="group" aria-label="Second group">
                         <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Pilih Semua/Balikkan pilihan" id="btn-select"><i class="fas fa-hand-pointer"></i></button>
@@ -19,15 +19,15 @@
                         <button type="button" class="btn btn-danger btn-sm" id="btn-trash" data-toggle="tooltip" data-placement="top" title="Hapus terpilih"><i class="fas fa-trash-alt"></i></button>
                     </div>
                 </div>
-                <table class="table table-bordered table-hover w-100">
+                <table class="table table-bordered table-hover w-100" id="tableDataPost">
                     <thead>
-                        <tr class="">
-                            <th class="" style="width: 20px;">No</th>
-                            <th class="" style="width: 20px;">ID</th>
-                            <th class="">Judul</th>
-                            <th class="">Author</th>
-                            <th class="">Status</th>
-                            <th class="">Aksi</th>
+                        <tr>
+                            <th style="width: 20px;">No</th>
+                            <th style="width: 20px;">ID</th>
+                            <th>Judul</th>
+                            <th>Author</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -42,7 +42,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modal-formLabel">Add Post</h5>
+                <h5 class="modal-title" id="modal-formLabel">Add/Edit Postingan</h5>
                 <button type="button" class="close btn-closeModal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

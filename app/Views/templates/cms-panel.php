@@ -320,7 +320,7 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-2">
                         <div class="copyright text-center text-muted">
-                            CMS-Panel v1.3.2
+                            CMS-Panel v1.3.3
                         </div>
                     </div>
                     <div class="col-xl-8">
@@ -389,8 +389,8 @@
                     width: '100%',
                     height: 280,
                     resize: false,
-                    plugins: 'lists help table link code fullscreen',
-                    toolbar: 'fullscreen | blocks | bold italic underline align | indent bullist numlist',
+                    plugins: 'lists help table link code fullscreen media image',
+                    toolbar: 'fullscreen | blocks | bold italic underline align | bullist numlist',
                     setup: function(editor) {
                         editor.on('FullscreenStateChanged', function() {
                             $('.modal-dialog').toggleClass('m-0');
@@ -408,7 +408,7 @@
                     invalidField.each((i, elem) => elem.className = 'form-control');
                     $('#btn-savePost').text('Save').prop('disabled', false);
                     $('#btn-draftPost').text('Draft').prop('disabled', false);
-                    tablePost.ajax.reload();
+                    tablePost.ajax.reload(null, false);
                 });
 
                 $('#btn-trash').click(function() {
@@ -432,7 +432,7 @@
                                 const postid = elm.querySelector('code').innerText;
                                 $.post('/post/deletePost/' + postid, response => toast('success', response.messages), 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
                             });
-                            tablePost.ajax.reload();
+                            tablePost.ajax.reload(null, false);
                         }
                     });
                 });
@@ -554,11 +554,11 @@
                     }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
                     myDropzone.on('complete', () => {
                         myDropzone.removeAllFiles();
-                        tablePost.ajax.reload()
+                        tablePost.ajax.reload(null, false)
                     });
                 });
 
-                var tablePost = $('.table').DataTable({
+                var tablePost = $('#tableDataPost').DataTable({
                     responsive: true,
                     lengthMenu: [
                         [5, 10, 25, 50, -1],
@@ -571,12 +571,7 @@
                         dataSrc: ''
                     },
                     language: {
-                        paginate: {
-                            first: '<i class="fas fa-angle-double-left"></i>',
-                            last: '<i class="fas fa-angle-double-right"></i>',
-                            previous: '<i class="fas fa-angle-left"></i>',
-                            next: '<i class="fas fa-angle-right"></i>'
-                        },
+                        url: '/plugins/datatables/language/id.json',
                     },
                     columnDefs: [{
                         className: "text-center",

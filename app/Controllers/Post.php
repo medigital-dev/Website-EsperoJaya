@@ -148,8 +148,9 @@ class Post extends BaseController
                 'action' => '
                 <div class="btn-group shadow" role="group" aria-label="First group">
                     <a href="' . $row['slug'] . '" class="btn btn-secondary btn-sm" title="Lihat postingan" target="_blank"><i class="fas fa-eye"></i></a>
-                    <button type="button" class="btn btn-secondary btn-sm" onclick="editPost(`' . $row['post_id'] . '`)"><i class="fas fa-edit"></i></button>
-                    <button type="button" class="btn btn-danger btn-sm" onclick="deletePost(`' . $row['post_id'] . '`)"><i class="far fa-trash-alt"></i></button>
+                    <button class="btn btn-secondary btn-sm" title="Copy link ke clipboard" onclick="copyToClipboard(`' . $row['post_id'] . '`,`' . base_url() . '`)"><i class="fas fa-copy"></i></button>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="editPost(`' . $row['post_id'] . '`)" title="Edit postingan ini"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deletePost(`' . $row['post_id'] . '`)" title="Hapus postingan ini"><i class="fas fa-trash"></i></button>
                 </div>'
             ];
             array_push($send, $data);

@@ -85,8 +85,20 @@ function deletePost(id) {
         if (result.isConfirmed) {
             $.post('/post/deletePost/' + id, response => {
                 toast('success', response.messages);
-                $('.table').DataTable().ajax.reload();
+                $('#tableDataPost').DataTable().ajax.reload(null, false);
             }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
         }
     });
+}
+
+function copyToClipboard(id, base_url) {
+    $.post('/post/get/' + id, response => {
+        const dataPost = response.result.dataPost;
+        var temp = '<input type="text" id="' + dataPost.post_id + '" value="' + base_url + '/' + dataPost.slug + '">';
+        $('body').append(temp);
+        $(`#${dataPost.post_id}`).select();
+        document.execCommand('copy');
+        $(`#${dataPost.post_id}`).remove();
+        toast('info', 'Link url telah dicopy!');
+    }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
 }
