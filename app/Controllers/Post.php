@@ -198,4 +198,69 @@ class Post extends BaseController
         ];
         return $this->respond($response);
     }
+
+    public function getTrash()
+    {
+        $data = $this->mPost->orderBy('deleted_at', 'DESC')->onlyDeleted()->findAll();
+        $send = [];
+        $i = 1;
+        foreach ($data as $row) {
+            $tempData = [
+                'no' => $i++,
+                'id' => '<code>' . $row['post_id'] . '</code>',
+                'judul' => $row['title'],
+                'author' => $row['author'],
+                'deleted_at' => date_create_from_format('Y-m-d H:i:s', $row['deleted_at'])->format('d-m-Y H:i:s'),
+                'action' => '
+                <div class="btn-group shadow" role="group" aria-label="First group">
+                    <button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Aktifkan postingan" onclick="restorePost(`' . $row['post_id'] . '`)"><i class="fas fa-trash-restore"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" id="btn-trash" data-toggle="tooltip" data-placement="top" title="Hapus permanen" onclick="purgeDeletePost(`' . $row['post_id'] . '`)"><i class="fas fa-eraser"></i></button>    
+                </div>'
+            ];
+            array_push($send, $tempData);
+        }
+        return $this->respond($send);
+    }
+
+    public function restoreDeleted($id)
+    {
+        $dataPost = $this->mPost->where('post_id', $id)->onlyDeleted();
+        if (!$dataPost) {
+            return $this->failNotFound('Postingan tidak ditemukan!');
+        }
+
+        if (!$this->mPost->where('post_id', $id)->set('deleted_at', null)->update()) {
+            return $this->fail('Postingan gagal diaktifkan kembali! ' . $this->mPost->errors());
+        }
+
+        $response = [
+            'status' => 200,
+            'code' => '',
+            'messages' => 'Postingan berhasil diaktifkan!',
+            'result' => $dataPost
+        ];
+        return $this->respond($response);
+    }
+
+    public function purgeDelete($id)
+    {
+        $dataPost = $this->mPost->where('post_id', $id)->onlyDeleted();
+        if (!$dataPost) {
+            return $this->failNotFound('Postingan tidak ditemukan!');
+        }
+
+        if (!$this->mPost->where('post_id', $id)->purgeDeleted()) {
+            return $this->fail('Postingan gagal dihapus permanen! ' . $this->mPost->errors());
+        }
+
+        $this->mPostFile->where('post_id', $id)->purgeDeleted();
+
+        $response = [
+            'status' => 200,
+            'code' => '',
+            'messages' => 'Postingan berhasil dihapus permanen!',
+            'result' => $dataPost
+        ];
+        return $this->respond($response);
+    }
 }

@@ -74,7 +74,7 @@ function editPost(id) {
 function deletePost(id) {
     Swal.fire({
         title: 'Hapus Postingan ini?',
-        text: 'Postingan akan dihapus permanen.',
+        text: 'Postingan akan dihapus.',
         showCancelButton: true,
         confirmButtonText: 'Yakin',
         cancelButtonText: 'Batal',
@@ -86,6 +86,7 @@ function deletePost(id) {
             $.post('/post/deletePost/' + id, response => {
                 toast('success', response.messages);
                 $('#tableDataPost').DataTable().ajax.reload(null, false);
+                $('#tableDeletedPost').DataTable().ajax.reload(null, false);
             }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
         }
     });
@@ -101,4 +102,46 @@ function copyToClipboard(id, base_url) {
         $(`#${dataPost.post_id}`).remove();
         toast('info', 'Link url telah dicopy!');
     }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
+}
+
+function restorePost(id) {
+    Swal.fire({
+        title: 'Aktifkan Kembali?',
+        text: 'Postingan ini akan diaktifkan kembali.',
+        showCancelButton: true,
+        confirmButtonText: 'Yakin',
+        cancelButtonText: 'Batal',
+        customClass: {
+            confirmButton: 'bg-success text-white'
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.post('/post/restoreDeleted/' + id, response => {
+                toast('success', response.messages);
+                $('#tableDataPost').DataTable().ajax.reload(null, false);
+                $('#tableDeletedPost').DataTable().ajax.reload(null, false);
+            }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
+        }
+    });
+}
+
+function purgeDeletePost(id) {
+    Swal.fire({
+        title: 'Hapus permenen?',
+        text: 'Postingan ini akan dihapus secara permanen. Anda tidak akan bisa memulihkan kembali!',
+        showCancelButton: true,
+        confirmButtonText: 'Yakin',
+        cancelButtonText: 'Batal',
+        customClass: {
+            confirmButton: 'bg-success text-white'
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.post('/post/purgeDelete/' + id, response => {
+                toast('success', response.messages);
+                $('#tableDataPost').DataTable().ajax.reload(null, false);
+                $('#tableDeletedPost').DataTable().ajax.reload(null, false);
+            }, 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
+        }
+    });
 }

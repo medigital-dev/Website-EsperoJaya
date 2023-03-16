@@ -3,35 +3,79 @@
 <div class="row">
     <div class="col-12">
         <div class="card shadow">
-            <div class="card-header border-0">
+            <div class="card-header border-0 d-flex">
                 <h3 class="mb-0">Posts</h3>
+                <ul class="nav nav-pills ml-auto" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="btn btn-sm btn-secondary active" id="active-tab" data-toggle="tab" data-target="#active" type="button" role="tab" aria-controls="active" aria-selected="true" title="Aktif"><i class="fas fa-check"></i></button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="btn btn-sm btn-secondary" id="trash-tab" data-toggle="tab" data-target="#trash" type="button" role="tab" aria-controls="trash" aria-selected="false" title="Sampah"><i class="fas fa-trash-alt"></i></button>
+                    </li>
+                </ul>
             </div>
             <div class="card-body">
-                <div class="btn-toolbar mb-1 py-2" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group shadow mr-2" role="group" aria-label="First group">
-                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-form" title="Tambah postingan baru"><i class="fas fa-plus-circle"></i></button>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="active" role="tabpanel" aria-labelledby="active-tab">
+                        <div class="btn-toolbar mb-1 py-2" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group shadow mr-2" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-form" title="Tambah postingan baru"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                            <div class="btn-group shadow mr-2" role="group" aria-label="Second group">
+                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Pilih Semua/Balikkan pilihan" id="btn-select"><i class="fas fa-check-circle"></i></button>
+                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus pilihan" id="btn-deselect"><i class="fas fa-minus-circle"></i></button>
+                            </div>
+                            <div class="btn-group shadow mr-2" role="group" aria-label="3-group">
+                                <button type="button" class="btn btn-danger btn-sm" id="btn-trash" data-toggle="tooltip" data-placement="top" title="Hapus terpilih"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover w-100" id="tableDataPost">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20px;">No</th>
+                                        <th style="width: 20px;">ID</th>
+                                        <th>Judul</th>
+                                        <th>Author</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div class="btn-group shadow mr-2" role="group" aria-label="Second group">
-                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Pilih Semua/Balikkan pilihan" id="btn-select"><i class="fas fa-hand-pointer"></i></button>
-                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus pilihan" id="btn-deselect"><i class="fas fa-eraser"></i></button>
-                    </div>
-                    <div class="btn-group shadow mr-2" role="group" aria-label="3-group">
-                        <button type="button" class="btn btn-danger btn-sm" id="btn-trash" data-toggle="tooltip" data-placement="top" title="Hapus terpilih"><i class="fas fa-trash-alt"></i></button>
+                    <div class="tab-pane fade" id="trash" role="tabpanel" aria-labelledby="trash-tab">
+                        <div class="tab-pane fade show active" id="active" role="tabpanel" aria-labelledby="active-tab">
+                            <div class="btn-toolbar mb-1 py-2" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group shadow mr-2" role="group" aria-label="First group">
+                                    <button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Aktifkan postingan" id="btn-restore"><i class="fas fa-trash-restore"></i></button>
+                                </div>
+                                <div class="btn-group shadow mr-2" role="group" aria-label="Second group">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Pilih Semua/Balikkan pilihan" id="btn-select2"><i class="fas fa-check-circle"></i></button>
+                                    <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus pilihan" id="btn-deselect2"><i class="fas fa-minus-circle"></i></button>
+                                </div>
+                                <div class="btn-group shadow mr-2" role="group" aria-label="3-group">
+                                    <button type="button" class="btn btn-danger btn-sm" id="btn-erase" data-toggle="tooltip" data-placement="top" title="Hapus permanen"><i class="fas fa-eraser"></i></button>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover w-100" id="tableDeletedPost">
+                                    <thead>
+                                        <tr>
+                                            <th class="bg-danger text-white" style="width: 20px;">No</th>
+                                            <th class="bg-danger text-white" style="width: 20px;">ID</th>
+                                            <th class="bg-danger text-white">Judul</th>
+                                            <th class="bg-danger text-white">Author</th>
+                                            <th class="bg-danger text-white">Dihapus</th>
+                                            <th class="bg-danger text-white">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <table class="table table-bordered table-hover w-100" id="tableDataPost">
-                    <thead>
-                        <tr>
-                            <th style="width: 20px;">No</th>
-                            <th style="width: 20px;">ID</th>
-                            <th>Judul</th>
-                            <th>Author</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
             </div>
         </div>
     </div>

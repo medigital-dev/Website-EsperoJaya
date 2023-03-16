@@ -175,7 +175,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('dashboard'); ?>">
-                            <i class="ni ni-tv-2 text-primary"></i> Dashboard
+                            <i class="ni ni-tv-2 text-danger"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
@@ -185,33 +185,21 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./examples/icons.html">
-                            <i class="ni ni-planet text-blue"></i> Icons
+                        <a href="<?= base_url('page'); ?>" class="nav-link">
+                            <i class="fas fa-file-alt text-success"></i>
+                            Pages
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./examples/maps.html">
-                            <i class="ni ni-pin-3 text-orange"></i> Maps
+                        <a class="nav-link " href="!#">
+                            <i class="fas fa-folder text-warning"></i>
+                            Media
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./examples/profile.html">
-                            <i class="ni ni-single-02 text-yellow"></i> User profile
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="./examples/tables.html">
-                            <i class="ni ni-bullet-list-67 text-red"></i> Tables
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./examples/login.html">
-                            <i class="ni ni-key-25 text-info"></i> Login
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./examples/register.html">
-                            <i class="ni ni-circle-08 text-pink"></i> Register
+                        <a class="nav-link " href="!#">
+                            <i class="fas fa-cog text-gray-dark"></i>
+                            Setting
                         </a>
                     </li>
                 </ul>
@@ -221,27 +209,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url(); ?>" target="_blank">
                             <i class="fas fa-globe text-success"></i> Homepage
-                        </a>
-                    </li>
-                </ul>
-                <hr class="my-3">
-                <!-- Heading -->
-                <h6 class="navbar-heading text-muted">Documentation</h6>
-                <!-- Navigation -->
-                <ul class="navbar-nav mb-md-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-                            <i class="ni ni-spaceship"></i> Getting started
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
-                            <i class="ni ni-palette"></i> Foundation
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
-                            <i class="ni ni-ui-04"></i> Components
                         </a>
                     </li>
                 </ul>
@@ -320,7 +287,7 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-2">
                         <div class="copyright text-center text-muted">
-                            CMS-Panel v1.3.3
+                            CMS-Panel v1.3.4
                         </div>
                     </div>
                     <div class="col-xl-8">
@@ -411,8 +378,62 @@
                     tablePost.ajax.reload(null, false);
                 });
 
+                $('#btn-erase').click(function() {
+                    const data = $('#tableDeletedPost .table-success');
+                    if (data.length == 0) {
+                        toast('error', 'Pilih postingan yang akan dihapus terlebih dahulu!');
+                        return;
+                    }
+                    Swal.fire({
+                        title: 'Hapus Permanen Postingan?',
+                        text: data.length + ' postingan akan dihapus secara permanen!',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yakin',
+                        cancelButtonText: 'Batal',
+                        customClass: {
+                            confirmButton: 'bg-success text-white'
+                        },
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            data.each((i, elm) => {
+                                const postid = elm.querySelector('code').innerText;
+                                $.post('/post/purgeDelete/' + postid, response => toast('success', response.messages), 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
+                            });
+                            tablePost.ajax.reload(null, false);
+                            tableDeletedPost.ajax.reload(null, false);
+                        }
+                    });
+                });
+
+                $('#btn-restore').click(function() {
+                    const data = $('#tableDeletedPost .table-success');
+                    if (data.length == 0) {
+                        toast('error', 'Pilih postingan yang akan diaktifkan terlebih dahulu!');
+                        return;
+                    }
+                    Swal.fire({
+                        title: 'Aktfkan Postingan?',
+                        text: data.length + ' postingan akan diaktifkan!',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yakin',
+                        cancelButtonText: 'Batal',
+                        customClass: {
+                            confirmButton: 'bg-success text-white'
+                        },
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            data.each((i, elm) => {
+                                const postid = elm.querySelector('code').innerText;
+                                $.post('/post/restoreDeleted/' + postid, response => toast('success', response.messages), 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
+                            });
+                            tablePost.ajax.reload(null, false);
+                            tableDeletedPost.ajax.reload(null, false);
+                        }
+                    });
+                });
+
                 $('#btn-trash').click(function() {
-                    const data = $('.table-success');
+                    const data = $('#tableDataPost .table-success');
                     if (data.length == 0) {
                         toast('error', 'Pilih postingan yang akan dihapus terlebih dahulu!');
                         return;
@@ -433,6 +454,7 @@
                                 $.post('/post/deletePost/' + postid, response => toast('success', response.messages), 'json').fail(err => Swal.fire('Ajax error', err.responseJSON.message, 'error'));
                             });
                             tablePost.ajax.reload(null, false);
+                            tableDeletedPost.ajax.reload(null, false);
                         }
                     });
                 });
@@ -575,13 +597,13 @@
                     },
                     columnDefs: [{
                         className: "text-center",
-                        targets: [0, 1, 3, 4, 5]
+                        targets: [0, 1, 3, 4]
                     }, {
                         orderable: false,
-                        targets: [1, 4, 5]
+                        targets: [1, 4]
                     }, {
                         searchable: false,
-                        targets: [0, 1, 4, 5]
+                        targets: [0, 1, 4]
                     }],
                     columns: [{
                         data: "no"
@@ -592,29 +614,81 @@
                     }, {
                         data: "author"
                     }, {
-                        data: "status"
-                    }, {
                         data: "action"
                     }, ]
                 });
 
-                // ANY PAGE
-                $('table tbody').on('click', 'tr', function() {
-                    $(this).toggleClass('table-success');
+                var tableDeletedPost = $('#tableDeletedPost').DataTable({
+                    responsive: true,
+                    lengthMenu: [
+                        [5, 10, 25, 50, -1],
+                        [5, 10, 25, 50, 'All']
+                    ],
+                    pagingType: 'full_numbers',
+                    ajax: {
+                        method: 'POST',
+                        url: '/post/getTrash',
+                        dataSrc: ''
+                    },
+                    language: {
+                        url: '/plugins/datatables/language/id.json',
+                    },
+                    columnDefs: [{
+                        className: "text-center",
+                        targets: [0, 1, 3, 4, 5]
+                    }, {
+                        orderable: false,
+                        targets: [1, 5]
+                    }, {
+                        searchable: false,
+                        targets: [0, 1, 5]
+                    }],
+                    columns: [{
+                        data: "no"
+                    }, {
+                        data: "id"
+                    }, {
+                        data: "judul"
+                    }, {
+                        data: "author"
+                    }, {
+                        data: 'deleted_at'
+                    }, {
+                        data: "action"
+                    }]
                 });
 
                 $('#btn-select').click(function() {
-                    const data = $('table tbody tr.odd,.even');
+                    const data = $('#tableDataPost tbody tr.odd, #tableDataPost tbody tr.even');
+                    data.each(function(i, elm) {
+                        $(this).toggleClass('table-success');
+                    })
+                });
+
+                $('#btn-select2').click(function() {
+                    const data = $('#tableDeletedPost tbody tr.odd, #tableDeletedPost tbody tr.even');
                     data.each(function(i, elm) {
                         $(this).toggleClass('table-success');
                     })
                 });
 
                 $('#btn-deselect').click(function() {
-                    const data = $('tbody tr');
+                    const data = $('#tableDataPost tbody tr');
                     data.each(function() {
                         $(this).removeClass('table-success');
                     });
+                });
+
+                $('#btn-deselect2').click(function() {
+                    const data = $('#tableDeletedPost tbody tr');
+                    data.each(function() {
+                        $(this).removeClass('table-success');
+                    });
+                });
+
+                // ANY PAGE
+                $('table tbody').on('click', 'tr', function() {
+                    $(this).toggleClass('table-success');
                 });
             });
         </script>

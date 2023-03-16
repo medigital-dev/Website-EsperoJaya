@@ -16663,7 +16663,7 @@ textarea[resize="horizontal"] {
 }
 
 .nav-pills .nav-item:not(:last-child) {
-  padding-right: 1rem;
+  padding-right: 0.3rem;
 }
 
 .nav-pills .nav-link {
