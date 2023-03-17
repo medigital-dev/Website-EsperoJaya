@@ -78,12 +78,12 @@ class Post extends BaseController
         }
 
         if (!$this->mPost->save($data)) {
-            return $this->fail('Postingan gagal ditambahkan! ' . $this->mPost->errors());
+            return $this->fail('Postingan gagal disimpan! ' . $this->mPost->errors());
         }
         $response = [
             'status' => 200,
             'code' => '',
-            'messages' => 'Postingan berhasil ditambahkan.',
+            'messages' => 'Postingan berhasil disimpan.',
             'result' => $data
         ];
         return $this->respond($response);

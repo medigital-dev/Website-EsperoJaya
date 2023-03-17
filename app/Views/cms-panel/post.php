@@ -103,6 +103,7 @@
                     </div>
                     <div class="col-lg-8">
                         <input type="hidden" name="id" id="idPost">
+                        <input type="hidden" name="post_id" id="postID">
                         <div class="form-group">
                             <label for="title">Judul</label>
                             <input type="text" class="form-control" name="title" id="title">

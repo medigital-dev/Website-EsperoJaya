@@ -62,6 +62,7 @@ function editPost(id) {
         $('#title').val(post.title);
         $('#slug').val(post.slug);
         $('#idPost').val(post.id);
+        $('#postID').val(post.post_id);
         tinyMCE.activeEditor.setContent(post.content);
         $('#jumlahBerkasLampiran').text('(' + listFiles.length + ')');
         listFiles.forEach((val, i) => {

@@ -287,7 +287,7 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-2">
                         <div class="copyright text-center text-muted">
-                            CMS-Panel v1.3.4
+                            CMS-Panel v1.3.5
                         </div>
                     </div>
                     <div class="col-xl-8">
@@ -368,7 +368,7 @@
                 // POST_PAGE
                 $('#modal-form').on('hidden.bs.modal', function() {
                     myDropzone.removeAllFiles();
-                    $('#title,#slug,#idPost').val('');
+                    $('#title,#slug,#idPost,#postID').val('');
                     $('#berkasLampiran').html('');
                     tinyMCE.activeEditor.setContent('');
                     const invalidField = $('.is-invalid');
@@ -539,6 +539,7 @@
                     const judul = $('#title');
                     const slug = $('#slug');
                     const idPost = $('#idPost');
+                    const postId = $('#postID');
                     const isi = tinyMCE.activeEditor.getContent();
 
                     if (judul.val() == '' && slug.val() == '') {
@@ -551,6 +552,7 @@
                     let set = {
                         title: judul.val(),
                         slug: slug.val(),
+                        post_id: postId.val(),
                         content: isi,
                         author: '@mesaidlg',
                         status: 1,
