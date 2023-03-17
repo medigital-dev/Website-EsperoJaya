@@ -42,8 +42,8 @@
 <section>
     <div class="container py-2">
         <div class="row">
-            <div class="col">
-                <p class="lead"><?= $data['content']; ?></p>
+            <div class="col postContent">
+                <?= $data['content']; ?>
             </div>
         </div>
     </div>
