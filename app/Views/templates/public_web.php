@@ -28,7 +28,10 @@ Coded by www.creative-tim.com
     <link rel="stylesheet" href="<?= base_url('plugins/carousel-07/css/owl.theme.default.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <style>
-
+        .carousel-item img {
+            max-height: 400px;
+            object-fit: contain;
+        }
     </style>
 </head>
 
@@ -120,16 +123,16 @@ Coded by www.creative-tim.com
             </div>
             <hr>
             <div class="row align-items-center justify-content-xl-between">
-                <div class="col-xl-3">
+                <div class="col-xl-2">
                     <div class="copyright text-center text-muted">
-                        &copy; 2023 CMS-Web v1.0.14
+                        CMS-Web v1.0.15
                     </div>
                 </div>
-                <div class="col-xl-6">
-                    <div class="copyright text-center">Dibuat dan dikembangkan oleh <a href="https://muhsaidlg.my.id" target="_blank">Muhammad Said Latif Ghofari</a>.
+                <div class="col-xl-8">
+                    <div class="copyright text-center">&copy; 2023 Dibuat dan dikembangkan oleh <a href="https://muhsaidlg.my.id" target="_blank">Muhammad Said Latif Ghofari</a>.
                     </div>
                 </div>
-                <div class="col-xl-3">
+                <div class="col-xl-2">
                     <div class="copyright text-center">
                         Theme: <a class="text-muted" target="_blank" href="https://www.creative-tim.com/product/argon-design-system">Argon</a>
                     </div>
