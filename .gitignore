@@ -135,3 +135,4 @@ nb-configuration.xml
 public/assets/uploads/*
 public/index.php
 database/patch/update.sql
+public/plugins/select2/js/i18n/

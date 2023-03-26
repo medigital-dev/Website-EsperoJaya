@@ -28,9 +28,11 @@
     <link rel="stylesheet" href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('plugins/sweetalert2/css/sweetalert2.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('plugins/argon-dashboard/css/argon-dashboard.css'); ?>">
-    <link rel="stylesheet" href="<?= base_url('plugins/dropzone/css/dropzone.min.css'); ?>" type="text/css">
+    <link rel="stylesheet" href="<?= base_url('plugins/dropzone/css/dropzone.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('plugins/datatables/css/dataTables.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('plugins/datatables/css/responsive.bootstrap4.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('plugins/select2/css/select2.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('plugins/select2/css/select2-bootstrap4.min.css'); ?>">
     <style>
         @media (max-width: 468px) {
             .btn-group {
@@ -207,9 +209,23 @@
                 <h6 class="navbar-heading text-muted">Preview</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url(); ?>" target="_blank">
-                            <i class="fas fa-globe text-success"></i> Homepage
-                        </a>
+                        <div class="nav-link">
+                            <select class="custom-select select2" id="previewPageOrPost">
+                                <optgroup label="Static Page">
+                                    <option class="" value="">Homepage</option>
+                                </optgroup>
+                                <optgroup label="Pages">
+                                    <option value="profil">One</option>
+                                    <option value="blog">Two</option>
+                                </optgroup>
+                                <optgroup label="Posts">
+                                    <option value="3">Three</option>
+                                </optgroup>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" id="btn-preview" type="button">Go</button>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -287,7 +303,7 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-2">
                         <div class="copyright text-center text-muted">
-                            CMS-Panel v1.3.5
+                            CMS-Panel v1.3.6
                         </div>
                     </div>
                     <div class="col-xl-8">
@@ -296,7 +312,7 @@
                     </div>
                     <div class="col-xl-2">
                         <div class="copyright text-center">
-                            Theme: <a class="text-muted" target="_blank" href="https://www.creative-tim.com/product/argon-design-system">Argon</a>
+                            Theme: <a class="text-muted" target="_blank" href="https://www.creative-tim.com/product/argon-dashboard-bs4">Argon</a>
                         </div>
                     </div>
                 </div>
@@ -320,6 +336,7 @@
         <script src="<?= base_url('plugins/datatables/js/dataTables.bootstrap4.min.js'); ?>"></script>
         <script src="<?= base_url('plugins/datatables/js/dataTables.responsive.min.js'); ?>"></script>
         <script src="<?= base_url('plugins/datatables/js/responsive.bootstrap4.min.js'); ?>"></script>
+        <script src="<?= base_url('plugins/select2/js/select2.full.min.js'); ?>"></script>
         <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
         <script src="<?= base_url('assets/js/functions.js'); ?>"></script>
         <script>
@@ -351,18 +368,13 @@
 
                 // ##### End Dropzone Config
 
-                tinymce.init({
-                    selector: '#content',
-                    width: '100%',
-                    height: 280,
-                    resize: false,
-                    plugins: 'lists help table link code fullscreen media image',
-                    toolbar: 'fullscreen | blocks | bold italic underline align | bullist numlist',
-                    setup: function(editor) {
-                        editor.on('FullscreenStateChanged', function() {
-                            $('.modal-dialog').toggleClass('m-0');
-                        });
-                    }
+                $('.select2').select2({
+                    theme: 'bs4'
+                });
+
+                $('#btn-preview').click(function() {
+                    const url = $('#previewPageOrPost').val();
+                    window.open('/' + url, '_blank');
                 });
 
                 // POST_PAGE
@@ -691,6 +703,20 @@
                 // ANY PAGE
                 $('table tbody').on('click', 'tr', function() {
                     $(this).toggleClass('table-success');
+                });
+
+                tinymce.init({
+                    selector: '#content',
+                    width: '100%',
+                    height: 280,
+                    resize: false,
+                    plugins: 'lists help table link code fullscreen media image',
+                    toolbar: 'fullscreen | blocks | bold italic underline align | bullist numlist',
+                    setup: function(editor) {
+                        editor.on('FullscreenStateChanged', function() {
+                            $('.modal-dialog').toggleClass('m-0');
+                        });
+                    }
                 });
             });
         </script>
