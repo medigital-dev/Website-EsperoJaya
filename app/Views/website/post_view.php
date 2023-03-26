@@ -48,30 +48,28 @@
         </div>
     </div>
 </section>
-<?php if ($files) : ?>
-    <section>
-        <div class="container mb-4">
-            <div class="row">
-                <div class="col">
-                    <h5>Lampiran:</h5>
-                    <?php foreach ($files as $row) : ?>
-                        <ul class="list-group">
-                            <?php if ($row['type'] !== 'image') : ?>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <a href="<?= base_url($row['url']); ?>" class="text-break">
-                                            <?= $row['title']; ?>
-                                        </a>
-                                        <span class="small text-muted"><?= $row['size'] . ' | ' . $row['type']; ?></span>
-                                    </div>
-                                    <a href="<?= base_url($row['url']); ?>" class="badge badge-primary"><i class="fas fa-download"></i></a>
-                                </li>
-                            <?php endif; ?>
-                        </ul>
-                    <?php endforeach; ?>
-                </div>
+<section>
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col">
+                <h5>Lampiran:</h5>
+                <?php foreach ($files as $row) : ?>
+                    <ul class="list-group">
+                        <?php if ($row['type'] !== 'image') : ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="d-flex flex-column">
+                                    <a href="<?= base_url($row['url']); ?>" target="_blank" class="text-break">
+                                        <?= $row['title']; ?>
+                                    </a>
+                                    <span class="small text-muted"><?= $row['size'] . ' | ' . $row['type']; ?></span>
+                                </div>
+                                <a href="<?= base_url($row['url']); ?>" class="badge badge-primary"><i class="fas fa-download"></i></a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                <?php endforeach; ?>
             </div>
         </div>
-    </section>
-<?php endif; ?>
+    </div>
+</section>
 <?= $this->endSection(); ?>

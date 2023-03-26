@@ -135,7 +135,7 @@ Coded by www.creative-tim.com
             <div class="row align-items-center justify-content-xl-between">
                 <div class="col-xl-2">
                     <div class="copyright text-center text-muted">
-                        CMS-Web v1.0.16
+                        CMS-Web v1.0.17
                     </div>
                 </div>
                 <div class="col-xl-8">
