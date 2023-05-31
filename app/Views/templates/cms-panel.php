@@ -25,7 +25,8 @@
     <link href="<?= base_url('assets/images/client/logo.png'); ?>" rel="icon" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <link rel="stylesheet" href="<?= base_url('plugins/nucleo/css/nucleo.css'); ?>">
-    <link rel="stylesheet" href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>">
+    <!-- <link rel="stylesheet" href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>"> -->
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="stylesheet" href="<?= base_url('plugins/sweetalert2/css/sweetalert2.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('plugins/argon-dashboard/css/argon-dashboard.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('plugins/dropzone/css/dropzone.min.css'); ?>">
@@ -350,22 +351,23 @@
         <script>
             $(document).ready(function() {
                 // ##### Dropzone Config
-                var myDropzone = new Dropzone('#dropzone', {
-                    url: "<?= base_url('files/upload/'); ?>",
-                    autoProcessQueue: false,
-                    maxFiles: 10,
-                    parallelUploads: 10,
-                    maxFilesize: 2,
-                    addRemoveLinks: true,
-                    thumbnailWidth: 100,
-                    thumbnailHeight: 100,
-                });
+                if ($('#dropzone').length > 0) {
+                    var myDropzone = new Dropzone('#dropzone', {
+                        url: "<?= base_url('files/upload/'); ?>",
+                        autoProcessQueue: false,
+                        maxFiles: 10,
+                        parallelUploads: 10,
+                        maxFilesize: 2,
+                        addRemoveLinks: true,
+                        thumbnailWidth: 100,
+                        thumbnailHeight: 100,
+                    });
 
-                myDropzone.on('error', () => {
-                    $('#btn-savePost').text('Save').prop('disabled', false);
-                    $('#btn-draftPost').text('Draft').prop('disabled', false);
-                });
-
+                    myDropzone.on('error', () => {
+                        $('#btn-savePost').text('Save').prop('disabled', false);
+                        $('#btn-draftPost').text('Draft').prop('disabled', false);
+                    });
+                }
                 // ##### End Dropzone Config
 
                 $('.select2').select2({
@@ -701,8 +703,8 @@
                 });
 
                 // ANY PAGE
-                $('table tbody').on('click', 'tr', function() {
-                    $(this).toggleClass('table-success');
+                $('table tbody').on('click', 'tr td:not(:last-child)', function() {
+                    $(this).parent('tr').toggleClass('table-success');
                 });
 
                 tinymce.init({

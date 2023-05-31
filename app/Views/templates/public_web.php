@@ -23,7 +23,8 @@ Coded by www.creative-tim.com
     <link rel="shortcut icon" href="<?= base_url('assets/images/client/logo.png'); ?>" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <link rel="stylesheet" href="<?= base_url('plugins/argon/css/argon-design-system.css?v=1.2.2'); ?>">
-    <link rel="stylesheet" href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>">
+    <!-- <link rel="stylesheet" href="<?= base_url('plugins/fontawesome/css/all.min.css'); ?>"> -->
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="stylesheet" href="<?= base_url('plugins/carousel-07/css/owl.carousel.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('plugins/carousel-07/css/owl.theme.default.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
