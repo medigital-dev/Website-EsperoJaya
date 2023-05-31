@@ -15,6 +15,11 @@ class Page extends BaseController
         $this->mPage = new PageModel();
     }
 
+    public function index()
+    {
+        return view('cms-panel/page');
+    }
+
     public function cekSlug()
     {
         $slug = $this->request->getVar('slug');

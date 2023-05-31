@@ -39,6 +39,8 @@ $routes->get('/', 'Home::index');
 $routes->get('dashboard', 'Dashboard::index');
 $routes->get('post', 'Post::index');
 $routes->post('post/(:any)', 'Post::$1');
+$routes->get('page', 'Page::index');
+$routes->post('page/(:any)', 'Page::$1');
 $routes->get('files', 'Files::index');
 $routes->post('files/(:any)', 'Files::$1');
 $routes->post('setFeedback', 'Home::setFeedback');
